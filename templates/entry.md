@@ -1,38 +1,39 @@
-[← 返回首页](../README.md)
+[← Home](../README.md) · [Curation guide](../GUIDE.md)
 
-# 条目模板（非学习条目）
+# [Entry title]
 
-复制到相应分类后，按内容删减字段并删除占位符。
+> **Quick answer**  
+> State the most useful conclusion in one or two lines.
 
-# [主题]
+## Meaning map
 
-关键词：[词语 / 语法点 / 话题]  
-用途：[口语 / 阅读 / 听力 / 写作 / 日常交流]
+Explain meaning, register, tone, usage boundary or the key distinction. Add concise Chinese only if it improves precision.
 
-## 核心结论
+## Use it naturally
 
-[一句话说明最值得记住的内容。]
+- **Collocations / chunks:** …
+- **Pattern:** …
+- **Natural example:** …
 
-## 用法与辨析
+## IELTS transfer
 
-[只保留必要的语境、搭配、语气或区别。]
+Show the most relevant application: Speaking, Reading, Listening or Writing. Do not force all four skills into every note.
 
-## 自然例句
+## Common trap
 
-[英文例句]  
-[中文解释；自编时注明。]
+- **Avoid:** …
+- **Prefer:** …
+- **Why:** …
 
-## 关联与来源
+## Active recall
 
-[关联条目相对链接；实际引用的材料及定位信息。]
+> Reformulate, complete or answer one short prompt without looking back.
 
-## 主动运用（可选）
+## Connections
 
-[一个回忆或造句问题。]
+- [Related note](../path/example.md)
 
-<details>
-<summary>展开参考答案</summary>
+---
 
-[参考答案；练习阶段若约定不揭晓，则暂不写入。]
-
-</details>
+**Source:** Conversation / confirmed material / self-created  
+**Primary home:** Vocabulary / Expressions / Grammar / Corrections / Speaking / Reading / Listening / Writing

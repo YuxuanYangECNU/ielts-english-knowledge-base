@@ -1,17 +1,15 @@
-[← 返回首页](../../README.md) · [收录规则](../../GUIDE.md)
+[← Knowledge map](../README.md) · [Home](../../README.md)
 
-# 易错点与个人纠正
-*Errors & Corrections*
+# Personal Error Log
 
-反复出现或影响表达准确性的错误与自然改法。
+**Purpose:** detect recurring patterns and convert correction into reusable language.
 
-## 条目索引
+## Index
 
-暂未收录。第一条相关内容出现后，再建立条目与链接。
+_No curated entries yet._
 
-## 整理方式
+## Note pattern
 
-原表达 → 修改 → 原因 → 可复用版本 → 关联知识点。
+**Original wording → natural correction → reason → reusable frame → new example → linked rule**
 
-
-按实际需要保留字段，不为凑模板增加篇幅。同一知识点优先更新已有条目。
+Merge repeated errors into one evolving note. Prioritise errors that affect clarity, accuracy or fluency.

@@ -1,17 +1,15 @@
-[← 返回首页](../../README.md) · [收录规则](../../GUIDE.md)
+[← Knowledge map](../README.md) · [Home](../../README.md)
 
-# 听力场景与表达
-*Listening Language*
+# Listening Language
 
-场景词汇、信号表达、拼写和信息定位中的易错点。
+**Purpose:** organise scenario language, signposts, spelling risks and distractor patterns.
 
-## 条目索引
+## Index
 
-暂未收录。第一条相关内容出现后，再建立条目与链接。
+_No curated entries yet._
 
-## 整理方式
+## Note pattern
 
-场景 → 表达 / 词汇 → 原句与来源 → 干扰点 → 用法。
+**Scenario → phrase/word → source line → signal or distractor → spelling/pronunciation risk → application**
 
-
-按实际需要保留字段，不为凑模板增加篇幅。同一知识点优先更新已有条目。
+Prioritise patterns that improve prediction and information location rather than collecting every unfamiliar word.

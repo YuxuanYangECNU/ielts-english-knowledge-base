@@ -1,17 +1,15 @@
-[← 返回首页](../../README.md) · [收录规则](../../GUIDE.md)
+[← Knowledge map](../README.md) · [Home](../../README.md)
 
-# 自然表达与句型
-*Natural Expressions*
+# Natural Expressions
 
-可迁移到日常交流和口语回答的表达块。
+**Purpose:** collect reusable chunks that make everyday and IELTS speaking sound fluent rather than translated.
 
-## 条目索引
+## Index
 
-暂未收录。第一条相关内容出现后，再建立条目与链接。
+_No curated entries yet._
 
-## 整理方式
+## Note pattern
 
-表达 → 使用场景与语气 → 句型骨架 → 替换方式 → 例句。
+**Expression → situation → tone/register → sentence frame → substitutions → natural examples**
 
-
-按实际需要保留字段，不为凑模板增加篇幅。同一知识点优先更新已有条目。
+Prefer flexible chunks over memorised full answers. Record when an expression sounds too formal, too casual or context-dependent.

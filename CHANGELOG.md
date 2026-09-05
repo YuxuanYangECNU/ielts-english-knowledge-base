@@ -1,10 +1,17 @@
-[← 返回首页](README.md)
+[← Home](README.md)
 
-# 更新记录
+# Change Log
 
-## v0.1 · 框架建立
+## v0.2 · English-first redesign
 
-- 建立九类知识目录、条目模板、精选收录规则和复习入口。
-- 不导入历史学习内容，当前学习条目为 0。
-- GitHub 主库与既有 Google Docs 精简版互相链接。
-- Google Docs 同步状态：框架与九类目录已同步，已核验目录跳转与主库链接。
+- Rebuilt the home page around a five-stage learning loop.
+- Grouped nine categories into **Foundation**, **IELTS Performance** and **Retention**.
+- Rewrote navigation, curation rules, category pages and the entry template in English-first form.
+- Kept Chinese only as concise clarification.
+- Redesigned and verified the Google Docs companion.
+- Learning entries remain at 0; no historical content was imported.
+
+## v0.1 · Initial framework
+
+- Created nine category folders, an entry template, curation rules and a review area.
+- Linked the GitHub master library and Google Docs companion.

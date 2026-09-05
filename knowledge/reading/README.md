@@ -1,18 +1,15 @@
-[← 返回首页](../../README.md) · [收录规则](../../GUIDE.md)
+[← Knowledge map](../README.md) · [Home](../../README.md)
 
-# 阅读同义替换与判断
-*Reading & Paraphrase*
+# Reading & Paraphrase
 
-同义替换、逻辑关系及 True / False / Not Given 的证据判断。
+**Purpose:** make paraphrase and evidence logic visible, especially for True / False / Not Given.
 
-## 条目索引
+## Index
 
-暂未收录。第一条相关内容出现后，再建立条目与链接。
+_No curated entries yet._
 
-## 整理方式
+## Note pattern
 
-来源 → 原文依据 → 题目表述 → 替换关系 → 判断依据与陷阱。
+**Verified source → source sentence → question statement → paraphrase chain → evidence boundary → answer logic → trap**
 
-优先积累 TF / NG 判断中的同义替换和证据边界。原文、题目和来源必须可核实；自编例句明确标注。练习答案可用折叠区隐藏，或按当次约定暂不写入。
-
-按实际需要保留字段，不为凑模板增加篇幅。同一知识点优先更新已有条目。
+Keep the complete relevant sentence and question. Do not label self-created material as Cambridge IELTS. Hide answers when the active exercise requires delayed feedback.

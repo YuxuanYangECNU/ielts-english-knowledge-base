@@ -1,17 +1,15 @@
-[← 返回首页](../../README.md) · [收录规则](../../GUIDE.md)
+[← Knowledge map](../README.md) · [Home](../../README.md)
 
-# 词汇与搭配
-*Vocabulary & Collocations*
+# Vocabulary & Collocations
 
-语境义、固定搭配、近义词辨析和词义网络。
+**Purpose:** build precise, usable vocabulary networks—not isolated word lists.
 
-## 条目索引
+## Index
 
-暂未收录。第一条相关内容出现后，再建立条目与链接。
+_No curated entries yet._
 
-## 整理方式
+## Note pattern
 
-词 / 词组 → 语境义 → 常用搭配 → 易混区别 → 自然例句。
+**Word / phrase → contextual meaning → collocations → word family → contrast → natural example → IELTS use**
 
-
-按实际需要保留字段，不为凑模板增加篇幅。同一知识点优先更新已有条目。
+Prioritise high-value words that improve precision or connect to several topics. Merge overlapping items into one meaning network.

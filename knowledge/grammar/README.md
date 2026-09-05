@@ -1,17 +1,15 @@
-[← 返回首页](../../README.md) · [收录规则](../../GUIDE.md)
+[← Knowledge map](../README.md) · [Home](../../README.md)
 
-# 语法与用法
-*Grammar & Usage*
+# Grammar & Usage
 
-从实际问题中整理语法规律和使用边界。
+**Purpose:** turn real questions into compact rules with clear boundaries.
 
-## 条目索引
+## Index
 
-暂未收录。第一条相关内容出现后，再建立条目与链接。
+_No curated entries yet._
 
-## 整理方式
+## Note pattern
 
-问题 → 规则与边界 → 正误对比 → 迁移例句。
+**Question → rule → boundary → correct/incorrect contrast → natural alternative → transfer example**
 
-
-按实际需要保留字段，不为凑模板增加篇幅。同一知识点优先更新已有条目。
+Focus on choices that affect accuracy or naturalness. Avoid storing grammar theory that does not improve actual use.

@@ -1,18 +1,15 @@
-[← 返回首页](../../README.md) · [收录规则](../../GUIDE.md)
+[← Knowledge map](../README.md) · [Home](../../README.md)
 
-# 口语话题与素材
-*Speaking Topic Bank*
+# Speaking Story Bank
 
-按话题关联真实经历、观点和可复用表达。
+**Purpose:** build flexible IELTS answers from genuine experiences, interests and opinions.
 
-## 条目索引
+## Index
 
-暂未收录。第一条相关内容出现后，再建立条目与链接。
+_No curated entries yet._
 
-## 整理方式
+## Note pattern
 
-话题 → 真实素材 → 表达积累 → Part 1 / 2 / 3 延伸。
+**Topic → real material → core story → useful language → Part 1 / 2 / 3 extensions → follow-up prompts**
 
-素材来自本人提供的经历和观点；不编造个人故事，也不预先堆积整套背诵答案。
-
-按实际需要保留字段，不为凑模板增加篇幅。同一知识点优先更新已有条目。
+Use only experiences and views provided in conversation. Do not invent personal stories or create rigid scripts for memorisation.

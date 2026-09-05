@@ -1,18 +1,15 @@
-[← 返回首页](../../README.md) · [收录规则](../../GUIDE.md)
+[← Knowledge map](../README.md) · [Home](../../README.md)
 
-# 复习与主动运用
-*Review Bank*
+# Review & Active Recall
 
-把精选条目变成能回忆、能造句、能开口的练习。
+**Purpose:** turn selected knowledge into retrievable language.
 
-## 条目索引
+## Review queue
 
-暂未收录。第一条相关内容出现后，再建立条目与链接。
+_No review items yet._
 
-## 整理方式
+## Practice pattern
 
-知识条目链接 → 回忆问题 → 自己作答 → 参考答案 → 掌握状态。
+**Source note → recall prompt → own answer → reference answer → transfer challenge → status**
 
-从已有条目提炼短练习；用链接回到原条目。可使用“待练习 / 练习中 / 已能运用”的状态，不默认设置复习通知。
-
-按实际需要保留字段，不为凑模板增加篇幅。同一知识点优先更新已有条目。
+Use three light statuses: **To practise · In progress · Usable**. Every item links back to its source note. Review only high-value knowledge; the queue should stay smaller than the library.

@@ -1,50 +1,76 @@
 <div align="center">
 
-# IELTS · English Knowledge Base
-### 从零散问题，到能用出来的英语
+# IELTS English Atlas
 
-中文讲解 · 英文表达 · 精选积累 · 持续生长
+### From scattered questions to precise, reusable English
 
-[Google Docs 精简版](https://docs.google.com/document/d/1e4Q1csxPORv8K6kZ51_jENSEfFX6Yk1Hd-r-Le30HnY) · [收录与维护规则](GUIDE.md) · [更新记录](CHANGELOG.md)
+**English-first · Curated, not crowded · Built for a Band 7 goal**
+
+[Google Docs companion](https://docs.google.com/document/d/1e4Q1csxPORv8K6kZ51_jENSEfFX6Yk1Hd-r-Le30HnY) · [Knowledge map](knowledge/README.md) · [Curation guide](GUIDE.md) · [Change log](CHANGELOG.md)
 
 </div>
 
 ---
 
-## 学习导航
+> [!NOTE]
+> This is a living learning system, not a dictionary dump. Questions are answered first; only ideas with lasting value are added.
 
-| 分类 | 积累什么 |
+## The learning loop
+
+| Stage | What happens | Result |
+| :--- | :--- | :--- |
+| **01 · Capture** | Ask about any word, sentence, mistake, topic or IELTS task. | A clear answer for the immediate problem |
+| **02 · Curate** | Keep only reusable distinctions, patterns, stories and recurring corrections. | Less noise, higher value |
+| **03 · Connect** | Link the item to related vocabulary, skills and topic hubs. | A knowledge network instead of isolated notes |
+| **04 · Apply** | Turn knowledge into a natural example, IELTS use case or speaking prompt. | Passive knowledge becomes usable English |
+| **05 · Review** | Revisit selected items through recall, reformulation and speaking. | Long-term retention and fluency |
+
+## Knowledge architecture
+
+### I · Foundation
+
+| Area | Focus |
 | :--- | :--- |
-| [01 · 词汇与搭配](knowledge/vocabulary/README.md) | 语境义、固定搭配、近义词辨析和词义网络。 |
-| [02 · 自然表达与句型](knowledge/expressions/README.md) | 可迁移到日常交流和口语回答的表达块。 |
-| [03 · 语法与用法](knowledge/grammar/README.md) | 从实际问题中整理语法规律和使用边界。 |
-| [04 · 口语话题与素材](knowledge/speaking/README.md) | 按话题关联真实经历、观点和可复用表达。 |
-| [05 · 阅读同义替换与判断](knowledge/reading/README.md) | 同义替换、逻辑关系及 True / False / Not Given 的证据判断。 |
-| [06 · 听力场景与表达](knowledge/listening/README.md) | 场景词汇、信号表达、拼写和信息定位中的易错点。 |
-| [07 · 写作表达与论证](knowledge/writing/README.md) | Task 1 描述与 Task 2 论证的精确表达及适用条件。 |
-| [08 · 易错点与个人纠正](knowledge/corrections/README.md) | 反复出现或影响表达准确性的错误与自然改法。 |
-| [09 · 复习与主动运用](knowledge/review/README.md) | 把精选条目变成能回忆、能造句、能开口的练习。 |
+| [01 · Vocabulary & Collocations](knowledge/vocabulary/README.md) | Meaning in context, collocations, word families and precise contrasts |
+| [02 · Natural Expressions](knowledge/expressions/README.md) | Reusable chunks, tone, register and sentence patterns |
+| [03 · Grammar & Usage](knowledge/grammar/README.md) | Rules, boundaries, contrasts and natural alternatives |
+| [04 · Personal Error Log](knowledge/corrections/README.md) | Recurring or high-impact errors and transferable corrections |
 
-## 怎么用
+### II · IELTS Performance
 
-在英语学习窗口中，随时问单词、句子、表达或雅思相关问题。先解决眼前的问题；值得长期保留时，再整理成可复用的知识条目。
-
-- **精选收录**：你明确要求收录，或问题能延伸为有价值的辨析、搭配、表达规律、话题素材或反复出现的易错点。
-- **按知识组织**：相近内容合并；每条只放在一个主要分类，其他分类用链接关联。
-- **轻量积累**：不是每次查词都入库，也不为填满目录而添加内容。
-- **随着需求调整**：分类、粒度和条目结构都可以逐步改变；不设 Pronunciation 专栏。
-
-## 两端分工
-
-| 位置 | 用途 |
+| Area | Focus |
 | :--- | :--- |
-| **GitHub 主库** | 完整条目、分类索引、关联链接、复习材料与版本历史 |
-| **Google Docs 精简版** | 对应目录、核心要点、易错提醒和主库链接，作为精简内容备份 |
+| [05 · Speaking Story Bank](knowledge/speaking/README.md) | Real experiences, opinions and flexible Part 1–3 extensions |
+| [06 · Reading & Paraphrase](knowledge/reading/README.md) | Paraphrase chains, logic and TF/F/NG evidence boundaries |
+| [07 · Listening Language](knowledge/listening/README.md) | Scenario language, signposts, spelling and distractors |
+| [08 · Writing & Argumentation](knowledge/writing/README.md) | Accurate Task 1 language and conditional Task 2 reasoning |
 
-维护时先更新主库，再更新 Docs 对应摘要，并记录结果。Docs 是精简备份，不包含主库全部细节；目前没有后台自动同步服务。
+### III · Retention
 
-## 当前状态
+| Area | Focus |
+| :--- | :--- |
+| [09 · Review & Active Recall](knowledge/review/README.md) | Retrieval prompts, reformulation and short speaking drills |
 
-**仅框架 · 学习条目 0 条。** 从本窗口后续问题开始积累，未导入过去的对话或示例。
+## Curation gate
 
-新增条目时，分类页会出现标题、关键词和链接；复习区只汇总值得主动练习的内容。
+An item enters the Atlas when it has clear transfer value. Strong signals include:
+
+- it works across several contexts or IELTS topics;
+- it explains a useful distinction that is easy to misuse;
+- it strengthens a real speaking story or argument;
+- it corrects a recurring or high-impact error;
+- it creates a meaningful link to existing knowledge.
+
+One-off definitions, disposable translations and low-value trivia stay in the conversation unless explicitly requested.
+
+## English-first policy
+
+English carries the definition, explanation, examples and practice prompts. Chinese appears only when it makes a subtle contrast clearer or prevents misunderstanding.
+
+## Current state
+
+**Framework complete · 0 curated learning entries.** New entries will be created from future questions; earlier conversations are not imported automatically.
+
+---
+
+<sub>中文说明：先解决当下问题，再筛选值得长期复用的内容；英文为主，中文只用于必要辨析。</sub>

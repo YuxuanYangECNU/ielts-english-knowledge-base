@@ -1,46 +1,56 @@
-[← 返回首页](README.md)
+[← Home](README.md) · [Knowledge map](knowledge/README.md)
 
-# 收录与维护规则
+# Curation & Maintenance Guide
 
-## 何时收录
+## 1 · Decide whether to keep it
 
-满足以下一项且有实际复用价值时可收录：
+Add an item when at least one strong signal is present:
 
-- 用户明确说“加入知识库”“这个值得积累”。
-- 能形成近义词辨析、常用搭配或一组自然表达。
-- 能迁移到不同话题，帮助口语、阅读、听力或写作。
-- 揭示常见误区，或纠正反复出现的个人错误。
-- 能整理成真实、灵活的口语素材。
+- **Transferable:** useful across contexts, questions or IELTS topics.
+- **Distinctive:** clarifies a confusing contrast, boundary or collocation.
+- **Personal:** strengthens a genuine story, opinion or recurring language need.
+- **Corrective:** fixes a repeated or high-impact error.
+- **Connected:** meaningfully extends an existing note.
 
-普通的一次性释义或翻译先直接回答。需要语境才能判断时，只追问一个必要问题。用户说“不收录”时不添加。
+Answer ordinary one-off questions without adding them. Explicit “add this” and “do not add this” instructions always take priority.
 
-## 条目写法
+## 2 · Write for use, not storage
 
-默认中文解释、英文表达和例句；先给结论，再给最必要的区别与用法。
+Use English for the core content. Add concise Chinese only where it improves precision.
 
-通用结构：**问题 / 主题 → 核心结论 → 用法或辨析 → 自然例句 → 关联条目**。
-根据内容删减；阅读、纠错、话题素材可采用分类页的专用结构。
+Default note flow:
 
-可用 [条目模板](templates/entry.md)。模板占位文字不进入正式条目。
+1. **Quick answer** — the conclusion in one or two lines.
+2. **Meaning map** — meaning, register, tone and boundary.
+3. **Use it naturally** — collocations, patterns and examples.
+4. **IELTS transfer** — where it improves speaking, reading, listening or writing.
+5. **Common trap** — likely misuse or unnatural wording.
+6. **Active recall** — one short prompt that requires retrieval.
+7. **Connections** — links to related notes.
 
-## 组织与更新
+Delete any section that adds no value. Use [the entry template](templates/entry.md) as a guide, not a form to fill mechanically.
 
-1. 先读相关分类和已有条目，避免重复。
-2. 确定一个主分类，使用简短稳定的英文文件名。
-3. 写入条目，更新分类索引；需要时添加其他分类的关联链接。
-4. 仅对值得练习的内容，加入复习区。
-5. 同次维护中更新 Google Docs 的对应摘要，保留主库详细条目的链接。
-6. 在更新记录中写明实际完成情况，并回读核验。
-7. 回复时简短说明收录了什么；未写入成功时不能声称“已收录”。
+## 3 · Keep one source of truth
 
-GitHub 与 Docs 均可能被用户手动修改；更新前先读取，保留用户修改。主库负责完整记录，Docs 负责摘要，不做静默双向覆盖。
+1. Read the relevant category and existing notes.
+2. Update an existing note when the knowledge overlaps.
+3. Give a new note one primary category and a stable English filename.
+4. Add cross-links instead of creating duplicates.
+5. Add only practice-worthy items to **Review & Active Recall**.
+6. Update the Google Docs companion with the concise takeaway.
+7. Record the completed change in the change log and verify both destinations.
 
-## 来源与隐私
+GitHub is the detailed master. Google Docs is the compact companion. Neither should silently overwrite user edits.
 
-引用教材、题目或真实听读材料时保留可核实的来源；无法确认的内容不得标为剑桥雅思原题。自编内容标明“自编”。
+## 4 · Protect quality and privacy
 
-只整理与学习有关且适合入库的信息，不复制整段聊天；对话涉及的人名、联系方式和个人细节按需要匿名化。仓库与 Docs 保持私密，不开启公开发布。
+- Preserve verifiable sources for textbook, listening and reading material.
+- Never label an item as Cambridge IELTS material without a confirmed source.
+- Mark original practice material as **Self-created**.
+- Store learning value, not full conversations.
+- Anonymise names, contact details and unnecessary personal information.
+- Keep the repository and companion document private.
 
-## 同步边界
+## 5 · Sync boundary
 
-此框架没有部署定时任务、GitHub Actions 或后台自动同步。可在有连接权限的后续对话中完成两端更新；若某一端失败，在更新记录和回复中明确标为待补同步。
+There is no unattended background sync. Updates are made during connected study sessions. If one destination cannot be updated, record it as **pending sync** rather than claiming completion.
