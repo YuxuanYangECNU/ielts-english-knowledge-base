@@ -2,6 +2,7 @@
   const script = document.currentScript;
   const siteRoot = script?.src ? new URL("../", script.src) : new URL("./", window.location.href);
   const indexUrl = new URL("search/search_index.json", siteRoot).toString();
+
   let docsPromise = null;
   let debounceTimer = null;
   let lastRenderedQuery = "";
@@ -26,6 +27,11 @@
     return window.matchMedia?.("(max-width: 59.984375em)")?.matches ?? false;
   }
 
+  function updateVisualViewportHeight() {
+    const height = window.visualViewport?.height || window.innerHeight;
+    document.documentElement.style.setProperty("--atlas-search-vh", `${Math.round(height)}px`);
+  }
+
   function getDocs() {
     if (!docsPromise) {
       docsPromise = fetch(indexUrl, { cache: "no-store" })
@@ -42,6 +48,7 @@
   function scoreDoc(doc, query) {
     const q = normalise(query);
     if (!q) return null;
+
     const terms = q.split(" ").filter(Boolean);
     const title = normalise(doc.title);
     const text = normalise(doc.text);
@@ -49,6 +56,7 @@
     const exactTitle = title.includes(q);
     const exactText = text.includes(q);
     const allTerms = terms.every(term => haystack.includes(term));
+
     if (!exactTitle && !exactText && !allTerms) return null;
 
     let score = 0;
@@ -62,14 +70,18 @@
   function snippet(text, query) {
     const raw = String(text || "").replace(/\s+/g, " ").trim();
     if (!raw) return "";
+
     const lower = raw.toLowerCase();
     const needle = String(query || "").toLowerCase().trim();
     let index = needle ? lower.indexOf(needle) : -1;
+
     if (index < 0) {
       const first = needle.split(/\s+/).filter(Boolean)[0];
       index = first ? lower.indexOf(first) : -1;
     }
+
     if (index < 0) return raw.slice(0, 180) + (raw.length > 180 ? "…" : "");
+
     const start = Math.max(0, index - 70);
     const end = Math.min(raw.length, index + Math.max(needle.length, 12) + 100);
     return `${start > 0 ? "…" : ""}${raw.slice(start, end)}${end < raw.length ? "…" : ""}`;
@@ -82,6 +94,7 @@
   function appendHighlightedText(parent, text, query) {
     const raw = String(text || "");
     const exact = String(query || "").trim();
+
     if (!raw || !exact) {
       parent.textContent = raw;
       return;
@@ -91,6 +104,7 @@
     if (!raw.toLowerCase().includes(exact.toLowerCase())) {
       candidates.splice(0, 1, ...normalise(exact).split(" ").filter(Boolean));
     }
+
     if (!candidates.length) {
       parent.textContent = raw;
       return;
@@ -98,6 +112,7 @@
 
     const pattern = new RegExp(`(${candidates.map(escapeRegExp).join("|")})`, "gi");
     let last = 0;
+
     raw.replace(pattern, (match, _group, offset) => {
       if (offset > last) parent.appendChild(document.createTextNode(raw.slice(last, offset)));
       const mark = document.createElement("mark");
@@ -107,6 +122,7 @@
       last = offset + match.length;
       return match;
     });
+
     if (last < raw.length) parent.appendChild(document.createTextNode(raw.slice(last)));
   }
 
@@ -150,16 +166,18 @@
     return li;
   }
 
-  function getOrCreateMobileResults() {
-    const output = document.querySelector(".md-search__output");
-    if (!output) return null;
+  function getOrCreateMobilePanel() {
+    const inner = document.querySelector(".md-search__inner");
+    if (!inner) return null;
 
-    output.dataset.atlasMobileMode = "true";
-    let wrapper = output.querySelector("[data-atlas-mobile-results]");
-    if (!wrapper) {
-      wrapper = document.createElement("div");
-      wrapper.className = "md-search-result atlas-mobile-search-result";
-      wrapper.dataset.atlasMobileResults = "true";
+    inner.dataset.atlasMobileMode = "true";
+    let panel = inner.querySelector("[data-atlas-mobile-panel]");
+
+    if (!panel) {
+      panel = document.createElement("section");
+      panel.className = "atlas-mobile-search-panel";
+      panel.dataset.atlasMobilePanel = "true";
+      panel.hidden = true;
 
       const meta = document.createElement("div");
       meta.className = "md-search-result__meta atlas-mobile-search-meta";
@@ -169,25 +187,24 @@
       list.className = "md-search-result__list atlas-mobile-search-list";
       list.dataset.atlasMobileList = "true";
 
-      wrapper.append(meta, list);
-      output.prepend(wrapper);
+      panel.append(meta, list);
+      inner.appendChild(panel);
     }
 
     return {
-      output,
-      wrapper,
-      meta: wrapper.querySelector("[data-atlas-mobile-meta]"),
-      list: wrapper.querySelector("[data-atlas-mobile-list]")
+      inner,
+      panel,
+      meta: panel.querySelector("[data-atlas-mobile-meta]"),
+      list: panel.querySelector("[data-atlas-mobile-list]")
     };
   }
 
-  function clearMobileResults() {
-    const output = document.querySelector(".md-search__output");
-    const wrapper = output?.querySelector("[data-atlas-mobile-results]");
-    if (!wrapper) return;
-    const list = wrapper.querySelector("[data-atlas-mobile-list]");
-    const meta = wrapper.querySelector("[data-atlas-mobile-meta]");
-    if (list) list.replaceChildren();
+  function clearMobilePanel() {
+    const panel = document.querySelector("[data-atlas-mobile-panel]");
+    if (!panel) return;
+    panel.hidden = true;
+    panel.querySelector("[data-atlas-mobile-list]")?.replaceChildren();
+    const meta = panel.querySelector("[data-atlas-mobile-meta]");
     if (meta) meta.textContent = "";
   }
 
@@ -195,25 +212,28 @@
     const input = document.querySelector(".md-search__input");
     if (!input) return;
 
-    const mobile = isMobileSearch();
-    const mobileResults = mobile ? getOrCreateMobileResults() : null;
-    const list = mobileResults?.list || document.querySelector(".md-search-result__list");
-    if (!list) return;
-
     const query = input.value.trim();
     const normalisedQuery = normalise(query);
     const terms = normalisedQuery.split(" ").filter(Boolean);
+    const mobile = isMobileSearch();
 
     if (normalisedQuery.length < 2) {
-      if (mobile) clearMobileResults();
-      else list.querySelectorAll("[data-enhanced-search-item]").forEach(node => node.remove());
+      if (mobile) clearMobilePanel();
+      else document.querySelectorAll("[data-enhanced-search-item]").forEach(node => node.remove());
       lastRenderedQuery = "";
       return;
     }
 
+    const mobilePanel = mobile ? getOrCreateMobilePanel() : null;
+    const list = mobilePanel?.list || document.querySelector(".md-search-result__list");
+    if (!list) return;
+
     const alreadyRendered = lastRenderedQuery === normalisedQuery
       && list.querySelector("[data-enhanced-search-item]");
-    if (alreadyRendered) return;
+    if (alreadyRendered) {
+      if (mobilePanel?.panel) mobilePanel.panel.hidden = false;
+      return;
+    }
 
     if (mobile) list.replaceChildren();
     else list.querySelectorAll("[data-enhanced-search-item]").forEach(node => node.remove());
@@ -226,8 +246,6 @@
 
     if (!mobile && terms.length < 2 && standardCount > 0 && !hasCjk(query)) return;
 
-    // Do not de-duplicate mobile results against MkDocs' native list: on iOS the
-    // native list can exist but remain invisible while the keyboard is open.
     const existingHrefs = mobile ? new Set() : new Set(
       standardItems
         .map(item => item.querySelector("a")?.href)
@@ -256,8 +274,9 @@
       return true;
     }).slice(0, mobile ? 8 : 5);
 
-    if (mobileResults?.meta) {
-      mobileResults.meta.textContent = top.length
+    if (mobilePanel) {
+      mobilePanel.panel.hidden = false;
+      mobilePanel.meta.textContent = top.length
         ? `${top.length} matching result${top.length === 1 ? "" : "s"}`
         : "No matching results";
     }
@@ -267,15 +286,14 @@
     }
   }
 
-  function schedule(delay = 70) {
+  function schedule(delay = 60) {
     window.clearTimeout(debounceTimer);
     debounceTimer = window.setTimeout(augmentSearch, delay);
   }
 
   function bindCurrentSearch() {
     const input = document.querySelector(".md-search__input");
-    const output = document.querySelector(".md-search__output");
-    if (!input || !output) return false;
+    if (!input) return false;
 
     if (!boundInputs.has(input)) {
       boundInputs.add(input);
@@ -285,30 +303,31 @@
       input.addEventListener("compositionend", () => schedule(0));
     }
 
-    if (!observedOutputs.has(output)) {
+    const output = document.querySelector(".md-search__output");
+    if (output && !observedOutputs.has(output)) {
       observedOutputs.add(output);
-      const observer = new MutationObserver(records => {
-        const onlyOurResults = records.length && records.every(record => {
-          const target = record.target instanceof Element ? record.target : record.target.parentElement;
-          return target?.closest?.("[data-atlas-mobile-results]");
-        });
-        if (!onlyOurResults) schedule();
+      const observer = new MutationObserver(() => {
+        if (!isMobileSearch()) schedule();
       });
       observer.observe(output, { childList: true, subtree: true });
     }
 
-    if (!isMobileSearch()) delete output.dataset.atlasMobileMode;
     return true;
   }
 
   function ensureReady() {
-    if (!bindCurrentSearch()) window.setTimeout(bindCurrentSearch, 120);
+    if (!bindCurrentSearch()) {
+      window.setTimeout(bindCurrentSearch, 80);
+      window.setTimeout(bindCurrentSearch, 240);
+    }
     getDocs();
+    updateVisualViewportHeight();
   }
 
   function refreshSearchNow() {
     bindCurrentSearch();
     lastRenderedQuery = "";
+    updateVisualViewportHeight();
     schedule(0);
   }
 
@@ -323,12 +342,14 @@
 
     document.addEventListener("click", event => {
       if (event.target?.closest?.('[for="__search"], .md-search__icon')) {
-        window.setTimeout(refreshSearchNow, 60);
+        window.setTimeout(refreshSearchNow, 50);
       }
     });
 
     window.addEventListener("pageshow", refreshSearchNow);
     window.addEventListener("orientationchange", () => window.setTimeout(refreshSearchNow, 120));
+    window.visualViewport?.addEventListener("resize", updateVisualViewportHeight);
+    window.visualViewport?.addEventListener("scroll", updateVisualViewportHeight);
   }
 
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
