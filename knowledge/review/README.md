@@ -6,7 +6,7 @@
 
 ## Review queue
 
-- **To practise** — [Family Relationships — High-Value IELTS Vocabulary](../vocabulary/family-relationships.md): recall cousin / nephew / niece / in-law directions and use at least two natural relationship expressions.
+- **To practise** — [People & Relationships — Family Relationships](../speaking-topics/people-and-relationships.md): recall cousin / nephew / niece / in-law directions and use at least two natural relationship expressions.
 - **To practise** — [Accommodation & Renting — Listening Vocabulary](../listening/accommodation-renting.md): recall the room types, house areas, household equipment and key contrasts without looking.
 
 ## Practice pattern
