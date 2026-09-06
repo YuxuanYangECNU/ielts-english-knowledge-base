@@ -378,3 +378,46 @@ body:has(#vocab-table) .md-sidebar--secondary { display: none; }
   #vocab-table td:nth-child(2) { font-size: .95rem; }
   #vocab-table .mastery-select { width: 100%; }
 }
+
+/* Override Material's inline-block table and intrinsic-width scroll wrappers. */
+.md-typeset .vocab-table-wrap {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  overflow: visible;
+}
+.vocab-table-wrap .md-typeset__scrollwrap {
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  overflow: visible;
+}
+.vocab-table-wrap .md-typeset__table {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+.md-typeset #vocab-table {
+  display: table;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  table-layout: fixed;
+  box-sizing: border-box;
+}
+.md-typeset #vocab-table th,
+.md-typeset #vocab-table td {
+  min-width: 0;
+  box-sizing: border-box;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+.md-typeset #vocab-table select { max-width: 100%; box-sizing: border-box; }
+@media screen and (max-width: 700px) {
+  .md-typeset #vocab-table { display: block; }
+}
