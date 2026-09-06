@@ -41,4 +41,4 @@ Show the most relevant application: Speaking, Reading, Listening or Writing. Do 
 ---
 
 **Source:** Conversation / confirmed material / self-created  
-**Primary home:** Vocabulary / Expressions / Grammar / Corrections / Speaking / Reading / Listening / Writing
+**Primary home:** Vocabulary / Expressions / Grammar / Corrections / Speaking Topics / Speaking Story Bank / Reading / Listening / Writing
