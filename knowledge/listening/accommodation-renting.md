@@ -55,25 +55,6 @@
 | :--- | :--- | :--- | :--- |
 | **video surveillance** | 视频监控；监控系统 | the use of video cameras to monitor a place for security or observation | Related term: **CCTV** |
 
-## High-value contrasts
-
-### cabinet vs cupboard
-
-- **cabinet** is a broad term for a storage unit and appears in phrases such as **kitchen cabinet**, **medicine cabinet** and **filing cabinet**.
-- **cupboard** is especially common in British English for household storage, particularly kitchens or built-in spaces.
-- Both may translate as “柜子 / 橱柜”; context decides the natural choice.
-
-### foyer vs porch vs hallway
-
-- **foyer** → an entrance hall inside a building.
-- **porch** → a covered area at the entrance, usually outside a house.
-- **hallway / corridor** → a passage connecting rooms.
-
-### twin room vs double room
-
-- **twin room** → two separate single beds.
-- **double room** → usually one double bed for two people.
-
 ## Active recall
 
 Without looking back, explain the difference between:
