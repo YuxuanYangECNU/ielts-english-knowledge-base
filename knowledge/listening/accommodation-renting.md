@@ -55,17 +55,6 @@
 | :--- | :--- | :--- | :--- |
 | **video surveillance** | 视频监控；监控系统 | the use of video cameras to monitor a place for security or observation | Related term: **CCTV** |
 
-## Active recall
-
-Without looking back, explain the difference between:
-
-1. **twin room** and **double room**;
-2. **foyer**, **porch** and **hallway**;
-3. **fridge** and **freezer**;
-4. **cabinet** and **cupboard**.
-
-Then recall the vocabulary under: **room type · house area · equipment · food requirements · security**.
-
 ---
 
 **Source:** User listening dictation; exact source material not yet confirmed  
