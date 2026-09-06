@@ -298,28 +298,40 @@ body { -webkit-font-smoothing: antialiased; }
 }
 .md-typeset .atlas-highlight em { font-style: normal; font-size: 1.18em; }
 .md-typeset .atlas-personal-expression strong { font-size: .9em; }
-/* Whole-row targets work with a mouse, keyboard, and touch. */
+/* Topic navigation: one full-width, accessible link per card. */
 .md-typeset .atlas-topic-index { margin: .8rem 0 1.8rem; }
-.md-typeset .atlas-topic-index > ul, .md-typeset .atlas-topic-index > ol { list-style: none; padding: 0; margin: 0; }
-.md-typeset .atlas-topic-index li {
+.md-typeset .atlas-topic-index > ul,
+.md-typeset .atlas-topic-index > ol { list-style: none; padding: 0; margin: 0; }
+.md-typeset .atlas-topic-index li { margin: .65rem 0; padding: 0; }
+.md-typeset a.atlas-topic-card {
   position: relative;
-  padding: 1.05rem 2.6rem 1.05rem 1.05rem;
-  margin: .55rem 0;
-  background: var(--atlas-surface);
+  display: flex;
+  flex-direction: column;
+  gap: .35rem;
+  min-width: 0;
+  min-height: 44px;
+  padding: 1.1rem 3.1rem 1.1rem 1.2rem;
   border: 1px solid var(--atlas-border);
-  border-radius: 16px;
-  color: var(--md-default-fg-color--light);
-  font-size: .8rem;
-  line-height: 1.75;
-  transition: background-color .18s ease, border-color .18s ease;
+  border-radius: 18px;
+  background: var(--atlas-surface);
+  box-shadow: var(--atlas-shadow);
+  color: var(--md-default-fg-color);
+  text-decoration: none;
+  overflow-wrap: anywhere;
+  transition: background-color .2s ease, border-color .2s ease, transform .2s ease, box-shadow .2s ease;
+  -webkit-tap-highlight-color: transparent;
 }
-.md-typeset .atlas-topic-index li a { color: var(--md-default-fg-color); font-weight: 650; text-decoration: none; }
-.atlas-topic-index li a::after { content: ""; position: absolute; inset: 0; border-radius: 16px; }
-.atlas-topic-index li::after { content: "›"; position: absolute; right: 1rem; top: 50%; transform: translateY(-50%); color: var(--md-typeset-a-color); font-size: 1.4rem; pointer-events: none; }
-.md-typeset .atlas-topic-index li:focus-within, .md-typeset .atlas-topic-index li:active { background: var(--atlas-index-hover); border-color: var(--md-typeset-a-color); }
-.md-typeset .atlas-topic-index li:focus-within { outline: 2px solid var(--md-typeset-a-color); outline-offset: 3px; }
+.atlas-topic-title { font-size: .95rem; font-weight: 650; line-height: 1.45; letter-spacing: -.015em; }
+.atlas-topic-description { font-size: .75rem; line-height: 1.7; color: var(--md-default-fg-color--light); }
+.atlas-topic-arrow { position: absolute; right: 1.1rem; top: 50%; transform: translateY(-50%); font-size: 1.1rem; color: var(--md-default-fg-color--light); }
+.md-typeset a.atlas-topic-card:active,
+.md-typeset a.atlas-topic-card:focus-visible { background: var(--atlas-index-hover); border-color: #a787d4; }
+.md-typeset a.atlas-topic-card:focus-visible { outline: 3px solid var(--md-accent-fg-color); outline-offset: 4px; }
 @media (hover: hover) {
-  .md-typeset .atlas-topic-index li:hover { background: var(--atlas-index-hover); border-color: var(--md-typeset-a-color); }
+  .md-typeset a.atlas-topic-card:hover { background: var(--atlas-index-hover); border-color: #a787d4; text-decoration: none; }
+}
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .md-typeset a.atlas-topic-card:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(100, 70, 145, .1); }
 }
 /* Secondary methodology has the quiet hierarchy of a page-end note. */
 .md-typeset .atlas-page-note { margin-top: 3rem; padding-top: 1.1rem; border-top: 1px solid var(--atlas-border); color: var(--md-default-fg-color--light); font-size: .7rem; line-height: 1.8; }
@@ -336,6 +348,33 @@ body { -webkit-font-smoothing: antialiased; }
 @media screen and (max-width: 44.984375em) {
   .md-typeset h1 { font-size: 1.75rem; line-height: 1.32; }
   .md-typeset .atlas-personal-expression { line-height: 2.05; }
-  .md-typeset .atlas-topic-index li { padding: .85rem 2.2rem .85rem .85rem; }
+  .md-typeset a.atlas-topic-card { padding: .9rem 2.5rem .9rem .9rem; border-radius: 16px; }
+  .atlas-topic-arrow { right: .85rem; }
   .md-typeset .atlas-page-note { margin-top: 2rem; }
+}
+
+/* Give vocabulary its own wider workspace; keep all six fields visible. */
+body:has(#vocab-table) .md-grid { max-width: 1600px; }
+body:has(#vocab-table) .md-sidebar--secondary { display: none; }
+#vocab-table { min-width: 0; width: 100%; table-layout: fixed; }
+#vocab-table th, #vocab-table td { padding: .65rem .55rem; white-space: normal; overflow-wrap: anywhere; }
+#vocab-table th:nth-child(1), #vocab-table td:nth-child(1) { width: 6%; }
+#vocab-table th:nth-child(2), #vocab-table td:nth-child(2) { width: 21%; }
+#vocab-table th:nth-child(3), #vocab-table td:nth-child(3) { width: 9%; white-space: normal; }
+#vocab-table th:nth-child(4), #vocab-table td:nth-child(4) { width: 25%; }
+#vocab-table th:nth-child(5), #vocab-table td:nth-child(5) { width: 23%; min-width: 0; }
+#vocab-table th:nth-child(6), #vocab-table td:nth-child(6) { width: 16%; min-width: 0; white-space: normal; }
+#vocab-table .mastery-select { min-width: 0; padding: .5rem .35rem; }
+.vocab-controls .md-button { color: var(--md-typeset-a-color); border-color: var(--atlas-border); background: var(--atlas-surface); }
+@media screen and (max-width: 700px) {
+  .vocab-table-wrap { border: 0; border-radius: 0; overflow: visible; }
+  #vocab-table { display: block; border: 0; background: transparent; box-shadow: none; overflow: visible; }
+  #vocab-table thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+  #vocab-table tbody { display: grid; gap: .8rem; }
+  #vocab-table tr { display: grid; padding: .65rem .85rem; background: var(--atlas-surface); border: 1px solid var(--atlas-border); border-radius: 16px; }
+  #vocab-table tr[hidden] { display: none; }
+  #vocab-table td:nth-child(n) { display: grid; grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr); align-items: center; gap: .6rem; width: auto; min-width: 0; padding: .4rem 0; border: 0; text-align: left; white-space: normal; }
+  #vocab-table td::before { content: attr(data-label); font-size: .7rem; font-weight: 500; color: var(--md-default-fg-color--light); }
+  #vocab-table td:nth-child(2) { font-size: .95rem; }
+  #vocab-table .mastery-select { width: 100%; }
 }
