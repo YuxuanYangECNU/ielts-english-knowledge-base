@@ -6,11 +6,14 @@
 
 **English-first · Curated, not crowded · Built for a Band 7 goal**
 
-[Google Docs companion](https://docs.google.com/document/d/1e4Q1csxPORv8K6kZ51_jENSEfFX6Yk1Hd-r-Le30HnY) · [Knowledge map](knowledge/README.md) · [Curation guide](GUIDE.md) · [Change log](CHANGELOG.md)
+[**Read before adding · 写入规则**](AUTHORING_RULES.md) · [Google Docs companion](https://docs.google.com/document/d/1e4Q1csxPORv8K6kZ51_jENSEfFX6Yk1Hd-r-Le30HnY) · [Knowledge map](knowledge/README.md) · [Curation guide](GUIDE.md) · [Change log](CHANGELOG.md)
 
 </div>
 
 ---
+
+> [!IMPORTANT]
+> **Before adding or rewriting any learning content, read [AUTHORING_RULES.md](AUTHORING_RULES.md) first.** It records the repository-wide writing preferences and takes priority over category templates.
 
 > [!NOTE]
 > This is a living learning system, not a dictionary dump. Questions are answered first; only ideas with lasting value are added.
@@ -74,4 +77,4 @@ English remains the main language for definitions, explanations, examples and pr
 
 ---
 
-<sub>中文说明：词汇类条目采用“中文速览 + 英文标准释义/语境”；其他内容仍以英文为主，只保留必要中文提示。</sub>
+<sub>中文说明：新增内容前先读 `AUTHORING_RULES.md`。词汇类条目采用“中文速览 + 英文标准释义/语境”；其他内容仍以英文为主，只保留必要中文提示。</sub>
