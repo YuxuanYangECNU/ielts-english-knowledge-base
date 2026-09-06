@@ -40,6 +40,11 @@ def main() -> None:
     styles_target.mkdir(parents=True, exist_ok=True)
     shutil.copy2(ROOT / "web" / "stylesheets" / "extra.css", styles_target / "extra.css")
 
+    scripts_target = OUT / "javascripts"
+    scripts_target.mkdir(parents=True, exist_ok=True)
+    for script in (ROOT / "web" / "javascripts").glob("*.js"):
+        shutil.copy2(script, scripts_target / script.name)
+
     print(f"Prepared MkDocs source at {OUT}")
 
 
