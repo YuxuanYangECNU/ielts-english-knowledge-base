@@ -52,6 +52,23 @@ function selectTopic(topics) {
   return topics[Math.floor(Math.random() * topics.length)];
 }
 
+function normaliseStoryBank(value) {
+  if (!Array.isArray(value)) return [];
+  return value
+    .map(item => ({
+      topic: String(item?.topic || "").slice(0, 120),
+      story: String(item?.story || "").slice(0, 700)
+    }))
+    .filter(item => item.story)
+    .slice(0, 10);
+}
+
+function storyContextBlock(storyBank) {
+  const stories = normaliseStoryBank(storyBank);
+  if (!stories.length) return "";
+  return `\n\nOptional reusable stories remembered from earlier practice:\n${stories.map((item, index) => `${index + 1}. [${item.topic || "previous topic"}] ${item.story}`).join("\n")}\n\nUse these only when directly relevant. Never invent, embellish, or assume details that are not written here. Do not force an old story into the current topic; it is fine not to use any of them.`;
+}
+
 async function callGLM(env, messages, temperature = 0.8) {
   if (!env.ZHIPU_API_KEY) throw new Error("ZHIPU_API_KEY is missing");
 
@@ -80,7 +97,7 @@ async function callGLM(env, messages, temperature = 0.8) {
   return data?.choices?.[0]?.message?.content?.trim() || "";
 }
 
-function conversationSystemPrompt(topic, mode) {
+function conversationSystemPrompt(topic, mode, storyBank = []) {
   return `You are an IELTS Speaking conversation coach. The learner targets Band 7 and is preparing for IELTS in Mainland China.
 
 Main topic for this session: ${topic}
@@ -93,10 +110,12 @@ Rules:
 - Let the learner finish a turn before correcting.
 - Only when an error is important enough to correct immediately, add one very brief Chinese explanation, followed by a natural improved English version. Then continue the conversation.
 - Do not correct every small error.
-- Prefer natural, realistic Band-7-level language over rare or showy vocabulary.
+- Every correction or suggested upgrade must sound idiomatic in real spoken English and must preserve the learner's intended meaning and register.
+- A Band 7 answer does NOT require rare vocabulary. Prefer flexible, precise, common spoken collocations over inflated or showy wording.
+- Judge improvements through IELTS Speaking priorities: Fluency & Coherence, Lexical Resource, and Grammatical Range & Accuracy; use pronunciation evidence only in genuine voice practice.
 - Never invent the learner's personal experiences.
 - Keep replies concise enough for spoken conversation.
-- If the learner says “结束今天的练习”, do not continue the conversation. The application will switch to review mode.`;
+- If the learner says “结束今天的练习”, do not continue the conversation. The application will switch to review mode.${storyContextBlock(storyBank)}`;
 }
 
 function reviewSystemPrompt(topic, mode) {
@@ -105,16 +124,25 @@ function reviewSystemPrompt(topic, mode) {
 Topic: ${topic}
 Mode: ${mode}
 
+评价依据必须是 IELTS Speaking 的真实方向：
+- Fluency & Coherence：表达是否顺畅、展开是否自然、逻辑是否清楚；
+- Lexical Resource：词汇是否灵活、准确、搭配自然，而不是是否“高级”；
+- Grammatical Range & Accuracy：句型范围与准确度；
+- Pronunciation：只有语音练习且确实存在可判断的发音证据时才评价。
+
 必须遵守：
 - 最终复盘以中文为主；需要保留和示范的英文句子、词组、搭配保持英文。
-- 只挑真正影响自然度、准确度或 IELTS 表现的问题，不要把所有小错误都列出来。
+- 所有英文优化都必须先通过“母语者自然度”检查：真实口语里地道、常用、语域合适，并保留原意。
+- 不要为了显得高级而把简单自然的表达换成生僻或书面词。比如一般语境下，spend time on my hobbies / do things I enjoy 往往比 indulge in my hobbies 更自然。
+- 只挑真正影响自然度、准确度、展开能力或 IELTS 表现的问题，不要把所有小错误都列出来。
 - 不要把普通打字拼写错误当成口语能力问题，除非它明显反映词汇掌握问题。
 - 错误分类必须准确。例如不自然搭配不要误标成主谓一致错误。
-- “IELTS 迁移”应该说明本次内容还能迁移到哪些 Part 1 / Part 2 / Part 3 题型或话题，不要在那里重复四项评分标准。
-- 口语模式下只有确实有发音证据时才评价 Pronunciation；文字聊天不要评价发音。
+- “IELTS 迁移”要指出本次内容还能支持哪些 Part 1 / Part 2 / Part 3 题型或话题，不要在那里重复评分标准。
+- 如果本次对话出现真实、可复用的个人经历，提炼成“可复用故事”：用 1–2 句概括真实素材，再标出可迁移的话题；绝不补写用户没有说过的情节。
+- 如果没有真正可复用的故事，就省略“可复用故事”。
 - 不要强行给分，除非本次对话足够接近正式 mock。
 - 不要复述完整聊天记录。
-- 总长度控制在大约 250–450 个中文字以内，宁缺毋滥。
+- 总长度控制在大约 300–500 个中文字以内，宁缺毋滥。
 
 请只使用下面这些中文标题；没有内容价值的部分直接省略：
 ### 关键问题
@@ -128,7 +156,9 @@ Mode: ${mode}
 
 格式要求：
 - 每个部分最多 2–4 条。
+- “关键问题”优先标清问题类型，例如【搭配】【语法】【展开】【连贯】。
 - “更自然的表达”优先用：原表达 → 更自然表达；必要时补一小句中文说明。
+- “可复用故事”尽量写成：真实素材 + 可用于哪些 IELTS 话题。
 - “下次重点”只保留 1–2 个最值得改的点。
 - 不要输出英文版标题，不要输出表格，不要输出多余开场白或结尾客套话。`;
 }
@@ -171,6 +201,21 @@ function utf8ToBase64(value) {
   return btoa(binary);
 }
 
+function stripPrivateStorySection(recap) {
+  const lines = String(recap || "").split(/\r?\n/);
+  const output = [];
+  let skipping = false;
+  for (const line of lines) {
+    if (/^###\s+(?:可复用故事|Reusable Stories)\s*$/i.test(line.trim())) {
+      skipping = true;
+      continue;
+    }
+    if (skipping && /^###\s+/.test(line.trim())) skipping = false;
+    if (!skipping) output.push(line);
+  }
+  return output.join("\n").trim();
+}
+
 async function syncRecapToGitHub(env, { sessionId, topic, mode, recap }) {
   if (!env.GITHUB_RECAP_TOKEN) {
     return { ok: false, skipped: true, code: "GITHUB_RECAP_TOKEN_MISSING" };
@@ -184,7 +229,8 @@ async function syncRecapToGitHub(env, { sessionId, topic, mode, recap }) {
   const filename = `${date}-${slugify(topic)}-${shortId}.md`;
   const path = `${folder}/${filename}`;
   const meta = JSON.stringify({ date, topic, mode, sessionId: sessionId || null });
-  const markdown = `<!-- IELTS_RECAP_META ${meta} -->\n\n# ${date} · ${topic}\n\n**Mode:** ${mode === "voice" ? "Voice" : "Chat"}\n\n${recap.trim()}\n`;
+  const publicRecap = stripPrivateStorySection(recap);
+  const markdown = `<!-- IELTS_RECAP_META ${meta} -->\n\n# ${date} · ${topic}\n\n**Mode:** ${mode === "voice" ? "Voice" : "Chat"}\n\n${publicRecap}\n`;
   const encodedPath = path.split("/").map(encodeURIComponent).join("/");
   const response = await fetch(`https://api.github.com/repos/${GITHUB_REPO}/contents/${encodedPath}`, {
     method: "PUT",
@@ -365,8 +411,9 @@ export default {
         const body = await request.json();
         const mode = body.mode === "voice" ? "voice" : "chat";
         const topic = selectTopic(parseTopicBank(env));
+        const storyBank = normaliseStoryBank(body.storyBank);
         const opening = await callGLM(env, [
-          { role: "system", content: conversationSystemPrompt(topic, mode) },
+          { role: "system", content: conversationSystemPrompt(topic, mode, storyBank) },
           { role: "user", content: "Start today's session. First clearly state the IELTS topic in one short line, then begin with one natural conversational question." }
         ], 0.85);
 
@@ -386,6 +433,7 @@ export default {
         const body = await request.json();
         const mode = body.mode === "voice" ? "voice" : "chat";
         const topic = String(body.topic || "IELTS Speaking");
+        const storyBank = normaliseStoryBank(body.storyBank);
         const rawMessages = Array.isArray(body.messages) ? body.messages : [];
         const messages = rawMessages
           .filter(m => m && ["user", "assistant"].includes(m.role) && typeof m.content === "string")
@@ -393,7 +441,7 @@ export default {
           .map(m => ({ role: m.role, content: m.content.slice(0, 5000) }));
 
         const ended = messages.some(m => m.role === "user" && isEndCommand(m.content));
-        const system = ended ? reviewSystemPrompt(topic, mode) : conversationSystemPrompt(topic, mode);
+        const system = ended ? reviewSystemPrompt(topic, mode) : conversationSystemPrompt(topic, mode, storyBank);
         const reply = await callGLM(env, [{ role: "system", content: system }, ...messages], ended ? 0.35 : 0.82);
 
         let recapSync = null;
