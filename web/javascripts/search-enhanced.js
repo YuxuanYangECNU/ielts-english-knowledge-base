@@ -1,7 +1,7 @@
 (() => {
   const script = document.currentScript;
   const siteRoot = script?.src ? new URL("../", script.src) : new URL("./", window.location.href);
-  const indexUrl = new URL("../search/search_index.json", siteRoot).toString();
+  const indexUrl = new URL("search/search_index.json", siteRoot).toString();
   let docsPromise = null;
   let debounceTimer = null;
   let lastRenderedQuery = "";
