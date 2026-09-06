@@ -262,6 +262,7 @@ export default {
       return json({
         ok: true,
         model: MODEL,
+        llmConfigured: Boolean(env.ZHIPU_API_KEY),
         asrModel: ASR_MODEL,
         asrConfigured: Boolean(env.DASHSCOPE_API_KEY)
       }, 200, origin);
