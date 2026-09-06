@@ -1,6 +1,9 @@
-[← Home](../README.md) · [Curation guide](../GUIDE.md)
+[← Home](../README.md) · [Curation guide](../GUIDE.md) · [**Authoring rules · 必读**](../AUTHORING_RULES.md)
 
 # Knowledge Map
+
+> [!IMPORTANT]
+> Read [AUTHORING_RULES.md](../AUTHORING_RULES.md) before adding or rewriting any knowledge entry.
 
 This page is the bridge between the home dashboard and individual notes.
 
