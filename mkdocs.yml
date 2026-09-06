@@ -2,8 +2,8 @@ site_name: IELTS English Atlas
 site_description: A curated IELTS learning atlas for reusable English, speaking patterns and active review.
 site_url: https://yuxuanyangecnu.github.io/ielts-english-knowledge-base/
 
-repo_name: IELTS English Atlas
-
+docs_dir: .site_docs
+site_dir: site
 use_directory_urls: true
 
 theme:
