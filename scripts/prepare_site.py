@@ -93,6 +93,13 @@ def render_vocab_tracker(path: Path) -> None:
     path.write_text(text, encoding="utf-8")
 
 
+def copy_static_files(source_dir: Path, target_dir: Path, pattern: str) -> None:
+    target_dir.mkdir(parents=True, exist_ok=True)
+    for source in source_dir.glob(pattern):
+        if source.is_file():
+            shutil.copy2(source, target_dir / source.name)
+
+
 def main() -> None:
     if OUT.exists():
         shutil.rmtree(OUT)
@@ -104,14 +111,12 @@ def main() -> None:
     copy_markdown_tree(ROOT / "knowledge", OUT / "knowledge")
     render_vocab_tracker(OUT / "knowledge" / "vocabulary" / "README.md")
 
-    styles_target = OUT / "stylesheets"
-    styles_target.mkdir(parents=True, exist_ok=True)
-    shutil.copy2(ROOT / "web" / "stylesheets" / "extra.css", styles_target / "extra.css")
+    # Copy every stylesheet referenced by mkdocs.yml. Previously only extra.css
+    # was copied, which left Speaking pages unstyled in the deployed Pages artifact.
+    copy_static_files(ROOT / "web" / "stylesheets", OUT / "stylesheets", "*.css")
 
-    scripts_target = OUT / "javascripts"
-    scripts_target.mkdir(parents=True, exist_ok=True)
-    for script in (ROOT / "web" / "javascripts").glob("*.js"):
-        shutil.copy2(script, scripts_target / script.name)
+    # Keep all website scripts in sync with the source tree.
+    copy_static_files(ROOT / "web" / "javascripts", OUT / "javascripts", "*.js")
 
     print(f"Prepared MkDocs source at {OUT}")
 
