@@ -45,9 +45,13 @@
 
 **I’d describe + 人 + as + 性格词, because ...**
 
+适合回答“某人是什么样的人 / 你怎么看某人”，先给性格，再自然补原因。
+
 > *I’d describe my father as quite sociable because he finds it easy to talk to new people.*
 
-比单独说 *My father is sociable.* 更容易自然展开。
+> ★ *I’d describe my mum as very reliable because whenever I run into problems in life, she has much more experience than I do and can always give me useful advice.*
+
+比单独说 *My father is sociable.* 或 *My mum is reliable.* 更容易自然展开。
 
 ### B. 用行为解释性格
 
