@@ -2,6 +2,15 @@
 
 # Change Log
 
+## v0.4 · Bilingual vocabulary layer + family relationships
+
+- Added **Family Relationships — High-Value IELTS Vocabulary** from the user’s *People and Relationship* family-tree study material.
+- Focused on difficult but common IELTS Speaking relationship terms: **cousin, nephew/niece, uncle/aunt, sibling, relative, spouse/partner, in-laws, immediate family, extended family** and related expressions.
+- Added relationship-direction explanations using the family tree, especially **nephew ↔ uncle** and **son/daughter-in-law ↔ father/mother-in-law**.
+- Adopted a new vocabulary presentation rule: **Chinese quick gloss + standard English definition/context**.
+- Revised the accommodation/renting Listening entry to use the same bilingual meaning structure.
+- Updated the curation guide, entry template, home policy and Review queue.
+
 ## v0.3 · First curated learning entry
 
 - Added the first learning note: **Accommodation & Renting — Listening Vocabulary**.
