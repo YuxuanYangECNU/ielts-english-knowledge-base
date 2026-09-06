@@ -16,6 +16,10 @@
       .trim();
   }
 
+  function hasCjk(value) {
+    return /[\u3400-\u9fff\uf900-\ufaff]/.test(String(value || ""));
+  }
+
   function getDocs() {
     if (!docsPromise) {
       docsPromise = fetch(indexUrl, { cache: "no-store" })
@@ -65,6 +69,43 @@
     return `${start > 0 ? "…" : ""}${raw.slice(start, end)}${end < raw.length ? "…" : ""}`;
   }
 
+  function escapeRegExp(value) {
+    return String(value || "").replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  }
+
+  function appendHighlightedText(parent, text, query) {
+    const raw = String(text || "");
+    const exact = String(query || "").trim();
+    if (!raw || !exact) {
+      parent.textContent = raw;
+      return;
+    }
+
+    // Prefer the complete phrase. If punctuation/spacing means that phrase is
+    // not literally present, fall back to highlighting each query term.
+    const candidates = [exact];
+    if (!raw.toLowerCase().includes(exact.toLowerCase())) {
+      candidates.splice(0, 1, ...normalise(exact).split(" ").filter(Boolean));
+    }
+    if (!candidates.length) {
+      parent.textContent = raw;
+      return;
+    }
+
+    const pattern = new RegExp(`(${candidates.map(escapeRegExp).join("|")})`, "gi");
+    let last = 0;
+    raw.replace(pattern, (match, _group, offset) => {
+      if (offset > last) parent.appendChild(document.createTextNode(raw.slice(last, offset)));
+      const mark = document.createElement("mark");
+      mark.className = "atlas-search-highlight";
+      mark.textContent = match;
+      parent.appendChild(mark);
+      last = offset + match.length;
+      return match;
+    });
+    if (last < raw.length) parent.appendChild(document.createTextNode(raw.slice(last)));
+  }
+
   function canonicalHref(href) {
     try {
       const url = new URL(href, window.location.href);
@@ -97,7 +138,7 @@
 
     const teaser = document.createElement("p");
     teaser.className = "md-search-result__teaser";
-    teaser.textContent = snippet(doc.text, query);
+    appendHighlightedText(teaser, snippet(doc.text, query), query);
 
     article.append(badge, title, teaser);
     link.appendChild(article);
@@ -130,9 +171,10 @@
     const standardItems = Array.from(list.querySelectorAll(".md-search-result__item:not([data-enhanced-search-item])"));
     const standardCount = standardItems.length;
 
-    // Multi-word queries always get phrase-aware supplementation. Single-word
-    // queries only fall back here if MkDocs returned nothing.
-    if (terms.length < 2 && standardCount > 0) return;
+    // Multi-word English phrases and Chinese queries always receive the
+    // phrase-aware pass. Ordinary single English words keep MkDocs' native
+    // search unless it returned nothing.
+    if (terms.length < 2 && standardCount > 0 && !hasCjk(query)) return;
 
     const existingHrefs = new Set(
       standardItems
