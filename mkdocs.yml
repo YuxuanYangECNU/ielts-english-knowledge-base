@@ -61,6 +61,7 @@ extra_css:
 extra_javascript:
   - javascripts/vocabulary.js
   - javascripts/speaking-config.js
+  - javascripts/speaking-session-memory.js
   - javascripts/speaking-practice.js
   - javascripts/voice-diagnostics.js
   - javascripts/speaking-chat-wechat.js
