@@ -75,7 +75,7 @@
 
   .md-search__input {
     min-width: 0;
-    font-size: 16px; /* prevents iOS Safari from zooming the page on focus */
+    font-size: 16px;
   }
 
   .md-search__output {
@@ -121,5 +121,40 @@
   .atlas-search-badge {
     max-width: 100%;
     white-space: normal;
+  }
+
+  /* iOS can leave Material's native result list uncreated or invisible while
+     the keyboard is open. In mobile mode we render a dedicated result list and
+     hide native result blocks so the two implementations never overlap. */
+  .md-search__output[data-atlas-mobile-mode="true"]
+    > .md-search-result:not(.atlas-mobile-search-result) {
+    display: none !important;
+  }
+
+  .atlas-mobile-search-result {
+    display: block !important;
+    width: 100%;
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+
+  .atlas-mobile-search-meta {
+    display: block;
+    padding: .55rem 1rem .45rem;
+    color: var(--md-default-fg-color--light);
+    font-size: .68rem;
+    line-height: 1.4;
+  }
+
+  .atlas-mobile-search-list {
+    display: block !important;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .atlas-mobile-search-list .md-search-result__item {
+    display: block;
+    width: 100%;
   }
 }
