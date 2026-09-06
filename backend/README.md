@@ -12,7 +12,7 @@ Cloudflare Worker backend for the website's **Free Chat** and **Free Voice** rou
 
 Never commit API keys to GitHub or expose them in browser JavaScript.
 
-Required Cloudflare Worker secrets:
+Required Worker runtime secrets:
 
 ```text
 ZHIPU_API_KEY
@@ -20,6 +20,39 @@ DASHSCOPE_API_KEY
 ```
 
 The browser never receives either key. Realtime ASR connects through the Worker WebSocket proxy.
+
+## Cloudflare deployment
+
+This repository is connected to Cloudflare Workers Builds. The two API keys are stored there as **Build Secrets** and are available only during deployment.
+
+Use this deploy command in Cloudflare:
+
+```text
+cd backend && sh deploy-with-secrets.sh
+```
+
+`deploy-with-secrets.sh` reads the two Build Secrets, writes them only to a temporary JSON file inside the build environment, and runs:
+
+```text
+npx wrangler deploy --secrets-file <temporary-file>
+```
+
+Wrangler then uploads them as encrypted **Worker runtime secrets** together with the Worker code. The temporary file is deleted automatically after deployment and is never committed to GitHub.
+
+After deployment, verify:
+
+```text
+GET /health
+```
+
+Expected configuration state:
+
+```json
+{
+  "llmConfigured": true,
+  "asrConfigured": true
+}
+```
 
 ## Endpoints
 
