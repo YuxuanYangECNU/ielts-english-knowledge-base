@@ -7,6 +7,7 @@ compatibility_date = "2026-09-01"
 # or configure it in the Cloudflare dashboard.
 IELTS_TOPIC_BANK = '["People & relationships","Study & university life","Technology in daily life","Hobbies & free time","Travel & places"]'
 
-# Never put ZHIPU_API_KEY here.
-# Store it as a Cloudflare Worker secret instead:
+# Never put API keys here.
+# Store them as Cloudflare Worker secrets instead:
 #   wrangler secret put ZHIPU_API_KEY
+#   wrangler secret put DASHSCOPE_API_KEY
