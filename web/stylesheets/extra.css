@@ -267,3 +267,75 @@ body { -webkit-font-smoothing: antialiased; }
   .vocab-controls { grid-template-columns: minmax(0, 1fr); }
   .vocab-controls .md-button { text-align: center; }
 }
+
+/* Editorial headings and English examples, with system-font Chinese fallback. */
+:root {
+  --atlas-editorial-font: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, "Times New Roman", "PingFang SC", "Microsoft YaHei", serif;
+}
+[data-md-color-scheme="default"] {
+  --atlas-marker: rgba(184, 148, 242, .32);
+  --atlas-index-hover: #eee8f8;
+}
+[data-md-color-scheme="slate"] {
+  --atlas-marker: rgba(177, 134, 243, .34);
+  --atlas-index-hover: #30273e;
+}
+.md-typeset h1 {
+  font-family: var(--atlas-editorial-font);
+  font-weight: 500;
+  font-size: clamp(1.8rem, 3vw, 2.3rem);
+  line-height: 1.25;
+  letter-spacing: -.025em;
+}
+.md-typeset em { font-family: var(--atlas-editorial-font); font-size: 1.12em; line-height: 1.8; }
+.md-typeset .atlas-personal-expression { margin: 1.2rem 0; line-height: 2; }
+.md-typeset mark.atlas-highlight {
+  color: inherit;
+  background: linear-gradient(transparent 43%, var(--atlas-marker) 43%, var(--atlas-marker) 93%, transparent 93%);
+  padding: .06em .14em .12em;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+.md-typeset .atlas-highlight em { font-style: normal; font-size: 1.18em; }
+.md-typeset .atlas-personal-expression strong { font-size: .9em; }
+/* Whole-row targets work with a mouse, keyboard, and touch. */
+.md-typeset .atlas-topic-index { margin: .8rem 0 1.8rem; }
+.md-typeset .atlas-topic-index > ul, .md-typeset .atlas-topic-index > ol { list-style: none; padding: 0; margin: 0; }
+.md-typeset .atlas-topic-index li {
+  position: relative;
+  padding: 1.05rem 2.6rem 1.05rem 1.05rem;
+  margin: .55rem 0;
+  background: var(--atlas-surface);
+  border: 1px solid var(--atlas-border);
+  border-radius: 16px;
+  color: var(--md-default-fg-color--light);
+  font-size: .8rem;
+  line-height: 1.75;
+  transition: background-color .18s ease, border-color .18s ease;
+}
+.md-typeset .atlas-topic-index li a { color: var(--md-default-fg-color); font-weight: 650; text-decoration: none; }
+.atlas-topic-index li a::after { content: ""; position: absolute; inset: 0; border-radius: 16px; }
+.atlas-topic-index li::after { content: "›"; position: absolute; right: 1rem; top: 50%; transform: translateY(-50%); color: var(--md-typeset-a-color); font-size: 1.4rem; pointer-events: none; }
+.md-typeset .atlas-topic-index li:focus-within, .md-typeset .atlas-topic-index li:active { background: var(--atlas-index-hover); border-color: var(--md-typeset-a-color); }
+.md-typeset .atlas-topic-index li:focus-within { outline: 2px solid var(--md-typeset-a-color); outline-offset: 3px; }
+@media (hover: hover) {
+  .md-typeset .atlas-topic-index li:hover { background: var(--atlas-index-hover); border-color: var(--md-typeset-a-color); }
+}
+/* Secondary methodology has the quiet hierarchy of a page-end note. */
+.md-typeset .atlas-page-note { margin-top: 3rem; padding-top: 1.1rem; border-top: 1px solid var(--atlas-border); color: var(--md-default-fg-color--light); font-size: .7rem; line-height: 1.8; }
+.md-typeset .atlas-page-note > p { margin: .25rem 0; }
+.md-typeset .atlas-page-note > p > strong { color: var(--md-default-fg-color); font-weight: 650; }
+.md-typeset .atlas-note-details { margin: .7rem 0 0; padding: 0; border: 0; border-radius: 0; background: transparent; box-shadow: none; font-size: .7rem; }
+.md-typeset .atlas-note-details > summary { min-height: 44px; padding: .5rem 0; margin: 0; background: transparent; color: var(--md-default-fg-color--light); font-weight: 500; }
+.md-typeset .atlas-note-details > summary::before, .md-typeset .atlas-note-details > summary::after { display: none; }
+.md-typeset .atlas-note-details > summary { list-style: disclosure-closed; list-style-position: inside; }
+.md-typeset .atlas-note-details[open] > summary { list-style-type: disclosure-open; }
+.md-typeset .atlas-note-details > summary:hover { color: var(--md-typeset-a-color); }
+.md-typeset .atlas-note-details > summary:focus-visible { outline: 2px solid var(--md-typeset-a-color); outline-offset: 2px; }
+.md-typeset .atlas-note-details ol, .md-typeset .atlas-note-details ul { margin-left: 1rem; }
+@media screen and (max-width: 44.984375em) {
+  .md-typeset h1 { font-size: 1.75rem; line-height: 1.32; }
+  .md-typeset .atlas-personal-expression { line-height: 2.05; }
+  .md-typeset .atlas-topic-index li { padding: .85rem 2.2rem .85rem .85rem; }
+  .md-typeset .atlas-page-note { margin-top: 2rem; }
+}

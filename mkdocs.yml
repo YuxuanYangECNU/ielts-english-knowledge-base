@@ -37,6 +37,9 @@ theme:
 plugins:
   - search
 
+hooks:
+  - scripts/site_hooks.py
+
 markdown_extensions:
   - admonition
   - attr_list
