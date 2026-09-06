@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+  {% if page and not page.is_homepage %}
+    <nav class="atlas-breadcrumb" aria-label="Breadcrumb">
+      <a href="{{ 'index.html' | url }}">Home</a>
+      {% for section in page.ancestors | reverse %}
+        <span aria-hidden="true">/</span>
+        {% set first_child = section.children | first %}
+        {% if first_child and first_child.is_page and first_child != page %}
+          <a href="{{ first_child.url | url }}">{{ section.title }}</a>
+        {% else %}
+          <span>{{ section.title }}</span>
+        {% endif %}
+      {% endfor %}
+      {% if not page.is_index or not page.ancestors %}
+        <span aria-hidden="true">/</span>
+        <span aria-current="page">{{ page.title }}</span>
+      {% endif %}
+    </nav>
+  {% endif %}
+  {{ super() }}
+{% endblock %}

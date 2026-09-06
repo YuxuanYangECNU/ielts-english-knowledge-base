@@ -12,7 +12,13 @@ def clean_markdown(text: str) -> str:
         lines = lines[1:]
         while lines and not lines[0].strip():
             lines = lines[1:]
-    return "\n".join(lines).rstrip() + "\n"
+    text = "\n".join(lines).rstrip() + "\n"
+    # Authoring instructions live in the repository, outside the reading site.
+    text = text.replace(
+        "(../AUTHORING_RULES.md)",
+        "(https://github.com/YuxuanYangECNU/ielts-english-knowledge-base/blob/main/AUTHORING_RULES.md)",
+    )
+    return text
 
 
 def copy_markdown_tree(source: Path, target: Path) -> None:

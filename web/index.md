@@ -1,87 +1,112 @@
-# IELTS English Atlas
-
-### From scattered questions to precise, reusable English
-
-A curated learning system for turning vocabulary, sentence patterns, personal expressions and IELTS practice into language you can actually use.
-
-[Start with Speaking](knowledge/speaking-topics/README.md){ .md-button .md-button--primary }
-[Open Review](knowledge/review/README.md){ .md-button }
-
+---
+hide:
+  - navigation
+  - toc
 ---
 
-## Learning dashboard · 学习主页
+<div class="atlas-home" markdown>
 
-<div class="grid cards" markdown>
+<div class="atlas-intro" markdown>
 
--   :material-microphone:{ .lg .middle } **Speaking · 口语**
+<span class="atlas-eyebrow">IELTS · BAND 7</span>
 
-    ---
+# Your learning space
 
-    Topic vocabulary, reusable sentence patterns and ★ personal expressions.
-
-    [:octicons-arrow-right-24: Speaking Topics](knowledge/speaking-topics/README.md)
-
--   :material-headphones:{ .lg .middle } **Listening · 听力**
-
-    ---
-
-    Scenario vocabulary, spelling risks, signposts and useful contrasts.
-
-    [:octicons-arrow-right-24: Listening Language](knowledge/listening/README.md)
-
--   :material-book-open-page-variant:{ .lg .middle } **Reading · 阅读**
-
-    ---
-
-    Paraphrase chains, evidence boundaries and TF/F/NG reasoning.
-
-    [:octicons-arrow-right-24: Reading & Paraphrase](knowledge/reading/README.md)
-
--   :material-pencil-outline:{ .lg .middle } **Writing · 写作**
-
-    ---
-
-    Precise Task 1 language and functional Task 2 argument development.
-
-    [:octicons-arrow-right-24: Writing & Argumentation](knowledge/writing/README.md)
-
--   :material-shape-outline:{ .lg .middle } **Language · 语言积累**
-
-    ---
-
-    Vocabulary, natural expressions, grammar and recurring corrections.
-
-    [:octicons-arrow-right-24: Vocabulary](knowledge/vocabulary/README.md)
-
--   :material-refresh:{ .lg .middle } **Review · 复习**
-
-    ---
-
-    A smaller active-recall queue for material that is genuinely worth producing from memory.
-
-    [:octicons-arrow-right-24: Review Queue](knowledge/review/README.md)
+Useful words. Natural sentences. A little practice, every day.  
+把学过的英语，变成说得出的英语。
 
 </div>
-
-## Current focus · 当前重点
 
 <div class="atlas-focus" markdown>
 
-### People & Relationships · 人物与关系
+<span class="atlas-eyebrow">CURRENT FOCUS · 当前重点</span>
 
-Learn a small set of useful relationship and personality words, then turn them into natural IELTS Speaking answers through sentence-by-sentence practice.
+<div class="atlas-topic-path" markdown>
 
-**★** = actively mastered / personal expression  
-**○** = recognition is enough
-
-[Continue this topic →](knowledge/speaking-topics/people-and-relationships.md)
+[Speaking Topics](knowledge/speaking-topics/README.md) / People & Relationships
 
 </div>
 
----
+## People & Relationships
 
-### How this Atlas grows · 如何更新
+人物与关系 · Turn personality words into sentences about people you know.
 
-**Material → Curate → Practise → Personalise → Review**
+[Continue learning :octicons-arrow-right-24:](knowledge/speaking-topics/people-and-relationships.md){ .md-button .md-button--primary }
+[Review your notes](knowledge/review/README.md){ .atlas-secondary-link }
 
-The repository remains the source of truth. This website is generated automatically from the same Markdown notes, so there is no second knowledge base to maintain.
+</div>
+
+## Explore your Atlas <span class="atlas-heading-note">学习分类</span>
+
+<div class="grid cards atlas-categories" markdown>
+
+-   :material-microphone-outline:{ .atlas-card-icon }
+
+    ### Speaking
+
+    <span class="atlas-card-translation">口语表达</span>
+
+    Topic language & stories from your own life.
+
+    [Speaking topics :octicons-arrow-right-24:](knowledge/speaking-topics/README.md)
+
+-   :material-headphones:{ .atlas-card-icon }
+
+    ### Listening
+
+    <span class="atlas-card-translation">听力积累</span>
+
+    Everyday scenarios, spelling & words to listen for.
+
+    [Listening language :octicons-arrow-right-24:](knowledge/listening/README.md)
+
+-   :material-book-open-page-variant-outline:{ .atlas-card-icon }
+
+    ### Reading
+
+    <span class="atlas-card-translation">阅读理解</span>
+
+    Paraphrases, evidence & True / False / Not Given.
+
+    [Reading notes :octicons-arrow-right-24:](knowledge/reading/README.md)
+
+-   :material-pencil-outline:{ .atlas-card-icon }
+
+    ### Writing
+
+    <span class="atlas-card-translation">写作表达</span>
+
+    Clear descriptions, precise language & arguments.
+
+    [Writing notes :octicons-arrow-right-24:](knowledge/writing/README.md)
+
+-   :material-shape-outline:{ .atlas-card-icon }
+
+    ### Language
+
+    <span class="atlas-card-translation">语言基础</span>
+
+    Vocabulary, useful phrases, grammar & corrections.
+
+    [Language notes :octicons-arrow-right-24:](knowledge/vocabulary/README.md)
+
+-   :material-refresh:{ .atlas-card-icon }
+
+    ### Review
+
+    <span class="atlas-card-translation">复习巩固</span>
+
+    Recall, rephrase & practise what you want to keep.
+
+    [Review queue :octicons-arrow-right-24:](knowledge/review/README.md)
+
+</div>
+
+<div class="atlas-learning-note" markdown>
+
+**Learn → Say it → Make it yours → Review**  
+**★** Your personal expressions & priority language · **○** Recognition is enough
+
+</div>
+
+</div>

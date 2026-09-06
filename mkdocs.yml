@@ -8,12 +8,17 @@ use_directory_urls: true
 
 theme:
   name: material
+  custom_dir: web/overrides
   language: en
+  font: false
   features:
     - navigation.tabs
     - navigation.sections
+    - navigation.indexes
     - navigation.top
     - navigation.footer
+    - navigation.tracking
+    - toc.follow
     - search.suggest
     - search.highlight
     - content.code.copy
@@ -38,6 +43,9 @@ markdown_extensions:
   - md_in_html
   - pymdownx.details
   - pymdownx.superfences
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
   - pymdownx.tabbed:
       alternate_style: true
 
@@ -50,14 +58,17 @@ extra_javascript:
 nav:
   - Home: index.md
   - Speaking:
-      - Speaking Topics: knowledge/speaking-topics/README.md
-      - People & Relationships: knowledge/speaking-topics/people-and-relationships.md
+      - Speaking Topics:
+          - knowledge/speaking-topics/README.md
+          - People & Relationships: knowledge/speaking-topics/people-and-relationships.md
       - Story Bank: knowledge/speaking/README.md
-  - Listening: knowledge/listening/README.md
+  - Listening:
+      - knowledge/listening/README.md
+      - Accommodation & Renting: knowledge/listening/accommodation-renting.md
   - Reading: knowledge/reading/README.md
   - Writing: knowledge/writing/README.md
   - Language:
-      - Vocabulary & Collocations: knowledge/vocabulary/README.md
+      - Vocabulary Tracker: knowledge/vocabulary/README.md
       - Natural Expressions: knowledge/expressions/README.md
       - Grammar & Usage: knowledge/grammar/README.md
       - Personal Error Log: knowledge/corrections/README.md
