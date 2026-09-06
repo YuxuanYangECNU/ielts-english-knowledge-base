@@ -65,12 +65,12 @@ One-off definitions, disposable translations and low-value trivia stay in the co
 
 ## English-first policy
 
-English carries the definition, explanation, examples and practice prompts. Chinese appears only when it makes a subtle contrast clearer or prevents misunderstanding.
+English remains the main language for definitions, explanations, examples and practice. For vocabulary-like entries, each key term uses a **Chinese quick gloss** for immediate recognition plus a **standard English definition/context** for precision. Chinese may also clarify subtle contrasts when useful.
 
 ## Current state
 
-**Framework complete · 1 curated learning entry.** The first entry covers accommodation and renting vocabulary collected from listening dictation; future entries will continue to be curated from study sessions rather than imported automatically.
+**Framework complete · 2 curated learning entries.** Current entries cover accommodation/renting listening vocabulary and high-value family relationship vocabulary for IELTS Speaking. Future entries continue to be curated from study sessions rather than imported automatically.
 
 ---
 
-<sub>中文说明：先解决当下问题，再筛选值得长期复用的内容；英文为主，中文只用于必要辨析。</sub>
+<sub>中文说明：词汇类条目采用“中文速览 + 英文标准释义/语境”；其他内容仍以英文为主，只保留必要中文提示。</sub>
