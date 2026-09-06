@@ -1,0 +1,159 @@
+/* Polished recap cards for completed Speaking sessions. */
+.speaking-message-recap {
+  width: min(92%, 660px) !important;
+  max-width: 660px !important;
+  margin-left: 0 !important;
+  padding: 0 !important;
+  background: transparent !important;
+}
+
+.speaking-message-recap::before,
+.speaking-message-recap::after {
+  display: none !important;
+}
+
+.speaking-recap-card {
+  overflow: hidden;
+  border: 1px solid rgba(0,0,0,.08);
+  border-radius: 14px;
+  background: #fff;
+  box-shadow: 0 8px 24px rgba(0,0,0,.055);
+  color: #202020;
+}
+
+.speaking-recap-header {
+  padding: 16px 18px 14px;
+  border-bottom: 1px solid rgba(0,0,0,.06);
+  background: linear-gradient(180deg, #fbfbfb 0%, #f7f7f7 100%);
+}
+
+.speaking-recap-kicker {
+  display: block;
+  margin-bottom: 5px;
+  color: #07a954;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .08em;
+}
+
+.speaking-recap-header h3 {
+  margin: 0;
+  font-size: 17px;
+  line-height: 1.35;
+}
+
+.speaking-recap-header p {
+  margin: 4px 0 0 !important;
+  color: #8b8b8b;
+  font-size: 11px;
+}
+
+.speaking-recap-body {
+  display: grid;
+  gap: 0;
+}
+
+.speaking-recap-section {
+  padding: 14px 18px;
+  border-bottom: 1px solid rgba(0,0,0,.055);
+}
+
+.speaking-recap-section:last-child {
+  border-bottom: 0;
+}
+
+.speaking-recap-section h4 {
+  margin: 0 0 8px;
+  color: #333;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.speaking-recap-section ul {
+  margin: 0;
+  padding-left: 1.05rem;
+}
+
+.speaking-recap-section li {
+  margin: 5px 0;
+  color: #4a4a4a;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.speaking-recap-section code {
+  padding: 1px 4px;
+  border-radius: 4px;
+  background: #f2f3f4;
+  color: #2a2a2a;
+  font-size: .94em;
+}
+
+.speaking-recap-index {
+  display: grid;
+  gap: 14px;
+  margin-top: 1rem;
+}
+
+.speaking-recap-local-note {
+  margin: 0 0 2px;
+  color: #8a8a8a;
+  font-size: 12px;
+}
+
+.speaking-recap-empty {
+  padding: 24px;
+  display: grid;
+  gap: 5px;
+  border: 1px dashed rgba(0,0,0,.14);
+  border-radius: 14px;
+  background: #fafafa;
+}
+
+.speaking-recap-empty strong {
+  font-size: 14px;
+}
+
+.speaking-recap-empty span {
+  color: #888;
+  font-size: 12px;
+}
+
+[data-md-color-scheme="slate"] .speaking-recap-card {
+  border-color: rgba(255,255,255,.09);
+  background: #28292d;
+  color: #f2f2f2;
+}
+[data-md-color-scheme="slate"] .speaking-recap-header {
+  border-color: rgba(255,255,255,.07);
+  background: #303136;
+}
+[data-md-color-scheme="slate"] .speaking-recap-section {
+  border-color: rgba(255,255,255,.07);
+}
+[data-md-color-scheme="slate"] .speaking-recap-section h4 {
+  color: #f0f0f0;
+}
+[data-md-color-scheme="slate"] .speaking-recap-section li {
+  color: #d0d0d2;
+}
+[data-md-color-scheme="slate"] .speaking-recap-section code {
+  background: #393a40;
+  color: #f2f2f2;
+}
+[data-md-color-scheme="slate"] .speaking-recap-empty {
+  border-color: rgba(255,255,255,.13);
+  background: #26272b;
+}
+
+@media screen and (max-width: 44.984375em) {
+  .speaking-message-recap {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  .speaking-recap-header,
+  .speaking-recap-section {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+}
