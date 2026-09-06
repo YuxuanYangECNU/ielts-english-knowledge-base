@@ -375,7 +375,7 @@
     });
   }
 
-  async function stopVoiceCapture(state) {
+  async function stopVoiceCapture(state, abortRequest = true) {
     if (state.stopping) return;
     state.stopping = true;
 
@@ -383,7 +383,7 @@
       window.clearTimeout(state.turnTimer);
       state.turnTimer = null;
     }
-    if (state.activeController) {
+    if (abortRequest && state.activeController) {
       try { state.activeController.abort(); } catch (_) {}
       state.activeController = null;
     }
@@ -491,12 +491,13 @@
       const controller = new AbortController();
       state.activeController = controller;
       const requestVersion = ++state.requestVersion;
-      voiceStatus(isEndCommand(text) ? "Preparing your review…" : "Thinking…", "busy");
+      const ending = isEndCommand(text);
+      voiceStatus(ending ? "Preparing your review…" : "Thinking…", "busy");
 
-      if (isEndCommand(text)) {
+      if (ending) {
         state.sessionEnded = true;
         cancelSpeech(state);
-        await stopVoiceCapture(state);
+        await stopVoiceCapture(state, false);
         orb.classList.remove("is-listening", "is-speaking");
       }
 
