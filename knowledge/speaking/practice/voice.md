@@ -11,14 +11,14 @@
     <p class="speaking-small-note">The dedicated Project link can replace this general ChatGPT link later.</p>
   </section>
 
-  <section class="speaking-mode-panel" data-speaking-voice>
+  <section class="speaking-mode-panel speaking-free-voice-panel" data-speaking-voice>
     <span class="speaking-practice-card-tag">FREE ROUTE</span>
     <h2>Free Voice</h2>
-    <p>Realtime speech recognition → free domestic LLM → British-English speech output.</p>
+    <p>Paraformer realtime speech recognition → GLM-4.7-Flash → British-English speech output.</p>
 
     <div class="speaking-status-row">
       <span class="speaking-status-dot" data-voice-status-dot></span>
-      <span data-voice-status>Backend not connected yet</span>
+      <span data-voice-status>Ready to connect</span>
     </div>
 
     <div class="speaking-topic-chip" data-voice-topic>Today’s IELTS topic will appear here</div>
@@ -30,7 +30,18 @@
       <button class="speaking-action-button" type="button" data-voice-stop disabled>Stop</button>
     </div>
 
-    <p class="speaking-small-note">Target: iPhone Safari + Android Chrome. British English is the default TTS preference.</p>
+    <div class="speaking-voice-live">
+      <div class="speaking-voice-live-header">
+        <strong>Live conversation</strong>
+        <span>Realtime transcript</span>
+      </div>
+      <div class="speaking-voice-interim" data-voice-interim>Listening for your English…</div>
+      <div class="speaking-voice-messages" data-voice-messages>
+        <p class="speaking-empty-state">Tap Start conversation to begin.</p>
+      </div>
+    </div>
+
+    <p class="speaking-small-note">Target: iPhone Safari + Android Chrome. British English is the default voice. Your microphone audio is sent to Alibaba Cloud for realtime speech recognition; the API key remains protected in Cloudflare.</p>
   </section>
 </div>
 
@@ -41,4 +52,5 @@
 - let the user finish before correcting;
 - important correction: concise Chinese explanation + improved English;
 - no fixed duration;
-- final recap only after **“结束今天的练习”**.
+- you can speak while the coach is talking to interrupt it;
+- final recap starts after **“结束今天的练习”**.
