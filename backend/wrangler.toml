@@ -2,11 +2,6 @@ name = "ielts-speaking-api"
 main = "worker.js"
 compatibility_date = "2026-09-01"
 
-# Fail deployment early if either runtime secret is not actually configured on
-# the Worker. Secret values stay in Cloudflare and are never committed here.
-[secrets]
-required = ["ZHIPU_API_KEY", "DASHSCOPE_API_KEY"]
-
 [vars]
 # Keep the current Mainland China Speaking topic bank here as a JSON array
 # or configure it in the Cloudflare dashboard.
@@ -14,5 +9,9 @@ IELTS_TOPIC_BANK = '["People & relationships","Study & university life","Technol
 
 # Never put API key values here.
 # Store them as Cloudflare Worker secrets instead:
-#   wrangler secret put ZHIPU_API_KEY
-#   wrangler secret put DASHSCOPE_API_KEY
+#   ZHIPU_API_KEY
+#   DASHSCOPE_API_KEY
+#
+# Do not declare them as required in this Git-connected build config. The
+# dashboard-managed encrypted secrets should remain attached to the Worker;
+# Wrangler deploy does not delete existing secrets.
