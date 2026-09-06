@@ -7,7 +7,12 @@
 
 ## Meaning map
 
-Explain meaning, register, tone, usage boundary or the key distinction. Add concise Chinese only if it improves precision.
+For vocabulary-like entries, use two layers:
+
+- **中文速览:** a short Chinese gloss for fast recognition.
+- **English definition & context:** a precise English definition, usage boundary, register or natural context.
+
+For grammar, speaking or other note types, adapt this section to the actual learning value rather than forcing the same structure.
 
 ## Use it naturally
 
