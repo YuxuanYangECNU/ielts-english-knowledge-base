@@ -6,7 +6,7 @@
 
 ## Index
 
-_No curated entries yet._
+- [Accommodation & Renting — Listening Vocabulary](accommodation-renting.md) — room types, household areas, facilities, dietary requirements and security vocabulary from listening dictation.
 
 ## Note pattern
 
