@@ -20,8 +20,6 @@
   margin-top: 0;
 }
 
-/* Highlighter-style emphasis for both native MkDocs matches and our
-   phrase-aware fallback results. */
 .md-search-result__teaser mark,
 .md-search-result__article mark,
 .atlas-search-highlight {
@@ -50,10 +48,10 @@
   ) !important;
 }
 
-/* Mobile search: keep the search panel inside the real visible viewport,
-   including iOS Safari's dynamic toolbar/keyboard, and make results scroll
-   independently instead of pushing the whole page sideways or underneath
-   the browser chrome. */
+.atlas-mobile-search-panel {
+  display: none;
+}
+
 @media screen and (max-width: 59.984375em) {
   .md-search {
     width: 100%;
@@ -81,17 +79,7 @@
   .md-search__output {
     width: 100%;
     max-width: 100vw;
-    max-height: calc(100vh - 56px);
     overflow-x: hidden;
-    overflow-y: auto;
-    overscroll-behavior: contain;
-    -webkit-overflow-scrolling: touch;
-  }
-
-  @supports (height: 100dvh) {
-    .md-search__output {
-      max-height: calc(100dvh - 56px - env(safe-area-inset-top, 0px));
-    }
   }
 
   .md-search-result,
@@ -123,19 +111,29 @@
     white-space: normal;
   }
 
-  /* iOS can leave Material's native result list uncreated or invisible while
-     the keyboard is open. In mobile mode we render a dedicated result list and
-     hide native result blocks so the two implementations never overlap. */
-  .md-search__output[data-atlas-mobile-mode="true"]
-    > .md-search-result:not(.atlas-mobile-search-result) {
-    display: none !important;
+  /* Dedicated mobile result surface. It is fixed below the search bar instead
+     of living inside Material's native output container, because iOS Safari can
+     keep that container collapsed while the software keyboard is visible. */
+  .atlas-mobile-search-panel {
+    position: fixed;
+    z-index: 20;
+    top: calc(56px + env(safe-area-inset-top, 0px));
+    left: 0;
+    right: 0;
+    display: block;
+    height: calc(var(--atlas-search-vh, 100dvh) - 56px - env(safe-area-inset-top, 0px));
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
+    background: var(--md-default-bg-color);
+    border-top: 1px solid var(--md-default-fg-color--lightest);
   }
 
-  .atlas-mobile-search-result {
-    display: block !important;
-    width: 100%;
-    opacity: 1 !important;
-    visibility: visible !important;
+  .atlas-mobile-search-panel[hidden] {
+    display: none !important;
   }
 
   .atlas-mobile-search-meta {
@@ -144,6 +142,7 @@
     color: var(--md-default-fg-color--light);
     font-size: .68rem;
     line-height: 1.4;
+    background: var(--md-default-bg-color);
   }
 
   .atlas-mobile-search-list {
@@ -151,10 +150,16 @@
     margin: 0;
     padding: 0;
     list-style: none;
+    background: var(--md-default-bg-color);
   }
 
   .atlas-mobile-search-list .md-search-result__item {
     display: block;
     width: 100%;
+    border-bottom: 1px solid var(--md-default-fg-color--lightest);
+  }
+
+  .atlas-mobile-search-list .md-search-result__link {
+    display: block;
   }
 }
