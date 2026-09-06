@@ -150,17 +150,63 @@
     return li;
   }
 
+  function getOrCreateMobileResults() {
+    const output = document.querySelector(".md-search__output");
+    if (!output) return null;
+
+    output.dataset.atlasMobileMode = "true";
+    let wrapper = output.querySelector("[data-atlas-mobile-results]");
+    if (!wrapper) {
+      wrapper = document.createElement("div");
+      wrapper.className = "md-search-result atlas-mobile-search-result";
+      wrapper.dataset.atlasMobileResults = "true";
+
+      const meta = document.createElement("div");
+      meta.className = "md-search-result__meta atlas-mobile-search-meta";
+      meta.dataset.atlasMobileMeta = "true";
+
+      const list = document.createElement("ol");
+      list.className = "md-search-result__list atlas-mobile-search-list";
+      list.dataset.atlasMobileList = "true";
+
+      wrapper.append(meta, list);
+      output.prepend(wrapper);
+    }
+
+    return {
+      output,
+      wrapper,
+      meta: wrapper.querySelector("[data-atlas-mobile-meta]"),
+      list: wrapper.querySelector("[data-atlas-mobile-list]")
+    };
+  }
+
+  function clearMobileResults() {
+    const output = document.querySelector(".md-search__output");
+    const wrapper = output?.querySelector("[data-atlas-mobile-results]");
+    if (!wrapper) return;
+    const list = wrapper.querySelector("[data-atlas-mobile-list]");
+    const meta = wrapper.querySelector("[data-atlas-mobile-meta]");
+    if (list) list.replaceChildren();
+    if (meta) meta.textContent = "";
+  }
+
   async function augmentSearch() {
     const input = document.querySelector(".md-search__input");
-    const list = document.querySelector(".md-search-result__list");
-    if (!input || !list) return;
+    if (!input) return;
+
+    const mobile = isMobileSearch();
+    const mobileResults = mobile ? getOrCreateMobileResults() : null;
+    const list = mobileResults?.list || document.querySelector(".md-search-result__list");
+    if (!list) return;
 
     const query = input.value.trim();
     const normalisedQuery = normalise(query);
     const terms = normalisedQuery.split(" ").filter(Boolean);
 
     if (normalisedQuery.length < 2) {
-      list.querySelectorAll("[data-enhanced-search-item]").forEach(node => node.remove());
+      if (mobile) clearMobileResults();
+      else list.querySelectorAll("[data-enhanced-search-item]").forEach(node => node.remove());
       lastRenderedQuery = "";
       return;
     }
@@ -169,19 +215,20 @@
       && list.querySelector("[data-enhanced-search-item]");
     if (alreadyRendered) return;
 
-    list.querySelectorAll("[data-enhanced-search-item]").forEach(node => node.remove());
+    if (mobile) list.replaceChildren();
+    else list.querySelectorAll("[data-enhanced-search-item]").forEach(node => node.remove());
     lastRenderedQuery = normalisedQuery;
 
-    const standardItems = Array.from(list.querySelectorAll(".md-search-result__item:not([data-enhanced-search-item])"));
+    const standardItems = mobile
+      ? []
+      : Array.from(list.querySelectorAll(".md-search-result__item:not([data-enhanced-search-item])"));
     const standardCount = standardItems.length;
-    const mobile = isMobileSearch();
 
-    // Desktop can keep MkDocs' native single-word results. On mobile we always
-    // run our own index pass as well, so typing e.g. "sitting" immediately
-    // produces results below the field instead of relying on desktop-only timing.
     if (!mobile && terms.length < 2 && standardCount > 0 && !hasCjk(query)) return;
 
-    const existingHrefs = new Set(
+    // Do not de-duplicate mobile results against MkDocs' native list: on iOS the
+    // native list can exist but remain invisible while the keyboard is open.
+    const existingHrefs = mobile ? new Set() : new Set(
       standardItems
         .map(item => item.querySelector("a")?.href)
         .filter(Boolean)
@@ -209,12 +256,18 @@
       return true;
     }).slice(0, mobile ? 8 : 5);
 
-    for (let i = top.length - 1; i >= 0; i -= 1) {
-      list.prepend(createResult(top[i].doc, query, top[i].exact));
+    if (mobileResults?.meta) {
+      mobileResults.meta.textContent = top.length
+        ? `${top.length} matching result${top.length === 1 ? "" : "s"}`
+        : "No matching results";
+    }
+
+    for (const item of top) {
+      list.appendChild(createResult(item.doc, query, item.exact));
     }
   }
 
-  function schedule(delay = 90) {
+  function schedule(delay = 70) {
     window.clearTimeout(debounceTimer);
     debounceTimer = window.setTimeout(augmentSearch, delay);
   }
@@ -234,18 +287,29 @@
 
     if (!observedOutputs.has(output)) {
       observedOutputs.add(output);
-      const observer = new MutationObserver(() => schedule());
+      const observer = new MutationObserver(records => {
+        const onlyOurResults = records.length && records.every(record => {
+          const target = record.target instanceof Element ? record.target : record.target.parentElement;
+          return target?.closest?.("[data-atlas-mobile-results]");
+        });
+        if (!onlyOurResults) schedule();
+      });
       observer.observe(output, { childList: true, subtree: true });
     }
 
+    if (!isMobileSearch()) delete output.dataset.atlasMobileMode;
     return true;
   }
 
   function ensureReady() {
-    if (!bindCurrentSearch()) {
-      window.setTimeout(bindCurrentSearch, 120);
-    }
+    if (!bindCurrentSearch()) window.setTimeout(bindCurrentSearch, 120);
     getDocs();
+  }
+
+  function refreshSearchNow() {
+    bindCurrentSearch();
+    lastRenderedQuery = "";
+    schedule(0);
   }
 
   function init() {
@@ -253,32 +317,18 @@
 
     document.addEventListener("change", event => {
       if (event.target?.matches?.('[data-md-toggle="search"]')) {
-        window.setTimeout(() => {
-          bindCurrentSearch();
-          lastRenderedQuery = "";
-          schedule(0);
-        }, 0);
+        window.setTimeout(refreshSearchNow, 0);
       }
     });
 
     document.addEventListener("click", event => {
       if (event.target?.closest?.('[for="__search"], .md-search__icon')) {
-        window.setTimeout(() => {
-          bindCurrentSearch();
-          lastRenderedQuery = "";
-          schedule(0);
-        }, 60);
+        window.setTimeout(refreshSearchNow, 60);
       }
     });
 
-    window.addEventListener("pageshow", () => {
-      bindCurrentSearch();
-      schedule(0);
-    });
-
-    window.addEventListener("orientationchange", () => {
-      window.setTimeout(() => schedule(0), 120);
-    });
+    window.addEventListener("pageshow", refreshSearchNow);
+    window.addEventListener("orientationchange", () => window.setTimeout(refreshSearchNow, 120));
   }
 
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
