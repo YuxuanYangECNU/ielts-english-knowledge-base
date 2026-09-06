@@ -6,14 +6,17 @@ set -eu
 # secrets file so Wrangler uploads them as encrypted Worker runtime secrets.
 
 if [ -z "${ZHIPU_API_KEY:-}" ]; then
-  echo "Missing Cloudflare Build Secret: ZHIPU_API_KEY" >&2
+  echo "ERROR: Missing Cloudflare Build Secret: ZHIPU_API_KEY" >&2
   exit 1
 fi
 
 if [ -z "${DASHSCOPE_API_KEY:-}" ]; then
-  echo "Missing Cloudflare Build Secret: DASHSCOPE_API_KEY" >&2
+  echo "ERROR: Missing Cloudflare Build Secret: DASHSCOPE_API_KEY" >&2
   exit 1
 fi
+
+echo "Build secrets detected: ZHIPU_API_KEY=yes, DASHSCOPE_API_KEY=yes"
+echo "Deploying Worker with runtime secrets via --secrets-file..."
 
 SECRETS_FILE="$(mktemp)"
 trap 'rm -f "$SECRETS_FILE"' EXIT HUP INT TERM
@@ -28,3 +31,5 @@ node -e '
 ' "$SECRETS_FILE"
 
 npx wrangler deploy --secrets-file "$SECRETS_FILE"
+
+echo "Worker deploy completed with runtime secrets."
