@@ -11,15 +11,13 @@ The conceptual website structure is:
 ```text
 Speaking
 ├── Accumulation
-│   └── Topic pages added only when actually studied
-│       └── e.g. People & Relationships
+│   └── Topics
+│       └── Topic pages added only when actually studied
 │
 └── Practice
-    ├── Voice
-    │   ├── Free Voice
-    │   └── ChatGPT Voice
     ├── Chat
-    │   └── Free Chat only
+    ├── Free Voice
+    ├── ChatGPT Voice
     └── Practice Accumulation
         ├── Voice Accumulation
         └── Chat Accumulation
@@ -27,12 +25,14 @@ Speaking
 
 Important distinctions:
 
-- **Accumulation** and **Practice** are parallel top-level areas under Speaking.
-- `People & Relationships` is only one learned topic inside **Accumulation**, not a permanent structural category.
+- **Speaking must open on the Speaking hub first**, where the user chooses **Accumulation** or **Practice**.
+- **Accumulation** and **Practice** are the only two parallel primary branches under Speaking.
+- `People & Relationships` is only one learned topic inside **Accumulation → Topics**, not a permanent structural category.
 - Do **not** pre-create a complete IELTS topic taxonomy. Add a topic page only when the user actually studies that topic.
+- **Practice is a mode-selection hub.** Its three direct practice choices are **Chat**, **Free Voice**, and **ChatGPT Voice**.
+- Do **not** insert a separate `Voice` navigation layer above Free Voice / ChatGPT Voice.
+- `Practice Accumulation` is storage/review, not a fourth practice mode.
 - Material generated from Practice must **not** be merged automatically into the main Accumulation area.
-- `Chat` has only the free-model route; do not add a separate ChatGPT Chat branch unless the user later requests it.
-- The **Voice** page is a mode-selection landing page. Show **Free Voice first**, then **ChatGPT Voice**. Do not render both full voice interfaces on the same page.
 
 ## 2 · Practice purpose · 实战目标
 
@@ -91,9 +91,9 @@ The session ends only when the user says:
 
 ## 5 · ChatGPT Voice route · ChatGPT 语音入口
 
-This route lives under:
+This route lives directly under:
 
-`Speaking → Practice → Voice → ChatGPT Voice`
+`Speaking → Practice → ChatGPT Voice`
 
 Use a dedicated ChatGPT Project for speaking sessions so each session stays grouped with the same instructions and reference material.
 
@@ -112,7 +112,7 @@ Important model note:
 
 ## 6 · Free Voice and Free Chat · 免费入口
 
-`Free Voice` and `Chat` share the **same free domestic LLM backend** and the same IELTS topic-selection, progress and feedback logic.
+`Free Voice` and `Chat` are direct sibling modes under **Practice**. They share the **same free domestic LLM backend** and the same IELTS topic-selection, progress and feedback logic.
 
 ### Current provider stack
 
@@ -181,7 +181,7 @@ Do not add sections merely to fill a template. If there is little useful content
 
 - Do **not** force a numerical band estimate onto every casual conversation.
 - For normal practice, identify what currently helps or limits performance under the four IELTS criteria.
-- Give a band estimate only for a sufficiently exam-like Part 1 / 2 / Part 3 mock or when the user explicitly asks for one.
+- Give a band estimate only for a sufficiently exam-like Part 1 / 2 / 3 mock or when the user explicitly asks for one.
 
 ## 8 · Progress tracking · 长期进度
 
