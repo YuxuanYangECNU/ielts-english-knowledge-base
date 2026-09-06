@@ -16,12 +16,17 @@ Answer ordinary one-off questions without adding them. Explicit “add this” a
 
 ## 2 · Write for use, not storage
 
-Use English for the core content. Add concise Chinese only where it improves precision.
+Keep the system English-first, but use a **dual-layer meaning format for vocabulary-like content**:
+
+- **Chinese quick gloss** — a short translation for immediate recognition.
+- **English definition & context** — the precise meaning, usage boundary and natural context.
+
+Longer explanations, examples, practice prompts and connections remain primarily in English. Chinese may also be used when it clarifies a subtle distinction quickly.
 
 Default note flow:
 
 1. **Quick answer** — the conclusion in one or two lines.
-2. **Meaning map** — meaning, register, tone and boundary.
+2. **Meaning map** — Chinese quick gloss + English meaning, register, tone and boundary when the note is vocabulary-like.
 3. **Use it naturally** — collocations, patterns and examples.
 4. **IELTS transfer** — where it improves speaking, reading, listening or writing.
 5. **Common trap** — likely misuse or unnatural wording.
@@ -49,6 +54,7 @@ GitHub is the detailed master. Google Docs is the compact companion. Neither sho
 - Mark original practice material as **Self-created**.
 - Store learning value, not full conversations.
 - Anonymise names, contact details and unnecessary personal information.
+- Treat obvious typing slips as input noise: correct them before storage rather than logging them as personal language errors.
 - Keep the repository and companion document private.
 
 ## 5 · Sync boundary
