@@ -2,6 +2,7 @@ const ZHIPU_URL = "https://open.bigmodel.cn/api/paas/v4/chat/completions";
 const MODEL = "glm-4.7-flash";
 const ASR_MODEL = "paraformer-realtime-v2";
 const DASHSCOPE_ASR_URL = "https://dashscope.aliyuncs.com/api-ws/v1/inference";
+const DEPLOYMENT_MARKER = "secrets-file-v2";
 
 const ALLOWED_ORIGINS = [
   "https://yuxuanyangecnu.github.io",
@@ -261,6 +262,7 @@ export default {
     if (url.pathname === "/health" && request.method === "GET") {
       return json({
         ok: true,
+        deployment: DEPLOYMENT_MARKER,
         model: MODEL,
         llmConfigured: Boolean(env.ZHIPU_API_KEY),
         asrModel: ASR_MODEL,
