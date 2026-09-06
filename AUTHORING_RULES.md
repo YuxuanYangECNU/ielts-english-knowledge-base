@@ -76,7 +76,7 @@ When the user provides a real opinion, relationship, experience or sentence:
 - use it before generic textbook examples;
 - help the user write or say the sentence first when appropriate;
 - correct and improve it into natural Band-7-level English;
-- mark the refined result as **★ My version** when useful;
+- mark the refined result with **★** when useful;
 - keep personal content only when it has learning value;
 - do not invent personal facts or stories.
 
@@ -92,7 +92,7 @@ Use a simple flow:
 
 1. **核心词汇 / Core vocabulary** — grouped logically, only high-value items.
 2. **核心句式 / Speaking patterns** — several natural ways to express the idea.
-3. **★ My version** — the user's own refined sentences when available.
+3. **回答展开 / Answer development** — a compact way to turn a word into a fuller answer when useful.
 4. **补充表达 / Extra useful expressions** — only language not already covered and genuinely worth learning.
 
 For people topics, for example, separate:
@@ -101,6 +101,29 @@ For people topics, for example, separate:
 - personality adjectives;
 - relationship / behaviour expressions;
 - reusable sentence patterns.
+
+### Put priority levels in one table
+
+When one vocabulary group contains both active-learning and recognition-only items, **keep them in one table** instead of splitting them into separate sections.
+
+Use a compact priority marker, for example:
+
+- **★** = priority / active mastery
+- **○** = recognition is enough
+
+This keeps the logic visible without making the page longer.
+
+### Personal expressions belong inside the relevant pattern
+
+Do **not** create a separate large **My expressions** section when the sentences naturally belong under existing Speaking patterns.
+
+Instead:
+
+- place the user's refined sentence directly below the matching pattern;
+- prefix that sentence with **★**;
+- use unmarked examples only as concise reference examples.
+
+This lets the user see the pattern and their own usable sentence together.
 
 ### Sentence patterns matter more than isolated phrases
 
@@ -142,7 +165,7 @@ Prioritise:
 
 Use a short Chinese gloss for fast review when helpful, followed by precise English usage.
 
-Rare or low-value terms may be marked **Recognition only** rather than treated as active vocabulary.
+Rare or low-value terms may be marked **Recognition only** rather than treated as active vocabulary. When they belong to the same lexical group as priority items, prefer **one table with a priority marker** rather than separate sections.
 
 ## 8 · Grammar & corrections · 语法与纠错
 
@@ -243,6 +266,8 @@ Before adding or updating a note, confirm:
 - Is the logic easy to scan?
 - Does it teach actual use?
 - Have generic examples been replaced by the user's own language where available?
+- Are personal sentences embedded beside the pattern they practise rather than isolated elsewhere?
+- Are active and recognition-only words compactly distinguished without unnecessary extra sections?
 - Did I avoid importing unnecessary textbook content?
 - Did I check for overlap with existing notes?
 - Are obvious typing slips corrected rather than misclassified as learning errors?
