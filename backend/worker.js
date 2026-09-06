@@ -99,30 +99,37 @@ Rules:
 }
 
 function reviewSystemPrompt(topic, mode) {
-  return `Review the completed IELTS Speaking practice session below. The learner targets Band 7 and is preparing in Mainland China.
+  return `你是 IELTS Speaking 复盘教练。请根据下面刚结束的练习，为目标 7 分的学习者做一次简洁、高价值的复盘。
 
 Topic: ${topic}
 Mode: ${mode}
 
-Base all advice on the IELTS Speaking criteria:
-1. Fluency & Coherence
-2. Lexical Resource
-3. Grammatical Range & Accuracy
-4. Pronunciation only if genuine voice evidence is actually available
+必须遵守：
+- 最终复盘以中文为主；需要保留和示范的英文句子、词组、搭配保持英文。
+- 只挑真正影响自然度、准确度或 IELTS 表现的问题，不要把所有小错误都列出来。
+- 不要把普通打字拼写错误当成口语能力问题，除非它明显反映词汇掌握问题。
+- 错误分类必须准确。例如不自然搭配不要误标成主谓一致错误。
+- “IELTS 迁移”应该说明本次内容还能迁移到哪些 Part 1 / Part 2 / Part 3 题型或话题，不要在那里重复四项评分标准。
+- 口语模式下只有确实有发音证据时才评价 Pronunciation；文字聊天不要评价发音。
+- 不要强行给分，除非本次对话足够接近正式 mock。
+- 不要复述完整聊天记录。
+- 总长度控制在大约 250–450 个中文字以内，宁缺毋滥。
 
-Be concise and selective. Do NOT dump every mistake. Extract the highest-value learning points only.
+请只使用下面这些中文标题；没有内容价值的部分直接省略：
+### 关键问题
+### 更自然的表达
+### 有用词汇与搭配
+### 可复用故事
+### 口语习惯
+### IELTS 迁移
+### 本次亮点
+### 下次重点
 
-Use these sections only when useful:
-- Key Mistakes
-- Better Expressions
-- Useful Vocabulary & Collocations
-- Reusable Stories
-- Speaking Habits
-- IELTS Transfer
-- Session Gems
-- Next Focus
-
-Next Focus must contain only 1–2 highest-impact priorities. Do not force a numerical band score unless the session was exam-like enough to justify it. Do not save or reproduce the full transcript.`;
+格式要求：
+- 每个部分最多 2–4 条。
+- “更自然的表达”优先用：原表达 → 更自然表达；必要时补一小句中文说明。
+- “下次重点”只保留 1–2 个最值得改的点。
+- 不要输出英文版标题，不要输出表格，不要输出多余开场白或结尾客套话。`;
 }
 
 function isEndCommand(text) {
@@ -315,7 +322,7 @@ export default {
 
         const ended = messages.some(m => m.role === "user" && isEndCommand(m.content));
         const system = ended ? reviewSystemPrompt(topic, mode) : conversationSystemPrompt(topic, mode);
-        const reply = await callGLM(env, [{ role: "system", content: system }, ...messages], ended ? 0.45 : 0.82);
+        const reply = await callGLM(env, [{ role: "system", content: system }, ...messages], ended ? 0.35 : 0.82);
 
         return json({ reply, recap: ended ? reply : null, ended }, 200, origin);
       } catch (error) {
