@@ -86,6 +86,29 @@ Generic examples are secondary. Add only a few when they teach a useful pattern 
 
 Speaking is **sentence- and pattern-driven**, not vocabulary-dump-driven.
 
+### Default learning workflow · 默认学习流程
+
+For each new IELTS Speaking topic, use this sequence unless the user explicitly asks for something different:
+
+1. **Study material first · 先看讲义**  
+   The user sends photos or pages from the study material. Read them as source material, not as content to copy wholesale.
+2. **Curate vocabulary · 提炼词汇**  
+   Select only the vocabulary and phrases genuinely worth learning. Group them clearly by function or meaning and mark priority when useful.
+3. **Learn patterns one by one · 逐条学习句式**  
+   Introduce one useful Speaking pattern at a time rather than presenting a large block of ready-made answers.
+4. **User produces first · 用户先造句**  
+   Ask the user to make their own sentence with that pattern and the topic vocabulary.
+5. **Correct and upgrade · 修改与提升**  
+   Improve grammar, naturalness, precision and IELTS suitability. Explain only the changes that are genuinely useful for future speaking.
+6. **Store the refined sentence · 沉淀个人表达**  
+   Put the improved personal sentence directly under the matching pattern and prefix it with **★**.
+7. **Then extend · 再挑战长句 / 长回答**  
+   After several core patterns are usable, move from one-sentence production to longer answers using a simple development structure such as **description → reason / behaviour → example**.
+
+The teaching order matters: **input → selection → controlled production → correction → personalisation → expansion**.
+
+Do not skip directly from textbook vocabulary to long model answers. The goal is to teach the user how to build natural answers themselves.
+
 ### Topic pages
 
 Use a simple flow:
@@ -265,6 +288,7 @@ Before adding or updating a note, confirm:
 - Is it concise enough?
 - Is the logic easy to scan?
 - Does it teach actual use?
+- For Speaking, did the user get a chance to produce the sentence before a polished model replaced their effort?
 - Have generic examples been replaced by the user's own language where available?
 - Are personal sentences embedded beside the pattern they practise rather than isolated elsewhere?
 - Are active and recognition-only words compactly distinguished without unnecessary extra sections?
