@@ -6,7 +6,7 @@
 
 ## Index
 
-- [Family Relationships — High-Value IELTS Vocabulary](family-relationships.md) — difficult but common kinship terms, the in-law system and useful Speaking relationship language
+_No curated entries yet._
 
 ## Note pattern
 
