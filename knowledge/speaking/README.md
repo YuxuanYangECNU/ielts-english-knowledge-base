@@ -22,9 +22,12 @@ Speaking
         └── Chat Accumulation
 ```
 
-### Accumulation · 主动积累
+## Entry points
 
-The current topic pages live in **[Speaking Topics](../speaking-topics/README.md)**.
+- **[Accumulation · 主动积累](../speaking-topics/README.md)** — topic pages added only when actually studied.
+- **[Practice · 实战](practice/README.md)** — Voice, Free Chat and session-by-session practice reviews.
+
+### Accumulation · 主动积累
 
 - Add topics only when they are actually studied.
 - `People & Relationships` is one topic, not a permanent structural category.
@@ -32,8 +35,6 @@ The current topic pages live in **[Speaking Topics](../speaking-topics/README.md
 - Keep sentence patterns, personal usable language and Band-7-oriented expression ahead of vocabulary quantity.
 
 ### Practice · 实战
-
-Practice is managed separately from active topic accumulation.
 
 Before changing the Voice / Chat workflow, session storage, review structure or Practice Accumulation, read:
 
