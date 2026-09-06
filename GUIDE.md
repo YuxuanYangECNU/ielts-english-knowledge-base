@@ -1,6 +1,9 @@
-[← Home](README.md) · [Knowledge map](knowledge/README.md)
+[← Home](README.md) · [Knowledge map](knowledge/README.md) · [**Authoring rules · 必读**](AUTHORING_RULES.md)
 
 # Curation & Maintenance Guide
+
+> [!IMPORTANT]
+> **Before adding or rewriting any learning content, read [AUTHORING_RULES.md](AUTHORING_RULES.md) first.** That file records the repository-wide user preferences and has priority over this guide when the two differ.
 
 ## 1 · Decide whether to keep it
 
@@ -37,13 +40,14 @@ Delete any section that adds no value. Use [the entry template](templates/entry.
 
 ## 3 · Keep one source of truth
 
-1. Read the relevant category and existing notes.
-2. Update an existing note when the knowledge overlaps.
-3. Give a new note one primary category and a stable English filename.
-4. Add cross-links instead of creating duplicates.
-5. Add only practice-worthy items to **Review & Active Recall**.
-6. Update the Google Docs companion with the concise takeaway.
-7. Record the completed change in the change log and verify both destinations.
+1. Read **[AUTHORING_RULES.md](AUTHORING_RULES.md)**.
+2. Read the relevant category and existing notes.
+3. Update an existing note when the knowledge overlaps.
+4. Give a new note one primary category and a stable English filename.
+5. Add cross-links instead of creating duplicates.
+6. Add only practice-worthy items to **Review & Active Recall**.
+7. Update the Google Docs companion with the concise takeaway when appropriate.
+8. Record meaningful framework changes in the change log and verify completed writes.
 
 GitHub is the detailed master. Google Docs is the compact companion. Neither should silently overwrite user edits.
 
@@ -51,7 +55,7 @@ GitHub is the detailed master. Google Docs is the compact companion. Neither sho
 
 - Preserve verifiable sources for textbook, listening and reading material.
 - Never label an item as Cambridge IELTS material without a confirmed source.
-- Mark original practice material as **Self-created**.
+- Mark original practice material as **Self-created** when source identity matters.
 - Store learning value, not full conversations.
 - Anonymise names, contact details and unnecessary personal information.
 - Treat obvious typing slips as input noise: correct them before storage rather than logging them as personal language errors.
