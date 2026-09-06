@@ -82,32 +82,28 @@ When the user provides a real opinion, relationship, experience or sentence:
 
 Generic examples are secondary. Add only a few when they teach a useful pattern the user's own examples have not covered.
 
-## 6 · Speaking · 口语写入原则
+## 6 · Speaking · 口语写入与学习原则
 
 Speaking is **sentence- and pattern-driven**, not vocabulary-dump-driven.
 
-### Default learning workflow · 默认学习流程
+### Default speaking-topic learning workflow · 默认学习流程
 
-For each new IELTS Speaking topic, use this sequence unless the user explicitly asks for something different:
+For each new IELTS Speaking topic, use this sequence:
 
-1. **Study material first · 先看讲义**  
-   The user sends photos or pages from the study material. Read them as source material, not as content to copy wholesale.
-2. **Curate vocabulary · 提炼词汇**  
-   Select only the vocabulary and phrases genuinely worth learning. Group them clearly by function or meaning and mark priority when useful.
-3. **Learn patterns one by one · 逐条学习句式**  
-   Introduce one useful Speaking pattern at a time rather than presenting a large block of ready-made answers.
-4. **User produces first · 用户先造句**  
-   Ask the user to make their own sentence with that pattern and the topic vocabulary.
-5. **Correct and upgrade · 修改与提升**  
-   Improve grammar, naturalness, precision and IELTS suitability. Explain only the changes that are genuinely useful for future speaking.
-6. **Store the refined sentence · 沉淀个人表达**  
-   Put the improved personal sentence directly under the matching pattern and prefix it with **★**.
-7. **Then extend · 再挑战长句 / 长回答**  
-   After several core patterns are usable, move from one-sentence production to longer answers using a simple development structure such as **description → reason / behaviour → example**.
+1. **Material first** — the user provides lecture notes, screenshots or topic material.
+2. **Curate vocabulary** — extract only the high-value words, phrases and ideas worth learning; classify them clearly and mark active vs recognition-only items when useful.
+3. **Teach one pattern at a time** — before asking the user to practise, explain what the pattern is useful for and give **1–2 natural examples** so the user knows what kind of idea to express.
+4. **User produces first** — ask the user to make one sentence with that pattern, preferably using a real person, opinion or experience.
+5. **Correct and improve** — explain the main issue briefly, give a natural improved version, and suggest one useful alternative when it teaches a genuinely different way to say the same idea.
+6. **Save the refined sentence** — embed the approved/polished personal sentence directly under the relevant pattern with a **★** marker.
+7. **Move to the next pattern** — continue sentence by sentence rather than giving a large batch of drills at once.
+8. **Expand only after the basics work** — once several core patterns are usable, combine them into longer answers using reason, behaviour, example, contrast or result.
 
-The teaching order matters: **input → selection → controlled production → correction → personalisation → expansion**.
+The learning progression is therefore:
 
-Do not skip directly from textbook vocabulary to long model answers. The goal is to teach the user how to build natural answers themselves.
+**lecture material → curated vocabulary → guided pattern example → user sentence → correction → ★ personal sentence → longer answer**
+
+Do not ask the user to practise an unfamiliar sentence pattern from a bare template alone.
 
 ### Topic pages
 
@@ -288,7 +284,6 @@ Before adding or updating a note, confirm:
 - Is it concise enough?
 - Is the logic easy to scan?
 - Does it teach actual use?
-- For Speaking, did the user get a chance to produce the sentence before a polished model replaced their effort?
 - Have generic examples been replaced by the user's own language where available?
 - Are personal sentences embedded beside the pattern they practise rather than isolated elsewhere?
 - Are active and recognition-only words compactly distinguished without unnecessary extra sections?
