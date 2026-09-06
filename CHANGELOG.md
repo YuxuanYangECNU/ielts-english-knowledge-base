@@ -2,6 +2,13 @@
 
 # Change Log
 
+## v0.5 · Speaking Topics as a first-class category
+
+- Added **Speaking Topics** as a new top-level category under **IELTS Performance**, parallel to Speaking Story Bank, Reading, Listening and Writing.
+- Moved the existing **People & Relationships — Family Relationships** note out of general Vocabulary and into Speaking Topics.
+- Clarified the structural split: **Speaking Topics** stores topic-based vocabulary, expressions, contrasts and ideas; **Speaking Story Bank** stores genuine personal experiences and reusable stories.
+- Updated the home architecture, Knowledge Map, Review queue and links to the moved note.
+
 ## v0.4 · Bilingual vocabulary layer + family relationships
 
 - Added **Family Relationships — High-Value IELTS Vocabulary** from the user’s *People and Relationship* family-tree study material.
@@ -22,7 +29,7 @@
 ## v0.2 · English-first redesign
 
 - Rebuilt the home page around a five-stage learning loop.
-- Grouped nine categories into **Foundation**, **IELTS Performance** and **Retention**.
+- Grouped the original categories into **Foundation**, **IELTS Performance** and **Retention**.
 - Rewrote navigation, curation rules, category pages and the entry template in English-first form.
 - Kept Chinese only as concise clarification.
 - Redesigned and verified the Google Docs companion.
@@ -30,5 +37,5 @@
 
 ## v0.1 · Initial framework
 
-- Created nine category folders, an entry template, curation rules and a review area.
+- Created the initial category folders, an entry template, curation rules and a review area.
 - Linked the GitHub master library and Google Docs companion.
