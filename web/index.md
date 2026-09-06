@@ -46,9 +46,9 @@ Useful words. Natural sentences. A little practice, every day.
 
     <span class="atlas-card-translation">口语表达</span>
 
-    Topic language & stories from your own life.
+    Choose **Accumulation** or **Practice** first.
 
-    [Speaking topics :octicons-arrow-right-24:](knowledge/speaking-topics/README.md)
+    [Open Speaking :octicons-arrow-right-24:](knowledge/speaking/README.md)
 
 -   :material-headphones:{ .atlas-card-icon }
 
