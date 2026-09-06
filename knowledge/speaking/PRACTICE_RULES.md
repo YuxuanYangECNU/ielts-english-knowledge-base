@@ -158,6 +158,16 @@ All recommendations must be grounded in the IELTS Speaking assessment criteria:
 
 The review should be concise, selective and high-impact. It is not an error dump.
 
+### Naturalness standard
+
+Every suggested English upgrade must pass a native-speaker naturalness check before it is shown to the learner.
+
+- Prefer common, idiomatic spoken English over rare or inflated vocabulary.
+- Band 7 does **not** mean replacing simple natural language with more difficult words.
+- Preserve the learner's intended meaning and register.
+- Lexical Resource should be improved through **flexibility, precision and collocation**, not artificial sophistication.
+- Do not recommend an expression merely because it sounds more advanced on paper.
+
 ### Session header
 
 Show only:
@@ -181,7 +191,7 @@ Do not add sections merely to fill a template. If there is little useful content
 
 - Do **not** force a numerical band estimate onto every casual conversation.
 - For normal practice, identify what currently helps or limits performance under the four IELTS criteria.
-- Give a band estimate only for a sufficiently exam-like Part 1 / 2 / 3 mock or when the user explicitly asks for one.
+- Give a band estimate only for a sufficiently exam-like Part 1 / 2 / Part 3 mock or when the user explicitly asks for one.
 
 ## 8 · Progress tracking · 长期进度
 
@@ -220,6 +230,8 @@ Rules:
 - do not save the raw full transcript to GitHub;
 - save only the compact high-value review material;
 - Voice and Chat accumulation stay separate;
+- each session should first appear as a compact index row/card showing at least **Date · Topic · Main issue · Mode**;
+- the full recap should open only after the user clicks that session entry;
 - each session page should be editable and deletable from the website;
 - website edits must update the corresponding GitHub source file;
 - website deletion must delete the corresponding GitHub source file;
@@ -233,7 +245,23 @@ YYYY-MM-DD-topic-slug.md
 
 If multiple sessions share the same date and topic, append a short numeric suffix.
 
-## 10 · Storage principle · 保存原则
+## 10 · Reusable Story Bank · 故事记忆库
+
+A separate story-memory layer should be built from genuine experiences that emerge during Chat or Voice practice.
+
+Rules:
+
+- extract only stories, examples, preferences or experiences that the user actually shared;
+- never invent missing details to make a story more complete;
+- keep a concise summary plus signals for which IELTS Part 1 / Part 2 / Part 3 topics it may support;
+- the story bank does **not** need to appear as a normal frontend navigation page;
+- future Free Chat / Free Voice sessions may use relevant stored stories as optional context, but should never force an old story into an unrelated topic;
+- story reuse should help the learner build a small set of flexible personal examples rather than memorise scripted answers;
+- personal story memory is privacy-sensitive: do **not** publish the full story bank into a public GitHub repository merely because the website repository is public;
+- the current website implementation keeps extracted story memory in browser-local storage and may pass a small relevant subset back to the Free Chat / Free Voice backend on the same browser;
+- cross-device story memory requires a separate private persistent store later; browser-local story memory must not be presented as cross-device memory.
+
+## 11 · Storage principle · 保存原则
 
 **Keep learning value, not conversation volume.**
 
