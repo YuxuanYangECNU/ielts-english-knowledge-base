@@ -36,6 +36,6 @@
 
   <div class="speaking-chat-footer">
     <span class="speaking-chat-keyhint">Enter to send · Shift + Enter for a new line</span>
-    <span>结束今天的练习 → review</span>
+    <button class="speaking-chat-end" type="button" data-chat-end>End practice</button>
   </div>
 </div>
