@@ -65,7 +65,10 @@
       if (strong) strong.textContent = `Today’s IELTS topic: ${session.topic}`;
       if (span) span.textContent = session.sourceLabel || "Recent Mainland China Speaking question bank";
       messagesEl.innerHTML = "";
-      if (session.opening) appendMessage(messagesEl, "assistant", session.opening);
+      if (session.opening) {
+        appendMessage(messagesEl, "assistant", session.opening);
+        state.messages.push({ role: "assistant", content: session.opening });
+      }
       setStatus(dot, status, "Ready", "ready");
     } catch (error) {
       console.error(error);
@@ -92,10 +95,7 @@
         });
         if (result.reply) {
           appendMessage(messagesEl, "assistant", result.reply);
-          state.messages.push({ role: "assistant", content: result.reply });
-        }
-        if (result.ended && result.recap) {
-          appendMessage(messagesEl, "assistant", result.recap);
+          if (!result.ended) state.messages.push({ role: "assistant", content: result.reply });
         }
         setStatus(dot, status, result.ended ? "Session finished" : "Ready", "ready");
       } catch (error) {
