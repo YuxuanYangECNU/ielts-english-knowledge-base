@@ -54,6 +54,7 @@ markdown_extensions:
 
 extra_css:
   - stylesheets/extra.css
+  - stylesheets/speaking-hub.css
   - stylesheets/speaking-practice.css
 
 extra_javascript:
@@ -64,11 +65,13 @@ extra_javascript:
 nav:
   - Home: index.md
   - Speaking:
+      - knowledge/speaking/README.md
       - Accumulation:
-          - Speaking Topics: knowledge/speaking-topics/README.md
-          - People & Relationships: knowledge/speaking-topics/people-and-relationships.md
+          - knowledge/speaking-topics/README.md
+          - Topics:
+              - People & Relationships: knowledge/speaking-topics/people-and-relationships.md
       - Practice:
-          - Practice Hub: knowledge/speaking/practice/README.md
+          - knowledge/speaking/practice/README.md
           - Voice: knowledge/speaking/practice/voice.md
           - Chat: knowledge/speaking/practice/chat.md
           - Practice Accumulation:
