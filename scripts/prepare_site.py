@@ -1,4 +1,5 @@
 from pathlib import Path
+import html
 import shutil
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -26,6 +27,66 @@ def copy_markdown_tree(source: Path, target: Path) -> None:
             dest.write_text(clean_markdown(path.read_text(encoding="utf-8")), encoding="utf-8")
 
 
+def read_vocab_rows():
+    rows = []
+    source = ROOT / "knowledge" / "vocabulary" / "vocab.tsv"
+    for line in source.read_text(encoding="utf-8").splitlines():
+        if not line.strip():
+            continue
+        no, word, pos, meaning = line.split("\t", 3)
+        rows.append((int(no), word, pos, meaning))
+    return rows
+
+
+def read_weekly_unfamiliar():
+    source = ROOT / "knowledge" / "vocabulary" / "weekly_unfamiliar.tsv"
+    mapping = {}
+    lines = source.read_text(encoding="utf-8").splitlines()
+    for line in lines[1:]:
+        if not line.strip():
+            continue
+        week, ids = line.split("\t", 1)
+        mapping[week] = {int(x) for x in ids.split(",") if x.strip()}
+    return mapping
+
+
+def render_vocab_tracker(path: Path) -> None:
+    text = path.read_text(encoding="utf-8")
+    rows = read_vocab_rows()
+    weekly = read_weekly_unfamiliar()
+    id_to_weeks = {}
+    for week, ids in weekly.items():
+        for vocab_id in ids:
+            id_to_weeks.setdefault(vocab_id, []).append(week)
+
+    html_rows = []
+    for no, word, pos, meaning in rows:
+        weeks = id_to_weeks.get(no, [])
+        weekly_value = ", ".join(weeks) if weeks else "—"
+        initial = "Unfamiliar" if weeks else "Learning"
+        options = []
+        for value in ("Unfamiliar", "Learning", "Usable", "Mastered"):
+            selected = " selected" if value == initial else ""
+            options.append(f'<option value="{value}"{selected}>{value}</option>')
+        html_rows.append(
+            f'<tr data-word="{html.escape(word.lower())}" data-week="{html.escape(weekly_value)}" data-status="{initial}">'
+            f'<td>{no}</td><td><strong>{html.escape(word)}</strong></td><td>{html.escape(pos)}</td>'
+            f'<td>{html.escape(meaning)}</td><td><select class="mastery-select" data-vocab-id="{no}">{"".join(options)}</select></td>'
+            f'<td class="weekly-flag">{html.escape(weekly_value)}</td></tr>'
+        )
+
+    week_options = "\n    ".join(
+        f'<option value="{html.escape(week)}">{html.escape(week)} unfamiliar</option>'
+        for week in weekly
+    )
+    total_weekly_records = sum(len(ids) for ids in weekly.values())
+    text = text.replace("__VOCAB_TOTAL__", str(len(rows)))
+    text = text.replace("__VOCAB_WEEKLY_TOTAL__", str(total_weekly_records))
+    text = text.replace("__VOCAB_WEEK_OPTIONS__", week_options)
+    text = text.replace("__VOCAB_ROWS__", "\n".join(html_rows))
+    path.write_text(text, encoding="utf-8")
+
+
 def main() -> None:
     if OUT.exists():
         shutil.rmtree(OUT)
@@ -35,6 +96,7 @@ def main() -> None:
     (OUT / "index.md").write_text(homepage.read_text(encoding="utf-8"), encoding="utf-8")
 
     copy_markdown_tree(ROOT / "knowledge", OUT / "knowledge")
+    render_vocab_tracker(OUT / "knowledge" / "vocabulary" / "README.md")
 
     styles_target = OUT / "stylesheets"
     styles_target.mkdir(parents=True, exist_ok=True)
