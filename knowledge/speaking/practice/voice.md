@@ -8,7 +8,7 @@
     <h2>ChatGPT Voice</h2>
     <p>Use the dedicated IELTS Speaking ChatGPT Project. Topic setup and final review use GPT-5.6 Sol · Instant; the live conversation uses ChatGPT Voice.</p>
     <a class="md-button md-button--primary" href="https://chatgpt.com/" target="_blank" rel="noopener">Open ChatGPT</a>
-    <p class="speaking-small-note">The dedicated Project link can replace this general ChatGPT link later.</p>
+    <p class="speaking-small-note">This route opens ChatGPT because ChatGPT Voice itself cannot be embedded directly inside this GitHub Pages site.</p>
   </section>
 
   <section class="speaking-mode-panel speaking-free-voice-panel" data-speaking-voice>
@@ -16,7 +16,7 @@
     <h2>Free Voice</h2>
     <p>Paraformer realtime speech recognition → GLM-4.7-Flash → British-English speech output.</p>
 
-    <div class="speaking-status-row">
+    <div class="speaking-status-row speaking-voice-status-card">
       <span class="speaking-status-dot" data-voice-status-dot></span>
       <span data-voice-status>Ready to connect</span>
     </div>
@@ -25,9 +25,15 @@
 
     <div class="speaking-voice-orb" aria-hidden="true"><span></span></div>
 
-    <div class="speaking-voice-actions">
-      <button class="speaking-action-button speaking-action-primary" type="button" data-voice-start>Start conversation</button>
-      <button class="speaking-action-button" type="button" data-voice-stop disabled>Stop</button>
+    <div class="speaking-voice-actions speaking-voice-actions-polished">
+      <button class="speaking-voice-start" type="button" data-voice-start>
+        <span class="speaking-mic-icon" aria-hidden="true"></span>
+        <span class="speaking-voice-start-copy">
+          <strong>Start Free Voice</strong>
+          <small>Tap once, then just speak naturally</small>
+        </span>
+      </button>
+      <button class="speaking-action-button speaking-stop-button" type="button" data-voice-stop disabled>End session</button>
     </div>
 
     <div class="speaking-voice-live">
@@ -37,7 +43,7 @@
       </div>
       <div class="speaking-voice-interim" data-voice-interim>Listening for your English…</div>
       <div class="speaking-voice-messages" data-voice-messages>
-        <p class="speaking-empty-state">Tap Start conversation to begin.</p>
+        <p class="speaking-empty-state">Tap Start Free Voice to begin.</p>
       </div>
     </div>
 
