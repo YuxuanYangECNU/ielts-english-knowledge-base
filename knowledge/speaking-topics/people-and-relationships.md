@@ -22,23 +22,24 @@
 
 ## 2 · 性格描述 Personality
 
-### 优先掌握
+同一类词放在一张表里，用标记区分学习优先级：**★ = 优先掌握**，**○ = 认识即可**。
 
-| Word | 中文 | Useful idea |
-| :--- | :--- | :--- |
-| **reliable** | 可靠的 | someone you can depend on |
-| **open-minded** | 思想开放的 | willing to consider different ideas |
-| **sociable** | 善于社交的 | comfortable talking to people |
-| **ambitious** | 有抱负 / 上进的 | determined to achieve something |
-| **blunt** | 说话过于直接的 | says exactly what they think |
-| **judgemental** | 爱评判别人的 | quick to criticise other people |
-| **nosy** | 爱打听别人私事的 | too interested in other people’s private lives |
-
-### 次优先 · 认识即可
-
-**stingy** 小气的 · **over-sensitive** 过于敏感的 · **good fun** 很有趣、很好相处的人
+| Priority | Word | 中文 | Useful idea |
+| :---: | :--- | :--- | :--- |
+| ★ | **reliable** | 可靠的 | someone you can depend on |
+| ★ | **open-minded** | 思想开放的 | willing to consider different ideas |
+| ★ | **sociable** | 善于社交的 | comfortable talking to people |
+| ★ | **ambitious** | 有抱负 / 上进的 | determined to achieve something |
+| ★ | **blunt** | 说话过于直接的 | says exactly what they think |
+| ★ | **judgemental** | 爱评判别人的 | quick to criticise other people |
+| ★ | **nosy** | 爱打听别人私事的 | too interested in other people’s private lives |
+| ○ | **stingy** | 小气的 | unwilling to spend money |
+| ○ | **over-sensitive** | 过于敏感的 | too easily upset |
+| ○ | **good fun** | 很有趣、很好相处的 | enjoyable to spend time with |
 
 ## 3 · 核心口语句式 Speaking patterns
+
+`★` 放在例句前，表示这是你自己写过、经过修改后值得保留的表达。你的句子直接放在对应句式下面，不单独建立“我的表达”章节。
 
 ### A. 直接描述一个人
 
@@ -93,19 +94,7 @@
 
 不需要每次四步都说满；重点是从一个词自然扩展成完整回答。
 
-## 5 · 我的表达 ★ My expressions
-
-`★` 标记我们在练习中根据你的真实家人、朋友和经历共同修改出的表达。它们会优先保留在对应句式下面，而不是单独堆成一大块。
-
-例如之后你自己写：
-
-> *My father is sociable...*
-
-我们会把它修改成更自然的版本，再标记为：
-
-> ★ *I’d describe my father as quite sociable because ...*
-
-## 6 · 补充表达 Extra useful language
+## 5 · 补充表达 Extra useful language
 
 只在确实有用时补充，不追求数量。
 
