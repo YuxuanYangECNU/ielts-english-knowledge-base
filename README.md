@@ -69,7 +69,7 @@ English carries the definition, explanation, examples and practice prompts. Chin
 
 ## Current state
 
-**Framework complete · 0 curated learning entries.** New entries will be created from future questions; earlier conversations are not imported automatically.
+**Framework complete · 1 curated learning entry.** The first entry covers accommodation and renting vocabulary collected from listening dictation; future entries will continue to be curated from study sessions rather than imported automatically.
 
 ---
 
