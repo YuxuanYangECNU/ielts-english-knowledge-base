@@ -5,6 +5,8 @@
   let docsPromise = null;
   let debounceTimer = null;
   let lastRenderedQuery = "";
+  const boundInputs = new WeakSet();
+  const observedOutputs = new WeakSet();
 
   function normalise(value) {
     return String(value || "")
@@ -81,8 +83,6 @@
       return;
     }
 
-    // Prefer the complete phrase. If punctuation/spacing means that phrase is
-    // not literally present, fall back to highlighting each query term.
     const candidates = [exact];
     if (!raw.toLowerCase().includes(exact.toLowerCase())) {
       candidates.splice(0, 1, ...normalise(exact).split(" ").filter(Boolean));
@@ -171,9 +171,6 @@
     const standardItems = Array.from(list.querySelectorAll(".md-search-result__item:not([data-enhanced-search-item])"));
     const standardCount = standardItems.length;
 
-    // Multi-word English phrases and Chinese queries always receive the
-    // phrase-aware pass. Ordinary single English words keep MkDocs' native
-    // search unless it returned nothing.
     if (terms.length < 2 && standardCount > 0 && !hasCjk(query)) return;
 
     const existingHrefs = new Set(
@@ -209,22 +206,63 @@
     }
   }
 
-  function schedule() {
+  function schedule(delay = 110) {
     window.clearTimeout(debounceTimer);
-    debounceTimer = window.setTimeout(augmentSearch, 140);
+    debounceTimer = window.setTimeout(augmentSearch, delay);
+  }
+
+  function bindCurrentSearch() {
+    const input = document.querySelector(".md-search__input");
+    const output = document.querySelector(".md-search__output");
+    if (!input || !output) return false;
+
+    if (!boundInputs.has(input)) {
+      boundInputs.add(input);
+      input.addEventListener("input", () => schedule());
+      input.addEventListener("focus", () => schedule(0));
+      input.addEventListener("compositionend", () => schedule(0));
+    }
+
+    if (!observedOutputs.has(output)) {
+      observedOutputs.add(output);
+      const observer = new MutationObserver(() => schedule());
+      observer.observe(output, { childList: true, subtree: true });
+    }
+
+    return true;
+  }
+
+  function ensureReady() {
+    if (!bindCurrentSearch()) {
+      window.setTimeout(bindCurrentSearch, 120);
+    }
+    getDocs();
   }
 
   function init() {
-    const input = document.querySelector(".md-search__input");
-    const output = document.querySelector(".md-search__output");
-    if (!input || !output) return;
+    ensureReady();
 
-    input.addEventListener("input", schedule);
-    input.addEventListener("focus", schedule);
+    // Material's mobile search opens through a toggle and may update the result
+    // DOM after the panel becomes visible. Re-bind and run immediately whenever
+    // that toggle changes, so iPhone/Android do not depend on desktop timing.
+    document.addEventListener("change", event => {
+      if (event.target?.matches?.('[data-md-toggle="search"]')) {
+        window.setTimeout(() => {
+          bindCurrentSearch();
+          lastRenderedQuery = "";
+          schedule(0);
+        }, 0);
+      }
+    });
 
-    const observer = new MutationObserver(() => schedule());
-    observer.observe(output, { childList: true, subtree: true });
-    getDocs();
+    window.addEventListener("pageshow", () => {
+      bindCurrentSearch();
+      schedule(0);
+    });
+
+    window.addEventListener("orientationchange", () => {
+      window.setTimeout(() => schedule(0), 120);
+    });
   }
 
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
