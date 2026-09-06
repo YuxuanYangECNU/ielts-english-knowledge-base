@@ -1,0 +1,12 @@
+name = "ielts-speaking-api"
+main = "worker.js"
+compatibility_date = "2026-09-01"
+
+[vars]
+# Keep the current Mainland China Speaking topic bank here as a JSON array
+# or configure it in the Cloudflare dashboard.
+IELTS_TOPIC_BANK = '["People & relationships","Study & university life","Technology in daily life","Hobbies & free time","Travel & places"]'
+
+# Never put ZHIPU_API_KEY here.
+# Store it as a Cloudflare Worker secret instead:
+#   wrangler secret put ZHIPU_API_KEY
