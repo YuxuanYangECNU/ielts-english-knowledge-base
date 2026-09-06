@@ -1,6 +1,7 @@
 (() => {
   const CHAT_RECAP_KEY = "ielts-speaking-chat-recaps-v1";
   const VOICE_RECAP_KEY = "ielts-speaking-voice-recaps-v1";
+  const REMOTE_CHAT_DIR = "https://api.github.com/repos/YuxuanYangECNU/ielts-english-knowledge-base/contents/knowledge/speaking/practice/practice-accumulation/chat";
 
   function readList(key) {
     try {
@@ -78,6 +79,9 @@
     lines.forEach(raw => {
       const line = raw.trim();
       if (!line) return;
+      if (/^<!--/.test(line)) return;
+      if (/^#\s+/.test(line)) return;
+      if (/^\*\*Mode:\*\*/i.test(line)) return;
       const heading = line.match(/^#{2,4}\s+(.+)$/);
       if (heading) {
         current = { title: heading[1].replace(/\*\*/g, "").trim(), items: [] };
@@ -91,7 +95,7 @@
     return sections.filter(section => section.items.length || section.title);
   }
 
-  function makeRecapCard(text, topic, mode, dateLabel) {
+  function makeRecapCard(text, topic, mode, dateLabel, remote = false) {
     const card = document.createElement("article");
     card.className = "speaking-recap-card";
 
@@ -103,7 +107,7 @@
     const title = document.createElement("h3");
     title.textContent = topic || "IELTS Speaking";
     const meta = document.createElement("p");
-    meta.textContent = `${dateLabel || new Date().toLocaleDateString("zh-CN")} · ${mode === "voice" ? "语音实战" : "文字实战"}`;
+    meta.textContent = `${dateLabel || new Date().toLocaleDateString("zh-CN")} · ${mode === "voice" ? "语音实战" : "文字实战"}${remote ? " · GitHub" : ""}`;
     header.append(kicker, title, meta);
     card.appendChild(header);
 
@@ -178,10 +182,69 @@
     observer.observe(container, { childList: true, subtree: true });
   }
 
-  function renderAccumulation() {
+  function parseRemoteMarkdown(markdown, fallbackName) {
+    const metaMatch = String(markdown || "").match(/<!--\s*IELTS_RECAP_META\s+(.+?)\s*-->/);
+    let meta = {};
+    if (metaMatch) {
+      try { meta = JSON.parse(metaMatch[1]); } catch (_) {}
+    }
+    const recapStart = String(markdown || "").search(/^###\s+/m);
+    const recap = recapStart >= 0 ? String(markdown).slice(recapStart).trim() : String(markdown || "").trim();
+    return {
+      id: simpleHash(`${meta.topic || fallbackName}|${recap}`),
+      topic: meta.topic || "IELTS Speaking",
+      mode: meta.mode || "chat",
+      recap,
+      createdAt: meta.date ? `${meta.date}T00:00:00+08:00` : null,
+      remote: true
+    };
+  }
+
+  async function loadRemoteChatRecaps() {
+    try {
+      const response = await fetch(REMOTE_CHAT_DIR, { headers: { "Accept": "application/vnd.github+json" } });
+      if (!response.ok) return [];
+      const files = await response.json();
+      if (!Array.isArray(files)) return [];
+      const markdownFiles = files
+        .filter(file => file?.type === "file" && /\.md$/i.test(file.name || "") && file.name !== "README.md")
+        .sort((a, b) => String(b.name).localeCompare(String(a.name)))
+        .slice(0, 50);
+
+      const results = await Promise.all(markdownFiles.map(async file => {
+        try {
+          const raw = await fetch(file.download_url, { cache: "no-store" });
+          if (!raw.ok) return null;
+          return parseRemoteMarkdown(await raw.text(), file.name);
+        } catch (_) {
+          return null;
+        }
+      }));
+      return results.filter(Boolean);
+    } catch (_) {
+      return [];
+    }
+  }
+
+  function mergeRecaps(local, remote) {
+    const map = new Map();
+    [...remote, ...local].forEach(item => {
+      const key = simpleHash(`${item.topic || ""}|${item.recap || ""}`);
+      if (!map.has(key) || !map.get(key).remote) map.set(key, item);
+    });
+    return Array.from(map.values()).sort((a, b) => {
+      const aTime = a.createdAt ? new Date(a.createdAt).getTime() : 0;
+      const bTime = b.createdAt ? new Date(b.createdAt).getTime() : 0;
+      return bTime - aTime;
+    });
+  }
+
+  async function renderAccumulation() {
     const host = document.querySelector("[data-chat-accumulation]");
     if (!host) return;
-    const list = readList(CHAT_RECAP_KEY);
+    const local = readList(CHAT_RECAP_KEY);
+    const remote = await loadRemoteChatRecaps();
+    const list = mergeRecaps(local, remote);
     host.innerHTML = "";
 
     if (!list.length) {
@@ -194,12 +257,14 @@
 
     const note = document.createElement("p");
     note.className = "speaking-recap-local-note";
-    note.textContent = "当前列表会自动读取这个浏览器里已完成的 Chat 复盘。";
+    note.textContent = remote.length
+      ? "已合并当前浏览器记录与 GitHub 中已同步的 Chat 复盘。"
+      : "当前显示这个浏览器里已完成的 Chat 复盘；GitHub 自动写回启用后会跨设备保留。";
     host.appendChild(note);
 
     list.forEach(item => {
       const date = item.createdAt ? new Date(item.createdAt).toLocaleDateString("zh-CN") : "";
-      host.appendChild(makeRecapCard(item.recap, item.topic, "chat", date));
+      host.appendChild(makeRecapCard(item.recap, item.topic, "chat", date, Boolean(item.remote)));
     });
   }
 
