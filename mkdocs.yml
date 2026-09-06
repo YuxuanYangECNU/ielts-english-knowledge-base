@@ -56,12 +56,14 @@ extra_css:
   - stylesheets/extra.css
   - stylesheets/speaking-hub.css
   - stylesheets/speaking-practice.css
+  - stylesheets/speaking-chat-wechat.css
 
 extra_javascript:
   - javascripts/vocabulary.js
   - javascripts/speaking-config.js
   - javascripts/speaking-practice.js
   - javascripts/voice-diagnostics.js
+  - javascripts/speaking-chat-wechat.js
 
 nav:
   - Home: index.md
