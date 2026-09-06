@@ -19,3 +19,33 @@
 .atlas-search-result .md-search-result__title {
   margin-top: 0;
 }
+
+/* Highlighter-style emphasis for both native MkDocs matches and our
+   phrase-aware fallback results. */
+.md-search-result__teaser mark,
+.md-search-result__article mark,
+.atlas-search-highlight {
+  padding: 0 .05em;
+  border-radius: .12em;
+  background: linear-gradient(
+    transparent 18%,
+    rgba(255, 226, 76, .82) 18%,
+    rgba(255, 226, 76, .82) 88%,
+    transparent 88%
+  ) !important;
+  color: inherit !important;
+  text-decoration: none !important;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+
+[data-md-color-scheme="slate"] .md-search-result__teaser mark,
+[data-md-color-scheme="slate"] .md-search-result__article mark,
+[data-md-color-scheme="slate"] .atlas-search-highlight {
+  background: linear-gradient(
+    transparent 18%,
+    rgba(255, 214, 64, .68) 18%,
+    rgba(255, 214, 64, .68) 88%,
+    transparent 88%
+  ) !important;
+}
