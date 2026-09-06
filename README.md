@@ -40,16 +40,17 @@
 
 | Area | Focus |
 | :--- | :--- |
-| [05 · Speaking Story Bank](knowledge/speaking/README.md) | Real experiences, opinions and flexible Part 1–3 extensions |
-| [06 · Reading & Paraphrase](knowledge/reading/README.md) | Paraphrase chains, logic and TF/F/NG evidence boundaries |
-| [07 · Listening Language](knowledge/listening/README.md) | Scenario language, signposts, spelling and distractors |
-| [08 · Writing & Argumentation](knowledge/writing/README.md) | Accurate Task 1 language and conditional Task 2 reasoning |
+| [05 · Speaking Topics](knowledge/speaking-topics/README.md) | Topic-based vocabulary, expressions, contrasts and ideas for IELTS Speaking |
+| [06 · Speaking Story Bank](knowledge/speaking/README.md) | Real experiences, opinions and flexible Part 1–3 extensions |
+| [07 · Reading & Paraphrase](knowledge/reading/README.md) | Paraphrase chains, logic and TF/F/NG evidence boundaries |
+| [08 · Listening Language](knowledge/listening/README.md) | Scenario language, signposts, spelling and distractors |
+| [09 · Writing & Argumentation](knowledge/writing/README.md) | Accurate Task 1 language and conditional Task 2 reasoning |
 
 ### III · Retention
 
 | Area | Focus |
 | :--- | :--- |
-| [09 · Review & Active Recall](knowledge/review/README.md) | Retrieval prompts, reformulation and short speaking drills |
+| [10 · Review & Active Recall](knowledge/review/README.md) | Retrieval prompts, reformulation and short speaking drills |
 
 ## Curation gate
 
@@ -69,7 +70,7 @@ English remains the main language for definitions, explanations, examples and pr
 
 ## Current state
 
-**Framework complete · 2 curated learning entries.** Current entries cover accommodation/renting listening vocabulary and high-value family relationship vocabulary for IELTS Speaking. Future entries continue to be curated from study sessions rather than imported automatically.
+**Framework complete · 2 curated learning entries.** Current entries cover accommodation/renting listening vocabulary and **People & Relationships** under Speaking Topics. Future entries continue to be curated from study sessions rather than imported automatically.
 
 ---
 
