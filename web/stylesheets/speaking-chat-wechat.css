@@ -241,10 +241,11 @@
 }
 
 .speaking-chat-wechat .speaking-chat-footer {
-  min-height: 30px;
+  min-height: 34px;
   padding: 5px 12px 7px;
   display: flex;
-  justify-content: center;
+  align-items: center;
+  justify-content: space-between;
   gap: 14px;
   border: 0;
   background: #f7f7f7;
@@ -254,6 +255,73 @@
 
 .speaking-chat-keyhint {
   opacity: .9;
+}
+
+.speaking-chat-end {
+  padding: 4px 9px;
+  border: 0;
+  border-radius: 4px;
+  background: transparent;
+  color: #8d8d8d;
+  font: inherit;
+  font-size: 10px;
+  cursor: pointer;
+  transition: background .15s ease, color .15s ease;
+}
+
+.speaking-chat-end:hover {
+  background: rgba(0,0,0,.05);
+  color: #d33;
+}
+
+.speaking-message-enter-user {
+  animation: speaking-chat-send-in .18s cubic-bezier(.2,.8,.2,1) both;
+  transform-origin: 100% 50%;
+}
+
+.speaking-message-enter-ai {
+  animation: speaking-chat-reply-in .18s cubic-bezier(.2,.8,.2,1) both;
+  transform-origin: 0 50%;
+}
+
+@keyframes speaking-chat-send-in {
+  from { opacity: 0; transform: translate3d(8px, 5px, 0) scale(.985); }
+  to { opacity: 1; transform: translate3d(0, 0, 0) scale(1); }
+}
+
+@keyframes speaking-chat-reply-in {
+  from { opacity: 0; transform: translate3d(-6px, 4px, 0) scale(.988); }
+  to { opacity: 1; transform: translate3d(0, 0, 0) scale(1); }
+}
+
+.speaking-chat-typing {
+  min-width: 54px;
+  width: fit-content;
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+
+.speaking-typing-dots {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  height: 10px;
+}
+
+.speaking-typing-dots span {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #9a9a9a;
+  animation: speaking-typing-dot 1s ease-in-out infinite;
+}
+
+.speaking-typing-dots span:nth-child(2) { animation-delay: .14s; }
+.speaking-typing-dots span:nth-child(3) { animation-delay: .28s; }
+
+@keyframes speaking-typing-dot {
+  0%, 60%, 100% { opacity: .35; transform: translateY(0); }
+  30% { opacity: 1; transform: translateY(-2px); }
 }
 
 [data-md-color-scheme="slate"] .speaking-chat-wechat {
@@ -292,6 +360,17 @@
   border-color: transparent;
   background: #34353a;
   color: #fff;
+}
+[data-md-color-scheme="slate"] .speaking-chat-end:hover {
+  background: rgba(255,255,255,.06);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .speaking-message-enter-user,
+  .speaking-message-enter-ai,
+  .speaking-typing-dots span {
+    animation: none !important;
+  }
 }
 
 @media screen and (max-width: 44.984375em) {
@@ -360,8 +439,7 @@
     padding: 0 12px;
   }
   .speaking-chat-wechat .speaking-chat-footer {
-    justify-content: flex-start;
-    overflow-x: auto;
+    overflow: hidden;
     white-space: nowrap;
   }
 }
