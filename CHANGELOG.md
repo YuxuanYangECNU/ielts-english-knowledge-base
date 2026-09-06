@@ -2,6 +2,16 @@
 
 # Change Log
 
+## v0.6 · Repository-wide authoring rules
+
+- Added **`AUTHORING_RULES.md`** as the highest-priority repository-wide guide for adding or rewriting learning content.
+- Generalised the user's preferences across Vocabulary, Expressions, Grammar, Corrections, Speaking, Reading, Listening, Writing and Review.
+- Formalised the principle **curate, do not dump**: screenshots, textbook pages and uploaded material are sources to filter, not instructions to import everything.
+- Made Speaking **sentence- and pattern-driven**, with **★ My version** for refined personal language and only limited generic examples.
+- Clarified that Chinese headings and quick glosses may be used for fast navigation while the knowledge base remains English-first.
+- Added rules for silently correcting obvious typing slips, prioritising genuine personal language, avoiding duplicate notes and keeping Review smaller than the main library.
+- Added prominent links to the authoring rules from the home page, curation guide, knowledge map, Speaking Topics page and entry template.
+
 ## v0.5 · Speaking Topics as a first-class category
 
 - Added **Speaking Topics** as a new top-level category under **IELTS Performance**, parallel to Speaking Story Bank, Reading, Listening and Writing.
