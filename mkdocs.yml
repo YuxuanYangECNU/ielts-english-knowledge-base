@@ -58,6 +58,7 @@ extra_css:
   - stylesheets/speaking-practice.css
   - stylesheets/speaking-chat-wechat.css
   - stylesheets/speaking-chat-controls.css
+  - stylesheets/speaking-recap.css
 
 extra_javascript:
   - javascripts/vocabulary.js
@@ -66,6 +67,7 @@ extra_javascript:
   - javascripts/speaking-practice.js
   - javascripts/voice-diagnostics.js
   - javascripts/speaking-chat-wechat.js
+  - javascripts/speaking-recap.js
 
 nav:
   - Home: index.md
