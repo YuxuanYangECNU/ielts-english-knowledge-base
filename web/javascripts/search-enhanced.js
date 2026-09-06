@@ -22,6 +22,10 @@
     return /[\u3400-\u9fff\uf900-\ufaff]/.test(String(value || ""));
   }
 
+  function isMobileSearch() {
+    return window.matchMedia?.("(max-width: 59.984375em)")?.matches ?? false;
+  }
+
   function getDocs() {
     if (!docsPromise) {
       docsPromise = fetch(indexUrl, { cache: "no-store" })
@@ -130,7 +134,7 @@
 
     const badge = document.createElement("span");
     badge.className = "atlas-search-badge";
-    badge.textContent = exact ? "Exact phrase" : "Combined match";
+    badge.textContent = exact ? "Exact match" : "Combined match";
 
     const title = document.createElement("h1");
     title.className = "md-search-result__title";
@@ -170,8 +174,12 @@
 
     const standardItems = Array.from(list.querySelectorAll(".md-search-result__item:not([data-enhanced-search-item])"));
     const standardCount = standardItems.length;
+    const mobile = isMobileSearch();
 
-    if (terms.length < 2 && standardCount > 0 && !hasCjk(query)) return;
+    // Desktop can keep MkDocs' native single-word results. On mobile we always
+    // run our own index pass as well, so typing e.g. "sitting" immediately
+    // produces results below the field instead of relying on desktop-only timing.
+    if (!mobile && terms.length < 2 && standardCount > 0 && !hasCjk(query)) return;
 
     const existingHrefs = new Set(
       standardItems
@@ -199,14 +207,14 @@
       if (seen.has(key)) return false;
       seen.add(key);
       return true;
-    }).slice(0, 5);
+    }).slice(0, mobile ? 8 : 5);
 
     for (let i = top.length - 1; i >= 0; i -= 1) {
       list.prepend(createResult(top[i].doc, query, top[i].exact));
     }
   }
 
-  function schedule(delay = 110) {
+  function schedule(delay = 90) {
     window.clearTimeout(debounceTimer);
     debounceTimer = window.setTimeout(augmentSearch, delay);
   }
@@ -219,6 +227,7 @@
     if (!boundInputs.has(input)) {
       boundInputs.add(input);
       input.addEventListener("input", () => schedule());
+      input.addEventListener("keyup", () => schedule());
       input.addEventListener("focus", () => schedule(0));
       input.addEventListener("compositionend", () => schedule(0));
     }
@@ -242,9 +251,6 @@
   function init() {
     ensureReady();
 
-    // Material's mobile search opens through a toggle and may update the result
-    // DOM after the panel becomes visible. Re-bind and run immediately whenever
-    // that toggle changes, so iPhone/Android do not depend on desktop timing.
     document.addEventListener("change", event => {
       if (event.target?.matches?.('[data-md-toggle="search"]')) {
         window.setTimeout(() => {
@@ -252,6 +258,16 @@
           lastRenderedQuery = "";
           schedule(0);
         }, 0);
+      }
+    });
+
+    document.addEventListener("click", event => {
+      if (event.target?.closest?.('[for="__search"], .md-search__icon')) {
+        window.setTimeout(() => {
+          bindCurrentSearch();
+          lastRenderedQuery = "";
+          schedule(0);
+        }, 60);
       }
     });
 
