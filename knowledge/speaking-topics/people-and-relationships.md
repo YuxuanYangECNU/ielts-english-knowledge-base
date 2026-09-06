@@ -49,7 +49,8 @@
 
 > *I’d describe my father as quite sociable because he finds it easy to talk to new people.*
 
-> ★ *I’d describe my mum as very reliable because whenever I run into problems in life, she has much more experience than I do and can always give me useful advice.*
+★ *I’d describe my mum as very reliable because whenever I run into problems in life, she has much more experience than I do and can always give me useful advice.*  
+**中文：** 我觉得我妈妈是一个非常可靠的人，因为每当我在生活中遇到问题时，她都比我有经验得多，而且总能给我有用的建议。
 
 比单独说 *My father is sociable.* 或 *My mum is reliable.* 更容易自然展开。
 
