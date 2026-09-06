@@ -111,13 +111,38 @@ Important model note:
 
 ## 6 · Free Voice and Free Chat · 免费入口
 
-`Free Voice` and `Chat` should share the **same domestic / free large-model backend** and the same IELTS topic-selection, progress and feedback logic.
+`Free Voice` and `Chat` share the **same free domestic LLM backend** and the same IELTS topic-selection, progress and feedback logic.
 
-- **Free Voice:** microphone → speech recognition → free domestic LLM → speech synthesis.
-- **Free Chat:** the same LLM backend, text interface only.
-- Target both **iPhone Safari** and **Android Chrome**.
-- Prioritise long-term zero-cost or genuinely usable free-tier components over premium real-time voice quality.
-- The exact domestic API / ASR / TTS provider is not fixed yet; do not hard-code a provider into the architecture until evaluated.
+### Current provider stack
+
+- **LLM:** Zhipu `glm-4.7-flash`.
+- **Realtime ASR:** Alibaba Cloud Model Studio / DashScope `paraformer-realtime-v2`.
+- **TTS:** browser `SpeechSynthesis`, default `en-GB` British English.
+- **Backend/security:** Cloudflare Worker; secrets stay server-side.
+
+The current Free Voice chain is:
+
+```text
+microphone
+→ browser mono PCM audio
+→ Cloudflare WebSocket proxy
+→ paraformer-realtime-v2
+→ recognised text
+→ GLM-4.7-Flash
+→ browser British-English TTS
+```
+
+Operational rules:
+
+- target both **iPhone Safari** and **Android Chrome**;
+- ask the browser for echo cancellation, noise suppression and automatic gain control;
+- keep the microphone active while the coach speaks so the learner can interrupt naturally;
+- suppress likely TTS echo before treating recognised text as a new learner turn;
+- use `en` + `zh` ASR language hints so normal English practice works while the Chinese end command can still be recognised;
+- use low-latency VAD-style sentence ending rather than long meeting-transcription segmentation;
+- prioritise long-term free usage over premium realtime voice quality.
+
+`Free Chat` skips ASR/TTS and uses the same GLM conversation and IELTS-review logic directly.
 
 ## 7 · IELTS-based review · 结束后的复盘
 
