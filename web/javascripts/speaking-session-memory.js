@@ -168,6 +168,16 @@
         }
       }
 
+      // Persist the user's outgoing turn immediately. This prevents the local
+      // session-restoration observer from briefly replacing the new bubble with
+      // the previous saved state while the model is still generating a reply.
+      writeSession(mode, {
+        sessionId: body.sessionId || saved?.sessionId,
+        topic: body.topic || saved?.topic,
+        sourceLabel: saved?.sourceLabel,
+        messages: merged
+      });
+
       const nextInit = { ...init, body: JSON.stringify({ ...body, messages: merged }) };
       const response = await originalFetch(input, nextInit);
 
@@ -211,6 +221,11 @@
     const visible = Array.from(container.querySelectorAll(".speaking-message p")).map(p => p.textContent);
     const target = messages.map(m => String(m.content || ""));
     if (visible.length === target.length && visible.every((v, i) => v === target[i])) return;
+
+    // While a new message has just been sent, the DOM may temporarily be one
+    // bubble ahead of localStorage. Never erase that newer visible bubble.
+    if (visible.length > target.length && target.every((v, i) => visible[i] === v)) return;
+
     container.innerHTML = "";
     messages.forEach(m => container.appendChild(createBubble(m.role, m.content)));
     container.scrollTop = container.scrollHeight;
