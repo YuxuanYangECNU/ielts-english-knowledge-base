@@ -140,9 +140,11 @@ Instead:
 
 - place the user's refined sentence directly below the matching pattern;
 - prefix that sentence with **★**;
+- add a **concise Chinese translation immediately below every ★ personal sentence**;
+- display ★ personal sentences as **normal Markdown text**, not blockquotes or code blocks, so they do not appear in a grey box;
 - use unmarked examples only as concise reference examples.
 
-This lets the user see the pattern and their own usable sentence together.
+This lets the user see the pattern, their own usable sentence and its meaning together.
 
 ### Sentence patterns matter more than isolated phrases
 
@@ -286,6 +288,7 @@ Before adding or updating a note, confirm:
 - Does it teach actual use?
 - Have generic examples been replaced by the user's own language where available?
 - Are personal sentences embedded beside the pattern they practise rather than isolated elsewhere?
+- Does every ★ personal sentence include a concise Chinese translation and avoid grey blockquote/code styling?
 - Are active and recognition-only words compactly distinguished without unnecessary extra sections?
 - Did I avoid importing unnecessary textbook content?
 - Did I check for overlap with existing notes?
