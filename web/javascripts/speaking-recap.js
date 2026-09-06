@@ -1,7 +1,9 @@
 (() => {
   const CHAT_RECAP_KEY = "ielts-speaking-chat-recaps-v1";
   const VOICE_RECAP_KEY = "ielts-speaking-voice-recaps-v1";
+  const STORY_BANK_KEY = "ielts-speaking-story-bank-v1";
   const REMOTE_CHAT_DIR = "https://api.github.com/repos/YuxuanYangECNU/ielts-english-knowledge-base/contents/knowledge/speaking/practice/practice-accumulation/chat";
+  const previousFetch = window.fetch.bind(window);
 
   function readList(key) {
     try {
@@ -12,8 +14,8 @@
     }
   }
 
-  function writeList(key, list) {
-    try { localStorage.setItem(key, JSON.stringify(list.slice(0, 100))); } catch (_) {}
+  function writeList(key, list, limit = 100) {
+    try { localStorage.setItem(key, JSON.stringify(list.slice(0, limit))); } catch (_) {}
   }
 
   function simpleHash(text) {
@@ -23,6 +25,19 @@
       h = Math.imul(h, 16777619);
     }
     return (h >>> 0).toString(36);
+  }
+
+  function cleanInline(text) {
+    return String(text || "")
+      .replace(/\*\*/g, "")
+      .replace(/`/g, "")
+      .replace(/^[-*•]\s*/, "")
+      .trim();
+  }
+
+  function truncate(text, max = 86) {
+    const value = cleanInline(text);
+    return value.length > max ? `${value.slice(0, max - 1)}…` : value;
   }
 
   function getTopic(root, mode) {
@@ -40,7 +55,7 @@
 
   function isRecapText(text) {
     const value = String(text || "");
-    return /###\s*(关键问题|更自然的表达|有用词汇与搭配|可复用故事|口语习惯|IELTS\s*迁移|本次亮点|下次重点|Key Mistakes|Better Expressions|Useful Vocabulary|Speaking Habits|IELTS Transfer|Next Focus)/i.test(value);
+    return /###\s*(关键问题|更自然的表达|有用词汇与搭配|可复用故事|口语习惯|IELTS\s*迁移|本次亮点|下次重点|Key Mistakes|Better Expressions|Useful Vocabulary|Reusable Stories|Speaking Habits|IELTS Transfer|Next Focus)/i.test(value);
   }
 
   function inlineFormat(text) {
@@ -95,6 +110,87 @@
     return sections.filter(section => section.items.length || section.title);
   }
 
+  function findSection(sections, names) {
+    return sections.find(section => names.some(name => new RegExp(name, "i").test(section.title)));
+  }
+
+  function mainIssueFromRecap(text) {
+    const sections = parseRecap(text);
+    for (const names of [["关键问题", "Key Mistakes"], ["下次重点", "Next Focus"], ["更自然的表达", "Better Expressions"]]) {
+      const section = findSection(sections, names);
+      if (section?.items?.length) return truncate(section.items[0], 82);
+    }
+    return "查看详细复盘";
+  }
+
+  function storyItemsFromRecap(text) {
+    const section = findSection(parseRecap(text), ["可复用故事", "Reusable Stories"]);
+    if (!section) return [];
+    return section.items
+      .map(item => cleanInline(item))
+      .filter(item => item.length >= 12)
+      .slice(0, 4);
+  }
+
+  function saveStories(topic, mode, recap, createdAt) {
+    const stories = storyItemsFromRecap(recap);
+    if (!stories.length) return;
+    const bank = readList(STORY_BANK_KEY);
+    stories.forEach(text => {
+      const id = simpleHash(`${topic}|${text}`);
+      if (bank.some(item => item.id === id)) return;
+      bank.unshift({
+        id,
+        topic: topic || "IELTS Speaking",
+        mode,
+        text,
+        createdAt: createdAt || new Date().toISOString()
+      });
+    });
+    writeList(STORY_BANK_KEY, bank, 120);
+  }
+
+  function storyContextForCoach() {
+    return readList(STORY_BANK_KEY)
+      .slice(0, 10)
+      .map(item => ({
+        topic: String(item.topic || "").slice(0, 100),
+        story: String(item.text || "").slice(0, 650)
+      }))
+      .filter(item => item.story);
+  }
+
+  async function parseJsonBody(input, init) {
+    try {
+      if (init && typeof init.body === "string") return JSON.parse(init.body);
+      if (input instanceof Request) {
+        const text = await input.clone().text();
+        return text ? JSON.parse(text) : null;
+      }
+    } catch (_) {}
+    return null;
+  }
+
+  // Reuse a small browser-local story bank in later website sessions without
+  // publishing it to the public GitHub repository.
+  window.fetch = async function speakingStoryAwareFetch(input, init = {}) {
+    let url;
+    try { url = new URL(typeof input === "string" ? input : input.url, window.location.href); }
+    catch (_) { return previousFetch(input, init); }
+
+    const method = String(init.method || (input instanceof Request ? input.method : "GET")).toUpperCase();
+    if (method === "POST" && (url.pathname.endsWith("/api/session/start") || url.pathname.endsWith("/api/chat"))) {
+      const body = await parseJsonBody(input, init);
+      if (body && !Array.isArray(body.storyBank)) {
+        const storyBank = storyContextForCoach();
+        if (storyBank.length) {
+          return previousFetch(input, { ...init, body: JSON.stringify({ ...body, storyBank }) });
+        }
+      }
+    }
+    return previousFetch(input, init);
+  };
+
   function makeRecapCard(text, topic, mode, dateLabel, remote = false) {
     const card = document.createElement("article");
     card.className = "speaking-recap-card";
@@ -132,20 +228,62 @@
     return card;
   }
 
+  function makeRecapEntry(item) {
+    const details = document.createElement("details");
+    details.className = "speaking-recap-entry";
+
+    const summary = document.createElement("summary");
+    summary.className = "speaking-recap-entry-summary";
+    const date = item.createdAt ? new Date(item.createdAt).toLocaleDateString("zh-CN") : "—";
+
+    const dateEl = document.createElement("span");
+    dateEl.className = "speaking-recap-entry-date";
+    dateEl.textContent = date;
+
+    const topicEl = document.createElement("strong");
+    topicEl.className = "speaking-recap-entry-topic";
+    topicEl.textContent = item.topic || "IELTS Speaking";
+
+    const issueEl = document.createElement("span");
+    issueEl.className = "speaking-recap-entry-issue";
+    issueEl.textContent = mainIssueFromRecap(item.recap);
+
+    const modeEl = document.createElement("span");
+    modeEl.className = "speaking-recap-entry-mode";
+    modeEl.textContent = item.mode === "voice" ? "Voice" : "Chat";
+
+    const arrow = document.createElement("span");
+    arrow.className = "speaking-recap-entry-arrow";
+    arrow.setAttribute("aria-hidden", "true");
+    arrow.textContent = "⌄";
+
+    summary.append(dateEl, topicEl, issueEl, modeEl, arrow);
+    details.appendChild(summary);
+
+    const detailBody = document.createElement("div");
+    detailBody.className = "speaking-recap-entry-detail";
+    detailBody.appendChild(makeRecapCard(item.recap, item.topic, item.mode || "chat", date, Boolean(item.remote)));
+    details.appendChild(detailBody);
+    return details;
+  }
+
   function saveRecap(mode, topic, text) {
     if (!text || !isRecapText(text)) return;
     const key = mode === "voice" ? VOICE_RECAP_KEY : CHAT_RECAP_KEY;
     const list = readList(key);
     const id = simpleHash(`${topic}|${text}`);
-    if (list.some(item => item.id === id)) return;
-    list.unshift({
-      id,
-      topic: topic || "IELTS Speaking",
-      mode,
-      recap: text,
-      createdAt: new Date().toISOString()
-    });
-    writeList(key, list);
+    const createdAt = new Date().toISOString();
+    if (!list.some(item => item.id === id)) {
+      list.unshift({
+        id,
+        topic: topic || "IELTS Speaking",
+        mode,
+        recap: text,
+        createdAt
+      });
+      writeList(key, list);
+    }
+    saveStories(topic, mode, text, createdAt);
     window.dispatchEvent(new CustomEvent("ielts-speaking-recap-saved", { detail: { mode, id } }));
   }
 
@@ -258,14 +396,16 @@
     const note = document.createElement("p");
     note.className = "speaking-recap-local-note";
     note.textContent = remote.length
-      ? "已合并当前浏览器记录与 GitHub 中已同步的 Chat 复盘。"
-      : "当前显示这个浏览器里已完成的 Chat 复盘；GitHub 自动写回启用后会跨设备保留。";
+      ? "已合并当前浏览器记录与 GitHub 中已同步的 Chat 复盘；点开一条记录查看详情。"
+      : "按时间查看每次 Chat 练习；点开一条记录查看完整复盘。";
     host.appendChild(note);
 
-    list.forEach(item => {
-      const date = item.createdAt ? new Date(item.createdAt).toLocaleDateString("zh-CN") : "";
-      host.appendChild(makeRecapCard(item.recap, item.topic, "chat", date, Boolean(item.remote)));
-    });
+    const head = document.createElement("div");
+    head.className = "speaking-recap-index-head";
+    head.innerHTML = "<span>日期</span><span>主题</span><span>主要问题</span><span>模式</span><span></span>";
+    host.appendChild(head);
+
+    list.forEach(item => host.appendChild(makeRecapEntry(item)));
   }
 
   function init() {
