@@ -148,8 +148,143 @@
 .speaking-chat-composer { display: flex; align-items: flex-end; gap: .55rem; padding: .8rem 1rem; border-top: 1px solid var(--atlas-border); }
 .speaking-chat-composer textarea { flex: 1; resize: vertical; min-height: 44px; max-height: 8rem; padding: .65rem .75rem; border: 1px solid var(--atlas-border); border-radius: 14px; background: var(--md-default-bg-color); color: var(--md-default-fg-color); font: inherit; font-size: .78rem; }
 .speaking-chat-footer { display: flex; flex-wrap: wrap; gap: .35rem .8rem; padding: .55rem 1rem .85rem; color: var(--md-default-fg-color--lighter); font-size: .62rem; }
+
+/* Polished Free Voice primary action */
+.speaking-voice-status-card {
+  min-height: 2.35rem;
+  padding: .55rem .72rem;
+  border: 1px solid var(--atlas-border);
+  border-radius: 12px;
+  background: var(--md-default-bg-color);
+}
+.speaking-voice-actions-polished {
+  align-items: stretch;
+  margin: .15rem 0 .25rem;
+}
+.speaking-voice-start {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .75rem;
+  min-height: 58px;
+  min-width: min(100%, 18rem);
+  padding: .68rem 1.05rem;
+  border: 0;
+  border-radius: 18px;
+  background: linear-gradient(180deg, #1684f8 0%, #0066cc 100%);
+  color: #fff;
+  box-shadow: 0 10px 24px rgba(0, 102, 204, .22), inset 0 1px 0 rgba(255,255,255,.24);
+  cursor: pointer;
+  font: inherit;
+  transition: transform .16s ease, box-shadow .16s ease, filter .16s ease;
+}
+.speaking-voice-start:disabled {
+  opacity: .5;
+  cursor: not-allowed;
+  filter: saturate(.55);
+}
+.speaking-voice-start-copy {
+  display: grid;
+  gap: .06rem;
+  text-align: left;
+}
+.speaking-voice-start-copy strong { font-size: .76rem; line-height: 1.25; }
+.speaking-voice-start-copy small { font-size: .58rem; font-weight: 500; opacity: .82; }
+.speaking-mic-icon {
+  position: relative;
+  width: 1.05rem;
+  height: 1.35rem;
+  border: 2px solid currentColor;
+  border-radius: .65rem;
+  flex: 0 0 auto;
+}
+.speaking-mic-icon::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -.45rem;
+  width: .7rem;
+  height: .48rem;
+  border: 2px solid currentColor;
+  border-top: 0;
+  border-radius: 0 0 .55rem .55rem;
+  transform: translateX(-50%);
+}
+.speaking-mic-icon::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -.66rem;
+  width: .62rem;
+  height: 2px;
+  border-radius: 999px;
+  background: currentColor;
+  transform: translateX(-50%);
+}
+.speaking-stop-button {
+  min-height: 58px;
+  border-radius: 18px;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+/* WeChat-inspired Free Chat shell: familiar spacing without cloning brand assets. */
+.speaking-chat-wechat { background: #f3f3f3; }
+[data-md-color-scheme="slate"] .speaking-chat-wechat { background: #18181c; }
+.speaking-chat-contact { display: flex; align-items: center; gap: .72rem; min-width: 0; }
+.speaking-chat-contact-avatar {
+  display: grid;
+  place-items: center;
+  width: 2.45rem;
+  height: 2.45rem;
+  border-radius: 10px;
+  background: #07c160;
+  color: #fff;
+  font-size: .65rem;
+  font-weight: 750;
+  letter-spacing: .02em;
+  flex: 0 0 auto;
+}
+.speaking-chat-contact h2 { margin: 0; }
+.speaking-chat-contact-subtitle { display: block; margin-top: .08rem; font-size: .62rem; color: var(--md-default-fg-color--lighter); }
+.speaking-chat-wechat .speaking-chat-header { background: var(--atlas-surface); }
+.speaking-chat-wechat .speaking-chat-topic { margin: .65rem .85rem 0; border-radius: 10px; background: rgba(255,255,255,.72); }
+[data-md-color-scheme="slate"] .speaking-chat-wechat .speaking-chat-topic { background: rgba(255,255,255,.05); }
+.speaking-chat-wechat .speaking-chat-messages { padding: 1rem .9rem 1.2rem; gap: .85rem; }
+.speaking-chat-wechat .speaking-message { position: relative; border-radius: 9px; box-shadow: 0 1px 2px rgba(0,0,0,.045); }
+.speaking-chat-wechat .speaking-message-ai { background: #fff; }
+.speaking-chat-wechat .speaking-message-user { background: #95ec69; border-color: rgba(0,0,0,.04); color: #111; }
+[data-md-color-scheme="slate"] .speaking-chat-wechat .speaking-message-ai { background: #26262c; }
+[data-md-color-scheme="slate"] .speaking-chat-wechat .speaking-message-user { background: #2d8f54; color: #fff; }
+.speaking-chat-wechat .speaking-message-label { display: none; }
+.speaking-chat-wechat .speaking-chat-composer { background: var(--atlas-surface); padding: .7rem .8rem; }
+.speaking-chat-wechat .speaking-chat-composer textarea {
+  resize: none;
+  border-radius: 10px;
+  border-color: transparent;
+  background: var(--md-default-bg-color);
+  min-height: 46px;
+}
+.speaking-chat-wechat .speaking-chat-composer textarea:focus { border-color: var(--atlas-border); outline: none; }
+.speaking-chat-send {
+  min-width: 4.1rem;
+  min-height: 46px;
+  padding: .55rem .9rem;
+  border: 0;
+  border-radius: 10px;
+  background: #07c160;
+  color: #fff;
+  font: inherit;
+  font-size: .7rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+.speaking-chat-send:disabled { opacity: .45; cursor: not-allowed; }
+.speaking-chat-wechat .speaking-chat-footer { background: var(--atlas-surface); border-top: 1px solid var(--atlas-border); }
+
 @media (hover: hover) and (prefers-reduced-motion: no-preference) {
   .speaking-practice-card:hover { transform: translateY(-3px); border-color: var(--md-typeset-a-color); }
+  .speaking-voice-start:hover:not(:disabled) { transform: translateY(-2px); box-shadow: 0 13px 30px rgba(0,102,204,.28), inset 0 1px 0 rgba(255,255,255,.26); }
 }
 @media screen and (max-width: 59.984375em) {
   .speaking-practice-grid { grid-template-columns: 1fr; }
@@ -165,4 +300,8 @@
   .speaking-chat-composer { padding: .7rem; }
   .speaking-voice-live-header { align-items: flex-start; flex-direction: column; gap: .15rem; }
   .speaking-voice-messages { max-height: 18rem; }
+  .speaking-voice-actions-polished { flex-direction: column; }
+  .speaking-voice-start, .speaking-stop-button { width: 100%; }
+  .speaking-chat-wechat .speaking-chat-header { flex-direction: row; align-items: center; }
+  .speaking-chat-wechat .speaking-status-row { font-size: .6rem; }
 }
