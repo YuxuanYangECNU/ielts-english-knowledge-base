@@ -61,6 +61,7 @@ extra_javascript:
   - javascripts/vocabulary.js
   - javascripts/speaking-config.js
   - javascripts/speaking-practice.js
+  - javascripts/voice-diagnostics.js
 
 nav:
   - Home: index.md
