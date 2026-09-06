@@ -63,6 +63,80 @@
   letter-spacing: -0.005em;
 }
 
+/* Vocabulary tracker */
+.vocab-summary {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: .8rem;
+  margin: 1rem 0 1.2rem;
+}
+.vocab-summary > div {
+  padding: 1rem 1.05rem;
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: 16px;
+  background: var(--md-code-bg-color);
+}
+.vocab-summary strong {
+  display: block;
+  font-size: 1.45rem;
+  line-height: 1.15;
+}
+.vocab-summary span {
+  display: block;
+  margin-top: .28rem;
+  color: var(--md-default-fg-color--light);
+  font-size: .78rem;
+}
+.vocab-controls {
+  display: grid;
+  grid-template-columns: minmax(220px, 1.5fr) minmax(150px, .8fr) minmax(170px, .9fr) auto;
+  gap: .65rem;
+  align-items: center;
+  margin: 1rem 0;
+}
+.vocab-controls input,
+.vocab-controls select,
+.mastery-select {
+  width: 100%;
+  min-height: 42px;
+  padding: .5rem .65rem;
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: 12px;
+  background: var(--md-default-bg-color);
+  color: var(--md-default-fg-color);
+  font: inherit;
+}
+.vocab-note {
+  margin: .8rem 0 1rem;
+  padding: .85rem 1rem;
+  border-left: 4px solid var(--md-accent-fg-color);
+  border-radius: 10px;
+  background: var(--md-code-bg-color);
+}
+.vocab-table-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: 14px;
+}
+#vocab-table {
+  min-width: 860px;
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0;
+}
+#vocab-table th {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  white-space: nowrap;
+}
+#vocab-table td:nth-child(1) { width: 64px; text-align: center; }
+#vocab-table td:nth-child(3) { white-space: nowrap; }
+#vocab-table td:nth-child(5) { min-width: 145px; }
+#vocab-table td:nth-child(6) { min-width: 150px; white-space: nowrap; }
+#vocab-table tr[hidden] { display: none; }
+.weekly-flag { font-weight: 650; }
+
 @media screen and (max-width: 44.984375em) {
   .md-content h1 {
     font-size: 2rem;
@@ -70,5 +144,18 @@
 
   .atlas-focus {
     padding: 1rem;
+  }
+
+  .vocab-summary {
+    grid-template-columns: 1fr;
+  }
+
+  .vocab-controls {
+    grid-template-columns: 1fr;
+  }
+
+  .vocab-controls .md-button {
+    width: 100%;
+    text-align: center;
   }
 }
