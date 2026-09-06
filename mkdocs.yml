@@ -75,11 +75,9 @@ nav:
               - People & Relationships: knowledge/speaking-topics/people-and-relationships.md
       - Practice:
           - knowledge/speaking/practice/README.md
-          - Voice:
-              - knowledge/speaking/practice/voice.md
-              - Free Voice: knowledge/speaking/practice/free-voice.md
-              - ChatGPT Voice: knowledge/speaking/practice/chatgpt-voice.md
           - Chat: knowledge/speaking/practice/chat.md
+          - Free Voice: knowledge/speaking/practice/free-voice.md
+          - ChatGPT Voice: knowledge/speaking/practice/chatgpt-voice.md
           - Practice Accumulation:
               - Overview: knowledge/speaking/practice/practice-accumulation/README.md
               - Voice Accumulation: knowledge/speaking/practice/practice-accumulation/voice/README.md
