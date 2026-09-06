@@ -6,7 +6,7 @@
 
 ## Review queue
 
-_No review items yet._
+- **To practise** — [Accommodation & Renting — Listening Vocabulary](../listening/accommodation-renting.md): recall the room types, house areas, household equipment and key contrasts without looking.
 
 ## Practice pattern
 
