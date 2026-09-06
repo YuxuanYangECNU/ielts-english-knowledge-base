@@ -238,8 +238,8 @@
       const topic = voiceRoot.querySelector("[data-voice-topic]");
       if (topic) topic.textContent = `Today’s IELTS topic: ${voice.topic} · saved session`;
       restoreMessages(voiceRoot.querySelector("[data-voice-messages]"), voice.messages);
-      const strong = voiceRoot.querySelector("[data-voice-start-copy] strong");
-      const small = voiceRoot.querySelector("[data-voice-start-copy] small");
+      const strong = voiceRoot.querySelector(".speaking-voice-start-copy strong");
+      const small = voiceRoot.querySelector(".speaking-voice-start-copy small");
       if (strong) strong.textContent = "Resume Free Voice";
       if (small) small.textContent = "Continue your previous topic";
     }
