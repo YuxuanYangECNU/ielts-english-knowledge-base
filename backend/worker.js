@@ -1,5 +1,13 @@
 const ZHIPU_URL = "https://open.bigmodel.cn/api/paas/v4/chat/completions";
 const MODEL = "glm-4.7-flash";
+const ASR_MODEL = "paraformer-realtime-v2";
+const DASHSCOPE_ASR_URL = "https://dashscope.aliyuncs.com/api-ws/v1/inference";
+
+const ALLOWED_ORIGINS = [
+  "https://yuxuanyangecnu.github.io",
+  "http://localhost:8000",
+  "http://127.0.0.1:8000"
+];
 
 const FALLBACK_TOPICS = [
   "People & relationships",
@@ -9,14 +17,13 @@ const FALLBACK_TOPICS = [
   "Travel & places"
 ];
 
+function isAllowedOrigin(origin) {
+  return !origin || ALLOWED_ORIGINS.includes(origin);
+}
+
 function corsHeaders(origin) {
-  const allowed = [
-    "https://yuxuanyangecnu.github.io",
-    "http://localhost:8000",
-    "http://127.0.0.1:8000"
-  ];
   return {
-    "Access-Control-Allow-Origin": allowed.includes(origin) ? origin : allowed[0],
+    "Access-Control-Allow-Origin": ALLOWED_ORIGINS.includes(origin) ? origin : ALLOWED_ORIGINS[0],
     "Access-Control-Allow-Headers": "Content-Type",
     "Access-Control-Allow-Methods": "GET,POST,OPTIONS",
     "Vary": "Origin"
@@ -117,17 +124,108 @@ Use these sections only when useful:
 Next Focus must contain only 1–2 highest-impact priorities. Do not force a numerical band score unless the session was exam-like enough to justify it. Do not save or reproduce the full transcript.`;
 }
 
+function isEndCommand(text) {
+  return String(text || "")
+    .trim()
+    .replace(/[。.!！?？,，\s]+$/g, "") === "结束今天的练习";
+}
+
+function safeClose(socket, code = 1000, reason = "") {
+  try {
+    if (socket && socket.readyState < 2) socket.close(code, reason.slice(0, 120));
+  } catch (_) {}
+}
+
+async function handleAsrWebSocket(request, env) {
+  const origin = request.headers.get("Origin") || "";
+  if (!isAllowedOrigin(origin)) return new Response("Forbidden", { status: 403 });
+  if (!env.DASHSCOPE_API_KEY) return new Response("DASHSCOPE_API_KEY is missing", { status: 500 });
+
+  const upgrade = request.headers.get("Upgrade");
+  if (!upgrade || upgrade.toLowerCase() !== "websocket") {
+    return new Response("Expected Upgrade: websocket", { status: 426 });
+  }
+
+  const upstreamResponse = await fetch(DASHSCOPE_ASR_URL, {
+    headers: {
+      "Upgrade": "websocket",
+      "Authorization": `Bearer ${env.DASHSCOPE_API_KEY}`,
+      "User-Agent": "ielts-speaking-atlas/1.0"
+    }
+  });
+
+  const upstream = upstreamResponse.webSocket;
+  if (!upstream) {
+    return new Response(`ASR upstream rejected WebSocket (${upstreamResponse.status})`, { status: 502 });
+  }
+
+  const pair = new WebSocketPair();
+  const [client, server] = Object.values(pair);
+
+  server.accept({ allowHalfOpen: true });
+  upstream.accept({ allowHalfOpen: true });
+  server.binaryType = "arraybuffer";
+  upstream.binaryType = "arraybuffer";
+
+  server.addEventListener("message", event => {
+    try {
+      if (upstream.readyState === 1) upstream.send(event.data);
+    } catch (_) {
+      safeClose(server, 1011, "ASR upstream send failed");
+    }
+  });
+
+  upstream.addEventListener("message", event => {
+    try {
+      if (server.readyState === 1) server.send(event.data);
+    } catch (_) {
+      safeClose(upstream, 1011, "Client send failed");
+    }
+  });
+
+  server.addEventListener("close", event => {
+    safeClose(upstream, event.code || 1000, event.reason || "client closed");
+    safeClose(server, event.code || 1000, event.reason || "client closed");
+  });
+
+  upstream.addEventListener("close", event => {
+    safeClose(server, event.code || 1000, event.reason || "ASR closed");
+    safeClose(upstream, event.code || 1000, event.reason || "ASR closed");
+  });
+
+  server.addEventListener("error", () => {
+    safeClose(upstream, 1011, "client socket error");
+    safeClose(server, 1011, "client socket error");
+  });
+
+  upstream.addEventListener("error", () => {
+    safeClose(server, 1011, "ASR socket error");
+    safeClose(upstream, 1011, "ASR socket error");
+  });
+
+  return new Response(null, { status: 101, webSocket: client });
+}
+
 export default {
   async fetch(request, env) {
     const origin = request.headers.get("Origin") || "";
     const url = new URL(request.url);
+
+    if (url.pathname === "/api/asr") {
+      return handleAsrWebSocket(request, env);
+    }
 
     if (request.method === "OPTIONS") {
       return new Response(null, { status: 204, headers: corsHeaders(origin) });
     }
 
     if (url.pathname === "/health" && request.method === "GET") {
-      return json({ ok: true, model: MODEL }, 200, origin);
+      return json({
+        ok: true,
+        model: MODEL,
+        asrModel: ASR_MODEL,
+        asrConfigured: Boolean(env.DASHSCOPE_API_KEY)
+      }, 200, origin);
     }
 
     if (url.pathname === "/api/session/start" && request.method === "POST") {
@@ -162,7 +260,7 @@ export default {
           .slice(-30)
           .map(m => ({ role: m.role, content: m.content.slice(0, 5000) }));
 
-        const ended = messages.some(m => m.role === "user" && m.content.trim() === "结束今天的练习");
+        const ended = messages.some(m => m.role === "user" && isEndCommand(m.content));
         const system = ended ? reviewSystemPrompt(topic, mode) : conversationSystemPrompt(topic, mode);
         const reply = await callGLM(env, [{ role: "system", content: system }, ...messages], ended ? 0.45 : 0.82);
 
