@@ -57,6 +57,7 @@ extra_css:
   - stylesheets/speaking-hub.css
   - stylesheets/speaking-practice.css
   - stylesheets/speaking-chat-wechat.css
+  - stylesheets/speaking-chat-controls.css
 
 extra_javascript:
   - javascripts/vocabulary.js
