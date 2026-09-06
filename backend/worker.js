@@ -136,6 +136,45 @@ function safeClose(socket, code = 1000, reason = "") {
   } catch (_) {}
 }
 
+async function checkAsrUpstream(env) {
+  if (!env.DASHSCOPE_API_KEY) {
+    return { ok: false, status: 500, code: "ASR_SECRET_MISSING", detail: "DASHSCOPE_API_KEY is missing" };
+  }
+
+  try {
+    const response = await fetch(DASHSCOPE_ASR_URL, {
+      headers: {
+        "Upgrade": "websocket",
+        "Authorization": `Bearer ${env.DASHSCOPE_API_KEY}`,
+        "User-Agent": "ielts-speaking-atlas/1.0"
+      }
+    });
+
+    const socket = response.webSocket;
+    if (!socket) {
+      let detail = "";
+      try { detail = await response.text(); } catch (_) {}
+      return {
+        ok: false,
+        status: response.status || 502,
+        code: "ASR_HANDSHAKE_REJECTED",
+        detail: detail.slice(0, 240)
+      };
+    }
+
+    socket.accept();
+    safeClose(socket, 1000, "preflight");
+    return { ok: true, status: 200, code: "ASR_READY" };
+  } catch (error) {
+    return {
+      ok: false,
+      status: 502,
+      code: "ASR_UPSTREAM_ERROR",
+      detail: String(error?.message || error).slice(0, 240)
+    };
+  }
+}
+
 async function handleAsrWebSocket(request, env) {
   const origin = request.headers.get("Origin") || "";
   if (!isAllowedOrigin(origin)) return new Response("Forbidden", { status: 403 });
@@ -226,6 +265,17 @@ export default {
         asrModel: ASR_MODEL,
         asrConfigured: Boolean(env.DASHSCOPE_API_KEY)
       }, 200, origin);
+    }
+
+    if (url.pathname === "/api/asr/check" && request.method === "GET") {
+      if (!isAllowedOrigin(origin)) return json({ ok: false, code: "FORBIDDEN" }, 403, origin);
+      const result = await checkAsrUpstream(env);
+      return json({
+        ok: result.ok,
+        code: result.code,
+        detail: result.detail || null,
+        asrModel: ASR_MODEL
+      }, result.ok ? 200 : result.status, origin);
     }
 
     if (url.pathname === "/api/session/start" && request.method === "POST") {
