@@ -1,0 +1,75 @@
+/* Final overrides for persistent Free Chat controls. */
+.speaking-chat-wechat .speaking-chat-footer {
+  min-height: 42px;
+  padding: 6px 10px;
+  border-top: 1px solid rgba(0,0,0,.06);
+}
+
+.speaking-chat-wechat .speaking-chat-keyhint {
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.speaking-chat-wechat .speaking-chat-end {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 30px;
+  padding: 5px 11px;
+  border: 1px solid #d9d9d9;
+  border-radius: 6px;
+  background: #fff;
+  color: #666;
+  font: inherit;
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: 0 1px 1px rgba(0,0,0,.025);
+  transition: background .15s ease, border-color .15s ease, color .15s ease;
+}
+
+.speaking-chat-wechat .speaking-chat-end:hover:not(:disabled) {
+  border-color: #e0a1a1;
+  background: #fff7f7;
+  color: #c43d3d;
+}
+
+.speaking-chat-wechat .speaking-chat-end:disabled {
+  opacity: .45;
+  cursor: default;
+}
+
+[data-md-color-scheme="slate"] .speaking-chat-wechat .speaking-chat-end {
+  border-color: rgba(255,255,255,.14);
+  background: #34353a;
+  color: #c8c8ca;
+}
+
+[data-md-color-scheme="slate"] .speaking-chat-wechat .speaking-chat-end:hover:not(:disabled) {
+  border-color: rgba(255,120,120,.45);
+  background: rgba(255,90,90,.08);
+  color: #ff9b9b;
+}
+
+@media screen and (max-width: 44.984375em) {
+  .speaking-chat-wechat .speaking-chat-footer {
+    justify-content: flex-end;
+    overflow: visible;
+  }
+
+  /* The keyboard hint is desktop-only; keep the end control visible on phones. */
+  .speaking-chat-wechat .speaking-chat-keyhint {
+    display: none;
+  }
+
+  .speaking-chat-wechat .speaking-chat-end {
+    min-height: 32px;
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+}
