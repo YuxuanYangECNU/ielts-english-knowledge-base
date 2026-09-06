@@ -1,0 +1,367 @@
+/* Free Chat: WeChat-style conversation shell. Uses familiar layout/spacing without brand assets. */
+.speaking-chat-wechat {
+  width: min(100%, 760px);
+  height: min(74vh, 760px);
+  min-height: 560px;
+  margin: 1rem auto 1.25rem;
+  display: grid;
+  grid-template-rows: auto auto minmax(0, 1fr) auto auto;
+  overflow: hidden;
+  border: 1px solid rgba(0,0,0,.08);
+  border-radius: 16px;
+  background: #ededed;
+  box-shadow: 0 14px 40px rgba(0,0,0,.08);
+}
+
+.speaking-chat-wechat .speaking-chat-header {
+  min-height: 64px;
+  padding: .72rem .9rem;
+  border-bottom: 1px solid rgba(0,0,0,.07);
+  background: #f7f7f7;
+}
+
+.speaking-chat-wechat .speaking-chat-contact {
+  gap: .62rem;
+}
+
+.speaking-chat-wechat .speaking-chat-contact-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 7px;
+  background: #07c160;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.speaking-chat-wechat .speaking-chat-contact h2 {
+  margin: 0;
+  color: #1f1f1f;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.speaking-chat-wechat .speaking-chat-contact-subtitle {
+  margin-top: 2px;
+  color: #8b8b8b;
+  font-size: 11px;
+}
+
+.speaking-chat-wechat .speaking-status-row {
+  color: #8b8b8b;
+  font-size: 11px;
+}
+
+.speaking-chat-wechat .speaking-chat-topic {
+  margin: 10px 12px 0;
+  padding: 9px 12px;
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  border: 0;
+  border-radius: 8px;
+  background: rgba(255,255,255,.64);
+  box-shadow: none;
+}
+
+.speaking-chat-wechat .speaking-chat-topic strong {
+  flex: 0 0 auto;
+  color: #5f5f5f;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.speaking-chat-wechat .speaking-chat-topic span {
+  overflow: hidden;
+  color: #888;
+  font-size: 11px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.speaking-chat-wechat .speaking-chat-messages {
+  min-height: 0;
+  max-height: none;
+  padding: 18px 16px 22px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  background: #ededed;
+  scrollbar-width: thin;
+}
+
+.speaking-chat-wechat .speaking-message {
+  position: relative;
+  max-width: min(72%, 520px);
+  padding: 10px 12px;
+  border: 0;
+  border-radius: 5px;
+  box-shadow: none;
+  color: #181818;
+  font-size: 14px;
+  line-height: 1.55;
+  overflow-wrap: anywhere;
+}
+
+.speaking-chat-wechat .speaking-message p {
+  margin: 0;
+  white-space: pre-wrap;
+}
+
+.speaking-chat-wechat .speaking-message-label {
+  display: none;
+}
+
+.speaking-chat-wechat .speaking-message-ai {
+  align-self: flex-start;
+  margin-left: 46px;
+  background: #fff;
+}
+
+.speaking-chat-wechat .speaking-message-ai::before {
+  content: "AI";
+  position: absolute;
+  top: 0;
+  left: -46px;
+  width: 36px;
+  height: 36px;
+  display: grid;
+  place-items: center;
+  border-radius: 5px;
+  background: #07c160;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.speaking-chat-wechat .speaking-message-ai::after {
+  content: "";
+  position: absolute;
+  top: 12px;
+  left: -6px;
+  width: 0;
+  height: 0;
+  border-top: 6px solid transparent;
+  border-bottom: 6px solid transparent;
+  border-right: 7px solid #fff;
+}
+
+.speaking-chat-wechat .speaking-message-user {
+  align-self: flex-end;
+  margin-right: 46px;
+  background: #95ec69;
+  color: #111;
+}
+
+.speaking-chat-wechat .speaking-message-user::before {
+  content: "Me";
+  position: absolute;
+  top: 0;
+  right: -46px;
+  width: 36px;
+  height: 36px;
+  display: grid;
+  place-items: center;
+  border-radius: 5px;
+  background: #d8d8d8;
+  color: #555;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.speaking-chat-wechat .speaking-message-user::after {
+  content: "";
+  position: absolute;
+  top: 12px;
+  right: -6px;
+  width: 0;
+  height: 0;
+  border-top: 6px solid transparent;
+  border-bottom: 6px solid transparent;
+  border-left: 7px solid #95ec69;
+}
+
+.speaking-chat-wechat .speaking-chat-composer {
+  min-height: 68px;
+  padding: 10px 12px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 10px;
+  align-items: end;
+  border-top: 1px solid rgba(0,0,0,.07);
+  background: #f7f7f7;
+}
+
+.speaking-chat-wechat .speaking-chat-composer textarea {
+  width: 100%;
+  min-height: 44px;
+  max-height: 132px;
+  padding: 11px 12px;
+  resize: none;
+  overflow-y: auto;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  outline: none;
+  background: #fff;
+  color: #1b1b1b;
+  box-shadow: none;
+  font: inherit;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.speaking-chat-wechat .speaking-chat-composer textarea:focus {
+  border-color: #d7d7d7;
+}
+
+.speaking-chat-wechat .speaking-chat-send {
+  min-width: 64px;
+  height: 38px;
+  margin-bottom: 3px;
+  padding: 0 15px;
+  border: 0;
+  border-radius: 4px;
+  background: #07c160;
+  color: #fff;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.speaking-chat-wechat .speaking-chat-send:hover:not(:disabled) {
+  background: #06ad56;
+}
+
+.speaking-chat-wechat .speaking-chat-send:disabled {
+  opacity: .45;
+  cursor: default;
+}
+
+.speaking-chat-wechat .speaking-chat-footer {
+  min-height: 30px;
+  padding: 5px 12px 7px;
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  border: 0;
+  background: #f7f7f7;
+  color: #9a9a9a;
+  font-size: 10px;
+}
+
+.speaking-chat-keyhint {
+  opacity: .9;
+}
+
+[data-md-color-scheme="slate"] .speaking-chat-wechat {
+  border-color: rgba(255,255,255,.08);
+  background: #1f2023;
+}
+[data-md-color-scheme="slate"] .speaking-chat-wechat .speaking-chat-header,
+[data-md-color-scheme="slate"] .speaking-chat-wechat .speaking-chat-composer,
+[data-md-color-scheme="slate"] .speaking-chat-wechat .speaking-chat-footer {
+  background: #27282c;
+  border-color: rgba(255,255,255,.07);
+}
+[data-md-color-scheme="slate"] .speaking-chat-wechat .speaking-chat-messages {
+  background: #1f2023;
+}
+[data-md-color-scheme="slate"] .speaking-chat-wechat .speaking-chat-contact h2,
+[data-md-color-scheme="slate"] .speaking-chat-wechat .speaking-message {
+  color: #f2f2f2;
+}
+[data-md-color-scheme="slate"] .speaking-chat-wechat .speaking-chat-topic {
+  background: rgba(255,255,255,.055);
+}
+[data-md-color-scheme="slate"] .speaking-chat-wechat .speaking-message-ai {
+  background: #303136;
+}
+[data-md-color-scheme="slate"] .speaking-chat-wechat .speaking-message-ai::after {
+  border-right-color: #303136;
+}
+[data-md-color-scheme="slate"] .speaking-chat-wechat .speaking-message-user {
+  background: #2d8f54;
+}
+[data-md-color-scheme="slate"] .speaking-chat-wechat .speaking-message-user::after {
+  border-left-color: #2d8f54;
+}
+[data-md-color-scheme="slate"] .speaking-chat-wechat .speaking-chat-composer textarea {
+  border-color: transparent;
+  background: #34353a;
+  color: #fff;
+}
+
+@media screen and (max-width: 44.984375em) {
+  .speaking-chat-wechat {
+    width: calc(100% + 1.2rem);
+    height: calc(100dvh - 9.5rem);
+    min-height: 540px;
+    margin-left: -.6rem;
+    margin-right: -.6rem;
+    border-radius: 12px;
+  }
+  .speaking-chat-wechat .speaking-chat-header {
+    min-height: 58px;
+    padding: 8px 10px;
+  }
+  .speaking-chat-wechat .speaking-chat-contact-avatar {
+    width: 36px;
+    height: 36px;
+  }
+  .speaking-chat-wechat .speaking-chat-contact-subtitle {
+    display: none;
+  }
+  .speaking-chat-wechat .speaking-status-row {
+    max-width: 110px;
+    justify-content: flex-end;
+    text-align: right;
+  }
+  .speaking-chat-wechat .speaking-chat-topic {
+    margin: 8px 9px 0;
+  }
+  .speaking-chat-wechat .speaking-chat-messages {
+    padding: 14px 10px 18px;
+  }
+  .speaking-chat-wechat .speaking-message {
+    max-width: 76%;
+    font-size: 14px;
+  }
+  .speaking-chat-wechat .speaking-message-ai {
+    margin-left: 42px;
+  }
+  .speaking-chat-wechat .speaking-message-user {
+    margin-right: 42px;
+  }
+  .speaking-chat-wechat .speaking-message-ai::before {
+    left: -42px;
+    width: 34px;
+    height: 34px;
+  }
+  .speaking-chat-wechat .speaking-message-user::before {
+    right: -42px;
+    width: 34px;
+    height: 34px;
+  }
+  .speaking-chat-wechat .speaking-chat-composer {
+    min-height: 62px;
+    padding: 8px;
+    gap: 8px;
+  }
+  .speaking-chat-wechat .speaking-chat-composer textarea {
+    min-height: 42px;
+    padding: 10px;
+  }
+  .speaking-chat-wechat .speaking-chat-send {
+    min-width: 56px;
+    height: 36px;
+    padding: 0 12px;
+  }
+  .speaking-chat-wechat .speaking-chat-footer {
+    justify-content: flex-start;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+}
