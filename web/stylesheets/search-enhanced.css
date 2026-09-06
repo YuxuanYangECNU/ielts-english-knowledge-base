@@ -1,0 +1,21 @@
+.atlas-search-result .md-search-result__article {
+  position: relative;
+}
+
+.atlas-search-badge {
+  display: inline-flex;
+  align-items: center;
+  min-height: 20px;
+  margin: 0 0 .28rem;
+  padding: 2px 7px;
+  border-radius: 999px;
+  background: var(--atlas-focus, rgba(0,102,204,.08));
+  color: var(--md-typeset-a-color);
+  font-size: .56rem;
+  font-weight: 700;
+  letter-spacing: .025em;
+}
+
+.atlas-search-result .md-search-result__title {
+  margin-top: 0;
+}
