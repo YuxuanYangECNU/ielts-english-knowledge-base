@@ -16,8 +16,8 @@ Speaking
 │
 └── Practice
     ├── Voice
-    │   ├── ChatGPT Voice
-    │   └── Free Voice
+    │   ├── Free Voice
+    │   └── ChatGPT Voice
     ├── Chat
     │   └── Free Chat only
     └── Practice Accumulation
@@ -32,6 +32,7 @@ Important distinctions:
 - Do **not** pre-create a complete IELTS topic taxonomy. Add a topic page only when the user actually studies that topic.
 - Material generated from Practice must **not** be merged automatically into the main Accumulation area.
 - `Chat` has only the free-model route; do not add a separate ChatGPT Chat branch unless the user later requests it.
+- The **Voice** page is a mode-selection landing page. Show **Free Voice first**, then **ChatGPT Voice**. Do not render both full voice interfaces on the same page.
 
 ## 2 · Practice purpose · 实战目标
 
@@ -180,7 +181,7 @@ Do not add sections merely to fill a template. If there is little useful content
 
 - Do **not** force a numerical band estimate onto every casual conversation.
 - For normal practice, identify what currently helps or limits performance under the four IELTS criteria.
-- Give a band estimate only for a sufficiently exam-like Part 1 / 2 / 3 mock or when the user explicitly asks for one.
+- Give a band estimate only for a sufficiently exam-like Part 1 / 2 / Part 3 mock or when the user explicitly asks for one.
 
 ## 8 · Progress tracking · 长期进度
 
