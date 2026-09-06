@@ -3,6 +3,7 @@ const MODEL = "glm-4.7-flash";
 const ASR_MODEL = "paraformer-realtime-v2";
 const DASHSCOPE_ASR_URL = "https://dashscope.aliyuncs.com/api-ws/v1/inference";
 const DEPLOYMENT_MARKER = "secrets-file-v2";
+const GITHUB_REPO = "YuxuanYangECNU/ielts-english-knowledge-base";
 
 const ALLOWED_ORIGINS = [
   "https://yuxuanyangecnu.github.io",
@@ -144,6 +145,76 @@ function safeClose(socket, code = 1000, reason = "") {
   } catch (_) {}
 }
 
+function chinaDate() {
+  return new Intl.DateTimeFormat("en-CA", {
+    timeZone: "Asia/Shanghai",
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit"
+  }).format(new Date());
+}
+
+function slugify(value) {
+  return String(value || "ielts-speaking")
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "")
+    .slice(0, 48) || "ielts-speaking";
+}
+
+function utf8ToBase64(value) {
+  const bytes = new TextEncoder().encode(value);
+  let binary = "";
+  for (let i = 0; i < bytes.length; i += 0x8000) {
+    binary += String.fromCharCode(...bytes.subarray(i, i + 0x8000));
+  }
+  return btoa(binary);
+}
+
+async function syncRecapToGitHub(env, { sessionId, topic, mode, recap }) {
+  if (!env.GITHUB_RECAP_TOKEN) {
+    return { ok: false, skipped: true, code: "GITHUB_RECAP_TOKEN_MISSING" };
+  }
+
+  const date = chinaDate();
+  const folder = mode === "voice"
+    ? "knowledge/speaking/practice/practice-accumulation/voice"
+    : "knowledge/speaking/practice/practice-accumulation/chat";
+  const shortId = String(sessionId || crypto.randomUUID()).replace(/[^a-zA-Z0-9]/g, "").slice(0, 8).toLowerCase();
+  const filename = `${date}-${slugify(topic)}-${shortId}.md`;
+  const path = `${folder}/${filename}`;
+  const meta = JSON.stringify({ date, topic, mode, sessionId: sessionId || null });
+  const markdown = `<!-- IELTS_RECAP_META ${meta} -->\n\n# ${date} · ${topic}\n\n**Mode:** ${mode === "voice" ? "Voice" : "Chat"}\n\n${recap.trim()}\n`;
+  const encodedPath = path.split("/").map(encodeURIComponent).join("/");
+  const response = await fetch(`https://api.github.com/repos/${GITHUB_REPO}/contents/${encodedPath}`, {
+    method: "PUT",
+    headers: {
+      "Accept": "application/vnd.github+json",
+      "Authorization": `Bearer ${env.GITHUB_RECAP_TOKEN}`,
+      "X-GitHub-Api-Version": "2022-11-28",
+      "User-Agent": "ielts-speaking-atlas/1.0",
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      message: `Save ${mode} Speaking recap: ${date} ${topic}`,
+      content: utf8ToBase64(markdown)
+    })
+  });
+
+  if (!response.ok) {
+    const detail = await response.text();
+    return { ok: false, skipped: false, code: `GITHUB_${response.status}`, detail: detail.slice(0, 220) };
+  }
+
+  const data = await response.json();
+  return {
+    ok: true,
+    skipped: false,
+    path,
+    htmlUrl: data?.content?.html_url || null
+  };
+}
+
 async function checkAsrUpstream(env) {
   if (!env.DASHSCOPE_API_KEY) {
     return { ok: false, status: 500, code: "ASR_SECRET_MISSING", detail: "DASHSCOPE_API_KEY is missing" };
@@ -273,7 +344,8 @@ export default {
         model: MODEL,
         llmConfigured: Boolean(env.ZHIPU_API_KEY),
         asrModel: ASR_MODEL,
-        asrConfigured: Boolean(env.DASHSCOPE_API_KEY)
+        asrConfigured: Boolean(env.DASHSCOPE_API_KEY),
+        githubRecapSyncConfigured: Boolean(env.GITHUB_RECAP_TOKEN)
       }, 200, origin);
     }
 
@@ -324,7 +396,21 @@ export default {
         const system = ended ? reviewSystemPrompt(topic, mode) : conversationSystemPrompt(topic, mode);
         const reply = await callGLM(env, [{ role: "system", content: system }, ...messages], ended ? 0.35 : 0.82);
 
-        return json({ reply, recap: ended ? reply : null, ended }, 200, origin);
+        let recapSync = null;
+        if (ended && reply) {
+          try {
+            recapSync = await syncRecapToGitHub(env, {
+              sessionId: body.sessionId,
+              topic,
+              mode,
+              recap: reply
+            });
+          } catch (syncError) {
+            recapSync = { ok: false, skipped: false, code: "GITHUB_SYNC_ERROR", detail: String(syncError?.message || syncError).slice(0, 220) };
+          }
+        }
+
+        return json({ reply, recap: ended ? reply : null, ended, recapSync }, 200, origin);
       } catch (error) {
         return json({ error: "CHAT_FAILED", detail: error.message }, 500, origin);
       }
