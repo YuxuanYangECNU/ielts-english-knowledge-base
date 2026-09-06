@@ -35,10 +35,7 @@
   </form>
 
   <div class="speaking-chat-footer">
-    <span>English by default</span>
-    <span>Important corrections only</span>
+    <span class="speaking-chat-keyhint">Enter to send · Shift + Enter for a new line</span>
     <span>结束今天的练习 → review</span>
   </div>
 </div>
-
-Free Chat uses the same GLM backend and IELTS practice rules as Free Voice. Raw conversations are not stored in GitHub; only the final high-value review is retained.
