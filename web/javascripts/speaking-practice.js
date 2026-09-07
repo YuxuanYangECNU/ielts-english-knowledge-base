@@ -65,6 +65,9 @@
     const send = root.querySelector("[data-chat-send]");
 
     const state = { sessionId: null, topic: null, messages: [] };
+    // Prevent native form navigation while the session is still starting.
+    form.addEventListener("submit", event => event.preventDefault());
+    send.disabled = true;
 
     if (!apiBase) {
       setStatus(dot, status, "Waiting for backend configuration", "");
@@ -75,6 +78,7 @@
       setStatus(dot, status, "Preparing today’s topic…", "busy");
       const session = await post("/api/session/start", { mode: "chat" });
       state.sessionId = session.sessionId;
+      send.disabled = false;
       state.topic = session.topic;
       const strong = topic.querySelector("strong");
       const span = topic.querySelector("span");
@@ -94,7 +98,7 @@
     form.addEventListener("submit", async (event) => {
       event.preventDefault();
       const text = input.value.trim();
-      if (!text || !state.sessionId) return;
+      if (!text || !state.sessionId || send.disabled) return;
 
       appendMessage(messagesEl, "user", text);
       state.messages.push({ role: "user", content: text });

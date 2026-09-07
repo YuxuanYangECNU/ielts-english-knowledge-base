@@ -90,3 +90,29 @@ def on_page_content(content, **kwargs):
         content,
         flags=re.S,
     )
+
+
+def on_post_page(output, config, **kwargs):
+    """Changed assets get new URLs, so returning readers receive the latest UI."""
+    from pathlib import Path
+    from hashlib import sha256
+    from urllib.parse import urlsplit
+
+    def version_asset(match):
+        raw_url = match[2]
+        parts = urlsplit(raw_url)
+        if parts.scheme or parts.netloc:
+            return match[0]
+        asset = re.search(r"(?:^|/)((?:stylesheets|javascripts)/[^/]+\.(?:css|js))$", parts.path)
+        if not asset:
+            return match[0]
+        path = Path(config.docs_dir) / asset[1]
+        if not path.is_file():
+            return match[0]
+        digest = sha256(path.read_bytes()).hexdigest()[:12]
+        separator = "&amp;" if parts.query else "?"
+        base = raw_url.split("#", 1)[0]
+        fragment = "#" + parts.fragment if parts.fragment else ""
+        return match[1] + base + separator + "v=" + digest + fragment + match[3]
+
+    return re.sub(r"((?:src|href)=['\"])([^'\"]+)(['\"])", version_asset, output)

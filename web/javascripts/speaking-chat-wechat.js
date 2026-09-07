@@ -53,7 +53,7 @@
       }
 
       event.preventDefault();
-      if (!input.value.trim()) return;
+      if (!input.value.trim() || root.querySelector("[data-chat-send]")?.disabled) return;
       form.requestSubmit();
       window.requestAnimationFrame(() => {
         input.style.height = "auto";

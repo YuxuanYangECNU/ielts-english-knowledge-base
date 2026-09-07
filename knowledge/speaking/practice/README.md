@@ -37,7 +37,7 @@
 
 **Practice Accumulation** is not a fourth practice mode. It is where completed session reviews are stored after practice.
 
-[Open Practice Accumulation →](practice-accumulation/)
+[Open Practice Accumulation →](practice-accumulation/README.md)
 
 </div>
 
