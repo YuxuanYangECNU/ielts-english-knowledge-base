@@ -421,3 +421,77 @@ body:has(#vocab-table) .md-sidebar--secondary { display: none; }
 @media screen and (max-width: 700px) {
   .md-typeset #vocab-table { display: block; }
 }
+
+/* A quieter editorial hierarchy, inspired by Apple's spacious product pages. */
+:root { --atlas-radius: 24px; }
+[data-md-color-scheme="default"] { --atlas-panel: #f5f5f7; }
+[data-md-color-scheme="slate"] { --atlas-panel: #1d1d22; }
+body:has(.atlas-home) { --md-default-bg-color: #fff; }
+body[data-md-color-scheme="slate"]:has(.atlas-home) { --md-default-bg-color: #111114; }
+.md-typeset h1 {
+  font-family: var(--md-text-font);
+  font-weight: 700;
+  font-size: clamp(1.8rem, 3.5vw, 2.7rem);
+  line-height: 1.15;
+  letter-spacing: -.04em;
+}
+.md-typeset h2 { letter-spacing: -.025em; }
+.atlas-home { max-width: 1120px; }
+.atlas-intro { padding: 1.8rem 0 1.6rem; margin: 0; text-align: center; }
+.atlas-intro h1 { font-size: clamp(2.1rem, 5vw, 3.4rem); margin: .55rem 0 .8rem; }
+.atlas-intro p { max-width: 34rem; margin: 0 auto; font-size: .9rem; line-height: 1.7; }
+.atlas-eyebrow { color: var(--md-default-fg-color--light); font-size: .7rem; letter-spacing: .08em; }
+.atlas-focus {
+  padding: 2rem 2.4rem;
+  margin: .5rem 0 2.7rem;
+  border: 0;
+  border-radius: 28px;
+  background: var(--atlas-panel);
+  text-align: center;
+}
+.atlas-focus h2 { font-size: clamp(1.5rem, 3.6vw, 2.15rem); letter-spacing: -.035em; margin: .75rem 0 .6rem; }
+.atlas-topic-path { margin-top: .65rem; }
+.atlas-focus > p:last-child { justify-content: center; margin-top: 1.15rem; }
+.atlas-home > h2 { font-size: 1.55rem; margin-bottom: 1.1rem; }
+.md-typeset .atlas-categories.grid { gap: 1rem; }
+.md-typeset .atlas-categories.grid.cards > ul > li {
+  padding: 1.5rem;
+  border: 1px solid transparent;
+  border-radius: 24px;
+  box-shadow: none;
+  background: var(--atlas-panel);
+  transition: transform .22s ease, background-color .22s ease;
+}
+.md-typeset .atlas-categories h3 { font-size: 1.15rem; margin-top: .85rem; }
+.md-typeset .atlas-categories p { font-size: .75rem; }
+.md-typeset .atlas-categories p:last-child { padding-top: 1.15rem; }
+.atlas-card-icon {
+  background: transparent; color: var(--md-default-fg-color);
+  padding: 0; border-radius: 0;
+  width: 1.65rem !important; height: 1.65rem !important;
+}
+.atlas-card-icon svg { width: 1.45rem; height: 1.45rem; }
+.atlas-categories a { font-weight: 500; }
+.md-typeset a.atlas-topic-card {
+  padding: 1.3rem 3.1rem 1.3rem 1.35rem;
+  border-color: transparent; box-shadow: none; border-radius: 22px;
+}
+.atlas-topic-title { font-size: 1rem; }
+.atlas-topic-description { max-width: 38rem; }
+.atlas-learning-note { margin-top: 2.5rem; padding: 1.2rem 0; }
+.vocab-results-feedback { color: var(--md-default-fg-color--light); font-size: .75rem; }
+@media (hover: hover) {
+  .md-typeset .atlas-categories.grid.cards > ul > li:hover { border-color: transparent; }
+  .md-typeset a.atlas-topic-card:hover { border-color: transparent; box-shadow: none; }
+}
+@media screen and (max-width: 44.984375em) {
+  .atlas-intro { padding: 1.1rem .15rem 1.25rem; }
+  .atlas-intro h1 { font-size: 2.05rem; }
+  .atlas-intro p { font-size: .8rem; }
+  .atlas-focus { padding: 1.35rem .95rem; margin-bottom: 2rem; border-radius: 22px; }
+  .atlas-home > h2 { font-size: 1.3rem; }
+  .md-typeset .atlas-categories.grid { grid-template-columns: minmax(0, 1fr); gap: .75rem; }
+  .md-typeset .atlas-categories.grid.cards > ul > li { padding: 1.15rem; border-radius: 22px; }
+  .md-typeset a.atlas-topic-card { padding: 1rem 2.6rem 1rem 1rem; }
+  .atlas-heading-note { font-size: .7rem; }
+}
