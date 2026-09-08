@@ -122,6 +122,7 @@
           topic: saved.topic,
           sourceLabel: saved.sourceLabel,
           opening: null,
+          messages: saved.messages,
           resumed: true
         });
       }
@@ -234,7 +235,7 @@
   function applyRestoredUi() {
     const chat = readSession("chat");
     const chatRoot = document.querySelector("[data-speaking-chat]");
-    if (chat && chatRoot) {
+    if (chat && chatRoot && chatRoot.dataset.chatStateOwned !== "true") {
       const topic = chatRoot.querySelector("[data-chat-topic]");
       const strong = topic?.querySelector("strong");
       const span = topic?.querySelector("span");

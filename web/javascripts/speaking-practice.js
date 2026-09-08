@@ -55,6 +55,7 @@
   async function initChat() {
     const root = document.querySelector("[data-speaking-chat]");
     if (!root) return;
+    root.dataset.chatStateOwned = "true";
 
     const status = root.querySelector("[data-chat-status]");
     const dot = root.querySelector("[data-chat-status-dot]");
@@ -71,16 +72,16 @@
 
     const end = root.querySelector("[data-chat-end]");
     const recovery = document.createElement("div");
-    recovery.className = "speaking-chat-footer";
+    recovery.className = "speaking-chat-recovery";
     recovery.style.display = "none";
     recovery.setAttribute("role", "status");
     const explanation = document.createElement("span");
     const retry = document.createElement("button");
     retry.type = "button";
-    retry.className = "md-button";
+    retry.className = "speaking-chat-retry";
     retry.textContent = "Retry · 重试";
     recovery.append(explanation, retry);
-    topic.after(recovery);
+    topic.appendChild(recovery);
     let starting = false;
 
     function startFailure(error) {
@@ -113,17 +114,19 @@
       const timeout = window.setTimeout(() => controller.abort(), 40000);
       try {
         const session = await post("/api/session/start", { mode: "chat" }, controller.signal);
-        if (!session.sessionId || !session.opening) throw new Error("INVALID_SESSION");
+        if (!session.sessionId || !session.topic || (!session.resumed && !session.opening)) throw new Error("INVALID_SESSION");
         state.sessionId = session.sessionId;
         state.topic = session.topic;
         if (strong) strong.textContent = `Today’s IELTS topic: ${session.topic}`;
-        if (span) span.textContent = session.sourceLabel || "IELTS Speaking practice";
+        if (span) span.textContent = (session.sourceLabel || "IELTS Speaking practice") + (session.resumed ? " · resumed" : "");
         messagesEl.replaceChildren();
-        appendMessage(messagesEl, "assistant", session.opening);
-        state.messages.push({ role: "assistant", content: session.opening });
+        state.messages = session.resumed && Array.isArray(session.messages)
+          ? session.messages.filter(message => ["user", "assistant"].includes(message?.role) && typeof message.content === "string")
+          : [{ role: "assistant", content: session.opening }];
+        state.messages.forEach(message => appendMessage(messagesEl, message.role, message.content));
         send.disabled = false;
         if (end) end.disabled = false;
-        setStatus(dot, status, "Ready", "ready");
+        setStatus(dot, status, session.resumed ? "Session restored · 可继续聊天" : "Ready", "ready");
       } catch (error) {
         const [label, help] = startFailure(error);
         setStatus(dot, status, label, "error");

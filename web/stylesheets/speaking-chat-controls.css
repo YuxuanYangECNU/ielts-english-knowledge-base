@@ -73,3 +73,23 @@
     font-size: 12px;
   }
 }
+
+/* Recovery belongs inside the topic banner, not in the message grid track. */
+.speaking-chat-wechat .speaking-chat-topic { flex-wrap: wrap; }
+.speaking-chat-wechat .speaking-chat-recovery {
+  flex: 0 0 100%; min-width: 0; box-sizing: border-box;
+  align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 10px; padding-top: 10px;
+}
+.speaking-chat-wechat .speaking-chat-recovery > span {
+  flex: 1 1 200px; white-space: normal; overflow: visible;
+  color: var(--md-default-fg-color); font-size: 14px; line-height: 1.6;
+}
+.speaking-chat-wechat .speaking-chat-retry {
+  flex: 0 0 auto; min-height: 44px; padding: 9px 18px;
+  border: 0; border-radius: 10px; background: #0066cc; color: #fff;
+  font: inherit; font-size: 14px; font-weight: 600; cursor: pointer;
+}
+.speaking-chat-wechat .speaking-chat-retry:hover:not(:disabled) { background: #0055ae; }
+.speaking-chat-wechat .speaking-chat-retry:focus-visible { outline: 3px solid var(--md-accent-fg-color); outline-offset: 3px; }
+.speaking-chat-wechat .speaking-chat-retry:disabled { opacity: .6; cursor: wait; }
