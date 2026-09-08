@@ -495,3 +495,41 @@ body[data-md-color-scheme="slate"]:has(.atlas-home) { --md-default-bg-color: #11
   .md-typeset a.atlas-topic-card { padding: 1rem 2.6rem 1rem 1rem; }
   .atlas-heading-note { font-size: .7rem; }
 }
+
+/* Desktop reading layout: use the available screen for the lesson itself. */
+@media screen and (min-width: 60em) {
+  .md-grid { width: calc(100% - 3rem); max-width: 1680px; }
+  .md-main__inner { margin-top: 1.25rem; }
+  .md-content { flex: 1 1 0%; min-width: 0; }
+  .md-sidebar--secondary { width: 10.5rem; }
+  [dir] .md-sidebar--secondary .md-sidebar__inner {
+    width: auto; padding-left: .4rem; padding-right: .4rem;
+  }
+  .md-sidebar--secondary .md-nav { font-size: .7rem; line-height: 1.6; }
+  .md-sidebar--secondary .md-nav__link { padding-top: .14rem; padding-bottom: .14rem; }
+  .md-content__inner > h1 {
+    max-width: 100%; font-size: clamp(1.8rem, 2.4vw, 2.15rem);
+    line-height: 1.25; letter-spacing: -.03em; margin-bottom: 1rem;
+  }
+  .md-content__inner > p,
+  .md-content__inner > blockquote { max-width: 82ch; }
+  .md-typeset__table { display: block; width: 100%; box-sizing: border-box; }
+  .md-typeset table:not([class]) {
+    display: table; width: 100%; max-width: 100%;
+    min-width: 0; table-layout: auto;
+  }
+  .md-typeset table:not([class]) th,
+  .md-typeset table:not([class]) td { padding: .8rem .9rem; }
+  .atlas-breadcrumb { margin-bottom: .65rem; }
+}
+@media screen and (min-width: 76.25em) {
+  .md-sidebar--primary { width: 10.5rem; }
+  [dir] .md-sidebar--primary .md-sidebar__inner {
+    width: auto; padding-left: .25rem; padding-right: .25rem;
+  }
+}
+@media screen and (min-width: 100em) {
+  .md-grid { width: calc(100% - 5rem); }
+  .md-sidebar--primary { width: 11rem; }
+  .md-sidebar--secondary { width: 11rem; }
+}
