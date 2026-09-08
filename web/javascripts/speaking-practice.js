@@ -65,7 +65,7 @@
     const input = root.querySelector("[data-chat-input]");
     const send = root.querySelector("[data-chat-send]");
 
-    const state = { sessionId: null, topic: null, messages: [] };
+    const state = { sessionId: null, topic: null, messages: [], pendingReply: false };
     // Prevent native form navigation while the session is still starting.
     form.addEventListener("submit", event => event.preventDefault());
     send.disabled = true;
@@ -95,7 +95,7 @@
       if (/ZHIPU_API_KEY|GLM 401|GLM 403/.test(message)) {
         return ["Service unavailable · 服务暂不可用", "模型服务配置需要检查，请稍后再试。"];
       }
-      return ["Could not connect · 连接失败", "暂时无法开始对话，请检查网络后重试。"];
+      return ["Could not connect · 连接失败", "暂时无法连接模型服务，请稍后重试。"];
     }
 
     async function startSession() {
@@ -127,6 +127,15 @@
         send.disabled = false;
         if (end) end.disabled = false;
         setStatus(dot, status, session.resumed ? "Session restored · 可继续聊天" : "Ready", "ready");
+        if (session.resumed && state.messages[state.messages.length - 1]?.role === "user") {
+          state.pendingReply = true;
+          send.disabled = true;
+          if (end) end.disabled = true;
+          retry.textContent = "Retry reply · 重试回复";
+          explanation.textContent = "上一条消息已保存，尚未收到回复。点击重试即可，无需重新输入。";
+          recovery.style.display = "flex";
+          setStatus(dot, status, "Reply pending · 等待重试", "");
+        }
       } catch (error) {
         const [label, help] = startFailure(error);
         setStatus(dot, status, label, "error");
@@ -142,7 +151,7 @@
       }
     }
 
-    retry.addEventListener("click", startSession);
+    retry.addEventListener("click", () => state.pendingReply ? requestReply() : startSession());
     if (!apiBase) {
       setStatus(dot, status, "Service not configured · 服务未配置", "error");
       topic.querySelector("span").textContent = "Chat is unavailable until the service is configured.";
@@ -152,37 +161,53 @@
     }
     await startSession();
 
-    form.addEventListener("submit", async (event) => {
-      event.preventDefault();
-      const text = input.value.trim();
-      if (!text || !state.sessionId || send.disabled) return;
-
-      appendMessage(messagesEl, "user", text);
-      state.messages.push({ role: "user", content: text });
-      input.value = "";
+    let replying = false;
+    async function requestReply() {
+      if (replying || !state.pendingReply || !state.sessionId) return;
+      replying = true;
       send.disabled = true;
+      if (end) end.disabled = true;
+      retry.disabled = true;
+      recovery.style.display = "none";
       setStatus(dot, status, "Thinking…", "busy");
-
+      const controller = new AbortController();
+      const timeout = window.setTimeout(() => controller.abort(), 40000);
       try {
         const result = await post("/api/chat", {
           sessionId: state.sessionId,
           topic: state.topic,
           mode: "chat",
           messages: state.messages
-        });
-        if (result.reply) {
-          appendMessage(messagesEl, "assistant", result.reply);
-          if (!result.ended) state.messages.push({ role: "assistant", content: result.reply });
-        }
+        }, controller.signal);
+        if (!result.reply) throw new Error("EMPTY_REPLY");
+        appendMessage(messagesEl, "assistant", result.reply);
+        if (!result.ended) state.messages.push({ role: "assistant", content: result.reply });
+        state.pendingReply = false;
         setStatus(dot, status, result.ended ? "Session finished" : "Ready", "ready");
       } catch (error) {
-        console.error(error);
-        appendMessage(messagesEl, "assistant", "The free backend is unavailable right now. Please try again later.");
-        setStatus(dot, status, "Connection error", "error");
+        const [label, help] = startFailure(error);
+        setStatus(dot, status, label, "error");
+        explanation.textContent = help + " 你的消息已保留，无需重新输入。";
+        retry.textContent = "Retry reply · 重试回复";
+        recovery.style.display = "flex";
       } finally {
-        send.disabled = false;
-        input.focus();
+        window.clearTimeout(timeout);
+        replying = false;
+        retry.disabled = false;
+        send.disabled = state.pendingReply;
+        if (end) end.disabled = state.pendingReply;
       }
+    }
+
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      const text = input.value.trim();
+      if (!text || !state.sessionId || send.disabled || state.pendingReply) return;
+      appendMessage(messagesEl, "user", text);
+      state.messages.push({ role: "user", content: text });
+      input.value = "";
+      state.pendingReply = true;
+      await requestReply();
     });
   }
 
