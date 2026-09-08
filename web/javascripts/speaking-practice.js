@@ -69,31 +69,85 @@
     form.addEventListener("submit", event => event.preventDefault());
     send.disabled = true;
 
-    if (!apiBase) {
-      setStatus(dot, status, "Waiting for backend configuration", "");
-      return;
+    const end = root.querySelector("[data-chat-end]");
+    const recovery = document.createElement("div");
+    recovery.className = "speaking-chat-footer";
+    recovery.style.display = "none";
+    recovery.setAttribute("role", "status");
+    const explanation = document.createElement("span");
+    const retry = document.createElement("button");
+    retry.type = "button";
+    retry.className = "md-button";
+    retry.textContent = "Retry · 重试";
+    recovery.append(explanation, retry);
+    topic.after(recovery);
+    let starting = false;
+
+    function startFailure(error) {
+      const message = String(error?.message || error);
+      if (/HTTP_429|GLM 429|1305|访问量过大/.test(message)) {
+        return ["Model busy · 模型繁忙", "模型当前访问量较大，请稍等片刻后点击重试。"];
+      }
+      if (error?.name === "AbortError") {
+        return ["Connection timed out · 连接超时", "等待回复超时，请稍后重试。"];
+      }
+      if (/ZHIPU_API_KEY|GLM 401|GLM 403/.test(message)) {
+        return ["Service unavailable · 服务暂不可用", "模型服务配置需要检查，请稍后再试。"];
+      }
+      return ["Could not connect · 连接失败", "暂时无法开始对话，请检查网络后重试。"];
     }
 
-    try {
-      setStatus(dot, status, "Preparing today’s topic…", "busy");
-      const session = await post("/api/session/start", { mode: "chat" });
-      state.sessionId = session.sessionId;
-      send.disabled = false;
-      state.topic = session.topic;
+    async function startSession() {
+      if (starting || state.sessionId) return;
+      starting = true;
+      send.disabled = true;
+      if (end) end.disabled = true;
+      retry.disabled = true;
+      recovery.style.display = "none";
       const strong = topic.querySelector("strong");
       const span = topic.querySelector("span");
-      if (strong) strong.textContent = `Today’s IELTS topic: ${session.topic}`;
-      if (span) span.textContent = session.sourceLabel || "Recent Mainland China Speaking question bank";
-      messagesEl.innerHTML = "";
-      if (session.opening) {
+      if (strong) strong.textContent = "Today’s IELTS topic";
+      if (span) span.textContent = "Preparing today’s conversation…";
+      setStatus(dot, status, "Preparing today’s topic…", "busy");
+      const controller = new AbortController();
+      const timeout = window.setTimeout(() => controller.abort(), 40000);
+      try {
+        const session = await post("/api/session/start", { mode: "chat" }, controller.signal);
+        if (!session.sessionId || !session.opening) throw new Error("INVALID_SESSION");
+        state.sessionId = session.sessionId;
+        state.topic = session.topic;
+        if (strong) strong.textContent = `Today’s IELTS topic: ${session.topic}`;
+        if (span) span.textContent = session.sourceLabel || "IELTS Speaking practice";
+        messagesEl.replaceChildren();
         appendMessage(messagesEl, "assistant", session.opening);
         state.messages.push({ role: "assistant", content: session.opening });
+        send.disabled = false;
+        if (end) end.disabled = false;
+        setStatus(dot, status, "Ready", "ready");
+      } catch (error) {
+        const [label, help] = startFailure(error);
+        setStatus(dot, status, label, "error");
+        if (strong) strong.textContent = "Session not started · 尚未开始";
+        if (span) span.textContent = "Your topic will appear after connecting.";
+        messagesEl.replaceChildren();
+        explanation.textContent = help;
+        recovery.style.display = "flex";
+      } finally {
+        window.clearTimeout(timeout);
+        starting = false;
+        retry.disabled = false;
       }
-      setStatus(dot, status, "Ready", "ready");
-    } catch (error) {
-      console.error(error);
-      setStatus(dot, status, "Could not start session", "error");
     }
+
+    retry.addEventListener("click", startSession);
+    if (!apiBase) {
+      setStatus(dot, status, "Service not configured · 服务未配置", "error");
+      topic.querySelector("span").textContent = "Chat is unavailable until the service is configured.";
+      messagesEl.replaceChildren();
+      if (end) end.disabled = true;
+      return;
+    }
+    await startSession();
 
     form.addEventListener("submit", async (event) => {
       event.preventDefault();
