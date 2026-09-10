@@ -6,7 +6,7 @@
 
 ## Index
 
-_No curated entries yet._
+- [错题集 · Reading Mistakes](mistakes/README.md) — 题目与完整原文；点击展开答案、翻译、生僻词和解析。
 
 ## Note pattern
 

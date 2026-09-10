@@ -215,6 +215,10 @@ Do not copy large passages unnecessarily.
 
 Keep source labels accurate. Never call material Cambridge IELTS unless the source is confirmed.
 
+### Reading mistakes · 错题集
+
+User-requested archive: collect every verified historical Reading mistake in `knowledge/reading/mistakes/`, including errors confirmed in email or chat. Use one stable source/test/passage/question identity per item; merge repeated grading and exclude unanswered or invalidated questions. Keep each question and complete relevant evidence visible. Put the user's wrong answer, verified correct answer, question/evidence translations, unfamiliar vocabulary (including parenthetical glosses), sentence structure and explanation inside a closed native `<details markdown="1">`. Do not reveal answers or trap labels in navigation, summaries or search previews. Never infer an actual mistake from an unanswered question. Repair truncated source quotations from the original PDF. Record only learning content, not email addresses or full conversations. Add future confirmed mistakes to the same collection when a Reading archive update is requested.
+
 ## 10 · Listening · 听力
 
 Organise language by **scenario and listening value**, not by alphabetical word lists.
