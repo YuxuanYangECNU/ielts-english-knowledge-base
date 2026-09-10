@@ -95,10 +95,10 @@ nav:
       - knowledge/reading/README.md
       - 错题集:
           - knowledge/reading/mistakes/README.md
-          - Research using twins: knowledge/reading/mistakes/001-twins.md
-          - Silbo Gomero: knowledge/reading/mistakes/002-silbo.md
-          - Collecting Ant Specimens: knowledge/reading/mistakes/003-ants.md
           - Artificial intelligence: knowledge/reading/mistakes/004-ai.md
+          - Collecting Ant Specimens: knowledge/reading/mistakes/003-ants.md
+          - Silbo Gomero: knowledge/reading/mistakes/002-silbo.md
+          - Research using twins: knowledge/reading/mistakes/001-twins.md
   - Writing: knowledge/writing/README.md
   - Language:
       - Vocabulary Tracker: knowledge/vocabulary/README.md
