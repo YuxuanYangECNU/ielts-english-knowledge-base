@@ -58,7 +58,8 @@ def read_weekly_unfamiliar():
 
 def render_vocab_tracker(path: Path) -> None:
     text = path.read_text(encoding="utf-8")
-    rows = read_vocab_rows()
+    # Newest learned words first; keep stable IDs for mastery and weekly flags.
+    rows = sorted(read_vocab_rows(), key=lambda row: row[0], reverse=True)
     weekly = read_weekly_unfamiliar()
     id_to_weeks = {}
     for week, ids in weekly.items():
