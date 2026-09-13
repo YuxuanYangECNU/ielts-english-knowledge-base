@@ -235,6 +235,8 @@ Group related items, for example:
 
 **room types → house areas → facilities → requirements → security**
 
+When the user repeats a dictation/re-listening set, keep a **cumulative miss count** for previously recorded items (for example **×2, ×3**). Repeated misses should be more visible and receive higher review priority than one-off misses.
+
 When the user supplies a list of correct answers, assume the intended meanings are correct unless there is a genuine semantic issue. Fix obvious typing errors directly rather than logging them as mistakes.
 
 ## 11 · Writing · 写作
