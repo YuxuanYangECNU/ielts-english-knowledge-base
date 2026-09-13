@@ -6,6 +6,7 @@
 
 ## Review queue
 
+- **To practise** — [Travel & Tourism — Listening Vocabulary](../listening/travel-tourism.md): recall travel attractions, outdoor activities, transport and equipment; pay special attention to hiking vs trekking, rock climbing vs cliff walk, and scuba diving vs snorkeling.
 - **To practise** — [People & Relationships — Family Relationships](../speaking-topics/people-and-relationships.md): recall cousin / nephew / niece / in-law directions and use at least two natural relationship expressions.
 - **To practise** — [Accommodation & Renting — Listening Vocabulary](../listening/accommodation-renting.md): recall the room types, house areas, household equipment and key contrasts without looking.
 
