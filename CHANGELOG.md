@@ -2,6 +2,15 @@
 
 # Change Log
 
+## v0.7 · Travel & Tourism listening vocabulary
+
+- Added **Travel & Tourism — Listening Vocabulary** from the user's travel-scenario listening practice.
+- Grouped misses into attractions/scenery, outdoor activities, transport/tours and clothing/equipment.
+- Added cumulative miss tracking, with all new items currently at **×1**.
+- Corrected high-value meanings such as **cliff walk** = 悬崖步道/沿悬崖步行, **river cruise** = 河上游船/乘船游览, and **walking boots** = 徒步靴/登山鞋.
+- Added useful contrasts: **hiking vs trekking**, **rock climbing vs cliff walk**, **scuba diving vs snorkeling**, and **swimming trunks vs swimming costume**.
+- Added the topic to the Listening index and Review queue.
+
 ## v0.6 · Repository-wide authoring rules
 
 - Added **`AUTHORING_RULES.md`** as the highest-priority repository-wide guide for adding or rewriting learning content.
