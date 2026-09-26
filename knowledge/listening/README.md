@@ -11,6 +11,8 @@
 
 ## Note pattern
 
-**Scenario → phrase/word → source line → signal or distractor → spelling/pronunciation risk → application**
+**Scenario → word/phrase → cumulative miss count → dated dictation mistakes (if documented).**
+
+The **Listening note** column contains only dated descriptions of what the learner wrote incorrectly or omitted. Leave it blank when no historical error form/date was recorded; keep general listening tips outside that column.
 
 Prioritise patterns that improve prediction and information location rather than collecting every unfamiliar word.
