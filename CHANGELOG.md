@@ -2,6 +2,14 @@
 
 # Change Log
 
+## v0.8 · 26 Sep 2026 dictation accuracy and new listening scenarios
+
+- Added [dated Listening Dictation Scorecard](knowledge/listening/dictation-scores.md): Employment **47/63 (74.6%)**, Library **26/37 (70.3%)**, Gym **31/56 (55.4%)**; verifiable combined **104/156 (66.7%)**.
+- Created focused scenario error logs covering **spelling errors, incomplete attempts, completely omitted items and accepted variants**, with compact lists of correctly written targets for scoring audits.
+- Travel (13 Sep and 26 Sep) has an error history but **no verified accuracy percentage** because the original full typed travel dictations are unavailable. Linked the pending sessions rather than guessing a score.
+- Corrected a printed worksheet error: **out of loan** → **out on loan**. The printed match was credited in the Library score without teaching the nonstandard expression.
+- Updated Listening and Review navigation for all three new scenarios.
+
 ## v0.7 · Travel & Tourism listening vocabulary
 
 - Added **Travel & Tourism — Listening Vocabulary** from the user's travel-scenario listening practice.
