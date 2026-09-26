@@ -8,9 +8,9 @@ The scorecard records **each dated dictation session**. A session is scored only
 
 | Date | Scenario / attempt | Correct / scored | Accuracy | Spelling errors | Incomplete | Omitted | Fair-marking note |
 | :--- | :--- | ---: | ---: | ---: | ---: | ---: | :--- |
-| **26 Sep 2026** | [Employment & Recruitment](employment-recruitment.md) | **47 / 63** | **74.6%** | 9 | 6 | 1 | 46 exact + 1 accepted `bowtie` variant |
-| **26 Sep 2026** | [Library Services](library-services.md) | **26 / 37** | **70.3%** | 7 | 2 | 2 | 25 exact + 1 printed-worksheet typo credit |
-| **26 Sep 2026** | [Gym & Fitness](gym-membership.md) | **31 / 56** | **55.4%** | 20 | 2 | 3 | Includes all 56 printed entries, not 3 handwritten extras |
+| **26 Sep 2026** | [Consultation — Employment & Recruitment](consultation-scenarios.md#1--employment--recruitment--求职咨询) | **47 / 63** | **74.6%** | 9 | 6 | 1 | 46 exact + 1 accepted `bowtie` variant |
+| **26 Sep 2026** | [Consultation — Library Services](consultation-scenarios.md#2--library-services--图书馆咨询) | **26 / 37** | **70.3%** | 7 | 2 | 2 | 25 exact + 1 printed-worksheet typo credit |
+| **26 Sep 2026** | [Consultation — Gym & Fitness](consultation-scenarios.md#3--gym--fitness--健身房咨询) | **31 / 56** | **55.4%** | 20 | 2 | 3 | Includes all 56 printed entries, not 3 handwritten extras |
 | **26 Sep 2026** | [Travel & Tourism — repeat](travel-tourism.md) | **Pending** | **Not yet verifiable** | Partial dated mistakes logged | — | — | Worksheet photos and documented misses are available, but **full typed travel attempt is missing** |
 | **13 Sep 2026** | [Travel & Tourism — earlier practice](travel-tourism.md) | **Pending** | **Not yet verifiable** | Earlier unfamiliar-word list logged | — | — | Only missed vocabulary was recorded; full attempted responses are unavailable |
 
@@ -30,6 +30,8 @@ The scorecard records **each dated dictation session**. A session is scored only
 - The travel photographs show all target pages, and [the travel note](travel-tourism.md) documents several dated misses (including repeat ×2 items); **neither establishes how many words were actually written correctly**. Do not estimate a travel percentage from red marks or the miss-only log.
 
 ## Review focus · 本次重点
+
+The three 26 Sep entries above belong to one **Consultation Scenarios** topic page; only the scorecard is date/session based.
 
 **Employment:** apprentice / apprenticeship, executive, freelance, permanent / temporary, suit / suite, informal / casual clothes.
 
