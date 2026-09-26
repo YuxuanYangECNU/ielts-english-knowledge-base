@@ -462,6 +462,10 @@ body[data-md-color-scheme="slate"]:has(.atlas-home) { --md-default-bg-color: #11
   background: var(--atlas-panel);
   transition: transform .22s ease, background-color .22s ease;
 }
+/* Six skill cards plus one full-width test review entry: no orphan card row. */
+.md-typeset .atlas-categories.grid.cards > ul > li:last-child {
+  grid-column: 1 / -1;
+}
 .md-typeset .atlas-categories h3 { font-size: 1.15rem; margin-top: .85rem; }
 .md-typeset .atlas-categories p { font-size: .75rem; }
 .md-typeset .atlas-categories p:last-child { padding-top: 1.15rem; }

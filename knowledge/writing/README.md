@@ -1,12 +1,12 @@
 [← Knowledge map](../README.md) · [Home](../../README.md)
 
-# Writing & Argumentation
+# Writing & Argumentation · 写作
 
-**Purpose:** collect accurate language and reasoning moves with explicit conditions of use.
+按写作任务积累准确、可控的表达，明确每种句式的使用条件。
 
 ## Index
 
-_No curated entries yet._
+暂无独立条目；有真实写作练习或修改记录后再添加。
 
 ## Note pattern
 

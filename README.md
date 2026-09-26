@@ -44,7 +44,7 @@
 | Area | Focus |
 | :--- | :--- |
 | [05 · Speaking Topics](knowledge/speaking-topics/README.md) | Topic-based vocabulary, expressions, contrasts and ideas for IELTS Speaking |
-| [06 · Speaking Story Bank](knowledge/speaking/README.md) | Real experiences, opinions and flexible Part 1–3 extensions |
+| [06 · Speaking](knowledge/speaking/README.md) | Topic-based language and the user's own refined answers |
 | [07 · Reading & Paraphrase](knowledge/reading/README.md) | Paraphrase chains, logic and TF/F/NG evidence boundaries |
 | [08 · Listening Language](knowledge/listening/README.md) | Scenario language, signposts, spelling and distractors |
 | [09 · Writing & Argumentation](knowledge/writing/README.md) | Accurate Task 1 language and conditional Task 2 reasoning |
@@ -74,7 +74,7 @@ English remains the main language for definitions, explanations, examples and pr
 
 ## Current state
 
-**Framework active · Six topic learning entries.** The Listening section now covers accommodation, travel and a combined [Consultation Scenarios](knowledge/listening/consultation-scenarios.md) topic page (employment/recruitment, library services, gym/fitness), plus a [dated dictation scorecard](knowledge/listening/dictation-scores.md). The Speaking Topics section covers **People & Relationships**. Future entries continue to be curated from study sessions.
+**Framework active.** Listening has accommodation, travel and [consultation scenarios](knowledge/listening/consultation-scenarios.md), plus a [dated dictation scorecard](knowledge/listening/dictation-scores.md). Speaking has [People & Relationships](knowledge/speaking-topics/people-and-relationships.md). The new [test error analysis](knowledge/test-analysis/README.md) awaits verified Listening and Reading answers.
 
 ---
 

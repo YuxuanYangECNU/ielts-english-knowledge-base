@@ -17,7 +17,7 @@ This page is the bridge between the home dashboard and individual notes.
 ## II · IELTS Performance
 
 5. [Speaking Topics](speaking-topics/README.md)
-6. [Speaking Story Bank](speaking/README.md)
+6. [Speaking · 口语表达](speaking/README.md)
 7. [Reading & Paraphrase](reading/README.md)
 8. [Listening Language](listening/README.md) · [Dictation scorecard](listening/dictation-scores.md)
 9. [Writing & Argumentation](writing/README.md)
@@ -29,4 +29,4 @@ This page is the bridge between the home dashboard and individual notes.
 
 ## Connection rule
 
-Each note has one primary home. Cross-skill value is shown through links rather than duplicate copies. Topic-based Speaking language belongs in **Speaking Topics**; genuine personal experiences and reusable real-life material belong in **Speaking Story Bank**. Cross-link the two when a topic can be supported by a personal story.
+Each note has one primary home. Cross-skill value is shown through links rather than duplicate copies. Speaking expressions and the user's own refined sentences belong with their topic in **Speaking Topics**.

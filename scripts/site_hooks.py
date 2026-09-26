@@ -31,10 +31,8 @@ def on_page_markdown(markdown, page, **kwargs):
     if notes:
         markdown += (
             '\n\n<footer class="atlas-page-note" markdown="1">\n\n'
-            '**Learn → Say it → Make it yours → Review**  \n'
-            '★ Your personal expressions & priority language · ○ Recognition is enough\n\n'
             '<details class="atlas-note-details" markdown="1">\n'
-            '<summary>About these notes · 学习说明</summary>\n\n'
+            '<summary>记录方法 · About these notes</summary>\n\n'
             + "\n\n".join(notes)
             + '\n\n</details>\n\n</footer>\n'
         )

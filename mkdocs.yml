@@ -54,7 +54,6 @@ markdown_extensions:
 
 extra_css:
   - stylesheets/extra.css
-  - stylesheets/speaking-hub.css
   - stylesheets/search-enhanced.css
 
 extra_javascript:
@@ -65,12 +64,13 @@ nav:
   - Home: index.md
   - Speaking:
       - knowledge/speaking/README.md
-      - Accumulation:
-          - knowledge/speaking-topics/README.md
-          - Topics:
-              - People & Relationships: knowledge/speaking-topics/people-and-relationships.md
+      - 话题目录: knowledge/speaking-topics/README.md
+      - 人物与关系: knowledge/speaking-topics/people-and-relationships.md
   - Listening:
       - knowledge/listening/README.md
+      - 听写正确率: knowledge/listening/dictation-scores.md
+      - 咨询场景: knowledge/listening/consultation-scenarios.md
+      - 旅游场景: knowledge/listening/travel-tourism.md
       - Accommodation & Renting: knowledge/listening/accommodation-renting.md
   - Reading:
       - knowledge/reading/README.md

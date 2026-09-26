@@ -1,12 +1,12 @@
 [← Knowledge map](../README.md) · [Home](../../README.md)
 
-# Grammar & Usage
+# Grammar & Usage · 语法与用法
 
-**Purpose:** turn real questions into compact rules with clear boundaries.
+只记录做题或表达时真正遇到的用法问题，重点说明**何时能用、何时不能用**。
 
 ## Index
 
-_No curated entries yet._
+暂无独立条目；遇到可迁移的用法问题后再加入。
 
 ## Note pattern
 

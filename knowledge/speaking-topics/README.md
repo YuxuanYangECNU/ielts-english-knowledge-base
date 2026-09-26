@@ -2,7 +2,7 @@
 
 # Speaking Topics · 口语主题
 
-**Purpose:** organise only the most useful IELTS Speaking language by topic, with sentence patterns and personalisable use taking priority over vocabulary quantity.
+只保留能用进回答的词汇与句式；按话题学习，写出自己的表达。
 
 ## Topic index
 
@@ -21,4 +21,4 @@ Keep each topic compact and use this order only when useful:
 
 Sentence patterns and usable answers matter more than long lists of kinship terms or adjectives. Ask the user to produce their own sentence when that helps learning, then refine it before storing it.
 
-Personal experiences and reusable real-life stories belong in **[Speaking Story Bank](../speaking/README.md)** and should be cross-linked when relevant.
+Useful personal experiences and refined answers belong with the relevant topic, when the user has shared them.

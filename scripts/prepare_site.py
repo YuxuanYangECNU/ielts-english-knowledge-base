@@ -116,7 +116,7 @@ def main() -> None:
 
     # Publish only assets referenced by mkdocs.yml; archived practice code stays in git.
     copy_static_files(ROOT / "web" / "stylesheets", OUT / "stylesheets",
-                      ("extra.css", "speaking-hub.css", "search-enhanced.css"))
+                      ("extra.css", "search-enhanced.css"))
     copy_static_files(ROOT / "web" / "javascripts", OUT / "javascripts",
                       ("vocabulary.js", "search-enhanced.js"))
 

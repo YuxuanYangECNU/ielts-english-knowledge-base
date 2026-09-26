@@ -1,8 +1,8 @@
 [← Knowledge map](../README.md) · [Home](../../README.md)
 
-# Reading & Paraphrase
+# Reading & Paraphrase · 阅读
 
-**Purpose:** make paraphrase and evidence logic visible, especially for True / False / Not Given.
+按原文证据理解同义替换与判断题逻辑。先重做，再看解析。
 
 ## Index
 

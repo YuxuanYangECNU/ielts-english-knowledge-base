@@ -1,8 +1,8 @@
 [← Knowledge map](../README.md) · [Home](../../README.md)
 
-# Listening Language
+# Listening Language · 听力
 
-**Purpose:** organise scenario language, signposts, spelling risks and distractor patterns.
+场景词汇按主题整理；听写正确率按练习日期记录；真题错题按套题分析。
 
 ## Index
 

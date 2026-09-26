@@ -8,35 +8,28 @@ hide:
 
 <div class="atlas-intro" markdown>
 
-<span class="atlas-eyebrow">IELTS · BAND 7</span>
+<span class="atlas-eyebrow">IELTS · ENGLISH ATLAS</span>
 
-# Your learning space
+# Learn it. Use it.
 
-Useful words. Natural sentences. A little practice, every day.  
-把学过的英语，变成说得出的英语。
+把错题变成下一次做对的线索，把词汇变成真正用得出的表达。
 
 </div>
 
 <div class="atlas-focus" markdown>
 
-<span class="atlas-eyebrow">CURRENT FOCUS · 当前重点</span>
+<span class="atlas-eyebrow">CONTINUE · 继续学习</span>
 
-<div class="atlas-topic-path" markdown>
+## 从一道错题开始
 
-[Speaking Topics](knowledge/speaking-topics/README.md) / People & Relationships
+按套题找到问题，回到词汇和证据，再有针对性地复习。
 
-</div>
-
-## People & Relationships
-
-人物与关系 · Turn personality words into sentences about people you know.
-
-[Continue learning :octicons-arrow-right-24:](knowledge/speaking-topics/people-and-relationships.md){ .md-button .md-button--primary }
-[Review your notes](knowledge/review/README.md){ .atlas-secondary-link }
+[真题错误分析 :octicons-arrow-right-24:](knowledge/test-analysis/README.md){ .md-button .md-button--primary }
+[听写正确率](knowledge/listening/dictation-scores.md){ .atlas-secondary-link }
 
 </div>
 
-## Explore your Atlas <span class="atlas-heading-note">学习分类</span>
+## 学习分类 <span class="atlas-heading-note">Explore the Atlas</span>
 
 <div class="grid cards atlas-categories" markdown>
 
@@ -46,9 +39,9 @@ Useful words. Natural sentences. A little practice, every day.
 
     <span class="atlas-card-translation">口语表达</span>
 
-    Learn useful expressions by topic and turn them into your own answers.
+    按话题积累句式，写出适合自己的回答。
 
-    [Open Speaking :octicons-arrow-right-24:](knowledge/speaking/README.md)
+    [进入口语 :octicons-arrow-right-24:](knowledge/speaking/README.md)
 
 -   :material-headphones:{ .atlas-card-icon }
 
@@ -56,9 +49,9 @@ Useful words. Natural sentences. A little practice, every day.
 
     <span class="atlas-card-translation">听力积累</span>
 
-    Everyday scenarios, spelling & words to listen for.
+    场景词汇、易错拼写和听写记录。
 
-    [Listening language :octicons-arrow-right-24:](knowledge/listening/README.md)
+    [进入听力 :octicons-arrow-right-24:](knowledge/listening/README.md)
 
 -   :material-book-open-page-variant-outline:{ .atlas-card-icon }
 
@@ -66,19 +59,9 @@ Useful words. Natural sentences. A little practice, every day.
 
     <span class="atlas-card-translation">阅读理解</span>
 
-    Paraphrases, evidence & True / False / Not Given.
+    同义替换、原文证据和判断题逻辑。
 
-    [Reading notes :octicons-arrow-right-24:](knowledge/reading/README.md)
-
--   :material-clipboard-text-outline:{ .atlas-card-icon }
-
-    ### 真题错误分析
-
-    <span class="atlas-card-translation">听力 · 阅读</span>
-
-    按套题复盘错因，集中积累错题词汇与来源。
-
-    [查看错题分析 :octicons-arrow-right-24:](knowledge/test-analysis/README.md)
+    [进入阅读 :octicons-arrow-right-24:](knowledge/reading/README.md)
 
 -   :material-pencil-outline:{ .atlas-card-icon }
 
@@ -86,9 +69,9 @@ Useful words. Natural sentences. A little practice, every day.
 
     <span class="atlas-card-translation">写作表达</span>
 
-    Clear descriptions, precise language & arguments.
+    清楚描述、准确表达与论证。
 
-    [Writing notes :octicons-arrow-right-24:](knowledge/writing/README.md)
+    [进入写作 :octicons-arrow-right-24:](knowledge/writing/README.md)
 
 -   :material-shape-outline:{ .atlas-card-icon }
 
@@ -96,9 +79,9 @@ Useful words. Natural sentences. A little practice, every day.
 
     <span class="atlas-card-translation">语言基础</span>
 
-    Vocabulary, useful phrases, grammar & corrections.
+    词汇、自然表达、语法与纠错。
 
-    [Language notes :octicons-arrow-right-24:](knowledge/vocabulary/README.md)
+    [进入语言基础 :octicons-arrow-right-24:](knowledge/vocabulary/README.md)
 
 -   :material-refresh:{ .atlas-card-icon }
 
@@ -106,16 +89,27 @@ Useful words. Natural sentences. A little practice, every day.
 
     <span class="atlas-card-translation">复习巩固</span>
 
-    Recall, rephrase & practise what you want to keep.
+    找回学过的内容，聚焦反复出错的地方。
 
-    [Review queue :octicons-arrow-right-24:](knowledge/review/README.md)
+    [进入复习 :octicons-arrow-right-24:](knowledge/review/README.md)
+
+-   :material-clipboard-text-outline:{ .atlas-card-icon }
+
+    ### 真题错误分析
+
+    <span class="atlas-card-translation">听力 · 阅读 · 错题词汇</span>
+
+    按套题复盘错因，记录词汇与原题来源。
+
+    [查看错题分析 :octicons-arrow-right-24:](knowledge/test-analysis/README.md)
 
 </div>
 
 <div class="atlas-learning-note" markdown>
 
-**Learn → Say it → Make it yours → Review**  
-**★** Your personal expressions & priority language · **○** Recognition is enough
+**记录 → 找原因 → 复习 → 再练** · 词汇学习表与真题错题分开记录，需要时再相互关联。
+
+[查看完整知识目录 →](knowledge/README.md)
 
 </div>
 
