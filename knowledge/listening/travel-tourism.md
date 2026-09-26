@@ -1,6 +1,8 @@
-[← Listening Language](README.md) · [Knowledge map](../README.md) · [Home](../../README.md)
+[← Listening Language](README.md) · [Dictation scores](dictation-scores.md) · [Knowledge map](../README.md) · [Home](../../README.md)
 
 # Travel & Tourism — Listening Vocabulary
+
+**Accuracy tracking:** [26 Sep 2026 repeat and earlier practice](dictation-scores.md) are **unscored pending the complete original travel dictation text**. Current dated error notes and cumulative ×1/×2 misses are valid for targeted review, but do not determine the full correct/attempted percentage. The two travel worksheet photographs establish the target set; red stars are not a reliable substitute for the typed attempt.
 
 > **Quick answer**  
 > Vocabulary missed in a travel / tourism listening session. Items are grouped by scenario, with concise Chinese meanings. **Listening note** records only dated mistakes (blank when the earlier wrong form was not recorded). Cumulative **Misses** count: 26 Sep 2026 repeat misses are marked **×2**; newly recorded errors are **×1**. Earlier items written correctly this time retain their previous counts.
