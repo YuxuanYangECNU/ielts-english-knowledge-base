@@ -1,99 +1,49 @@
 [← Listening Language](README.md) · [Dictation scores](dictation-scores.md) · [Home](../../README.md)
 
-# Employment & Recruitment — Listening Dictation
+# Employment & Recruitment — Listening Vocabulary
 
-**Session:** 26 Sep 2026 · **Source:** learner's typed dictation matched against the photographed worksheet. Positions, application documents, job types and working arrangements. Score: **47/63 · 74.6%** (46 exact matches + 1 accepted spelling variant).
+> **Topic note:** This is a cumulative topic page. It is **not split by study date**. When the same item is missed again, increase **Misses** and append the new dated mistake in **Listening note**. Session-level accuracy belongs only in [Dictation Scores](dictation-scores.md).
 
-**Audit:** 46 exact · 9 spelling · 6 incomplete · 1 omitted · 1 accepted variant. Each printed checkbox / grouped slash-entry counts once; incomplete answers and spelling mistakes do not receive partial credit. See [scoring rules](dictation-scores.md).
+## Occupations & roles
 
-## Spelling / word-boundary errors
+| Misses | Word / phrase | 中文速览 | Listening note |
+| :---: | :--- | :--- | :--- |
+| ×1 | **craftsman** | 工匠 | 26 Sep 2026: `craftman` → **craftsman**. |
+| ×1 | **secretary** | 秘书 | 26 Sep 2026: `sac` → **secretary** (incomplete). |
+| ×1 | **mentor** | 导师 | 26 Sep 2026: `mantor` → **mentor**. |
+| ×1 | **executive** | 主管；高管 | 26 Sep 2026: `excecutive` → **executive**. |
+| ×1 | **apprentice** | 学徒 | 26 Sep 2026: `aprentice` → **apprentice**. |
+| ×1 | **apprenticeship** | 学徒期；学徒训练 | 26 Sep 2026: `apreti` → **apprenticeship** (incomplete). |
 
-| Target | Learner's dictation | 中文 / correction | Listening note |
-| :--- | :--- | :--- | :--- |
-| **craftsman** | `craftman` | 工匠 | 26 Sep 2026: spelling |
-| **mentor** | `mantor` | 导师 | 26 Sep 2026: spelling |
-| **executive** | `excecutive` | 主管；高管 | 26 Sep 2026: spelling |
-| **apprentice** | `aprentice` | 学徒 | 26 Sep 2026: spelling |
-| **blue-collar** | `blue collor` | 蓝领 | 26 Sep 2026: spelling |
-| **white-collar** | `white collor` | 白领 | 26 Sep 2026: spelling |
-| **permanent job** | `permanante` | 长期工作（拼写及词组不完整） | 26 Sep 2026: spelling |
-| **suit** | `suite` | 套装；suite = 套房 | 26 Sep 2026: spelling |
-| **casual clothes** | `casual cloth` | 休闲装；clothes 为复数 | 26 Sep 2026: spelling |
+## Job types & working arrangements
 
-## Incomplete or mixed answers
+| Misses | Word / phrase | 中文速览 | Listening note |
+| :---: | :--- | :--- | :--- |
+| ×1 | **blue-collar** | 蓝领的 | 26 Sep 2026: `blue collor` → **blue-collar**. |
+| ×1 | **white-collar** | 白领的 | 26 Sep 2026: `white collor` → **white-collar**. |
+| ×1 | **freelance** | 自由职业的 | 26 Sep 2026: `freele` → **freelance** (incomplete). |
+| ×1 | **temporary job** | 临时工作 | 26 Sep 2026: `tempora` → **temporary job** (incomplete). |
+| ×1 | **permanent job** | 长期工作 | 26 Sep 2026: `permanante` → **permanent job** (misspelled and incomplete). |
 
-| Target | Learner's dictation | 中文 / correction | Listening note |
-| :--- | :--- | :--- | :--- |
-| **secretary** | `sac` | 秘书；写了开头，不算完全漏写 | 26 Sep 2026: incomplete |
-| **apprenticeship** | `apreti` | 学徒期 | 26 Sep 2026: incomplete |
-| **freelance** | `freele` | 自由职业 | 26 Sep 2026: incomplete |
-| **temporary job** | `tempora` | 临时工作 | 26 Sep 2026: incomplete |
-| **interviewer** | `intervie` | 面试官 | 26 Sep 2026: incomplete |
-| **informal clothes** | `inform` | 非正式服装 | 26 Sep 2026: incomplete |
+## Interviews, background & documents
 
-## Omitted entirely
+| Misses | Word / phrase | 中文速览 | Listening note |
+| :---: | :--- | :--- | :--- |
+| ×1 | **interviewer** | 面试官 | 26 Sep 2026: `intervie` → **interviewer** (incomplete). |
+| ×1 | **university attended** | 就读大学 | 26 Sep 2026: omitted. |
 
-| Target | Learner's dictation | 中文 / correction | Listening note |
-| :--- | :--- | :--- | :--- |
-| **university attended** | — | 就读大学；完全未写 | 26 Sep 2026: omitted |
+## Clothing
 
-## Fair-marking notes
+| Misses | Word / phrase | 中文速览 | Listening note |
+| :---: | :--- | :--- | :--- |
+| ×1 | **suit** | 西装；套装 | 26 Sep 2026: `suite` → **suit**. |
+| ×1 | **informal clothes** | 非正式服装 | 26 Sep 2026: `inform` → **informal clothes** (incomplete). |
+| ×1 | **casual clothes** | 休闲装 | 26 Sep 2026: `casual cloth` → **casual clothes**. |
 
-| Target | Learner's dictation | 中文 / correction | Listening note |
-| :--- | :--- | :--- | :--- |
-| **bow tie** | `bowtie` | 常见连写变体；建议熟悉 bow tie | 26 Sep 2026: accepted variant |
+### Useful contrasts
 
-<details><summary><strong>Correctly written items (46) · 核对清单</strong></summary>
+- **apprentice** = the person; **apprenticeship** = the training period.
+- **suit** = clothes; **suite** = a set of rooms.
+- **temporary** ↔ **permanent**.
 
-1. occupation / vacant / vacancy
-2. waiter
-3. waitress
-4. reporter
-5. researcher
-6. carpenter
-7. salesman
-8. dentist
-9. hairdresser
-10. photographer
-11. receptionist
-12. clerk
-13. officer
-14. manager
-15. supervisor
-16. staff
-17. colleague
-18. trainee
-19. intern
-20. placement
-21. domestic work
-22. vacation job
-23. part-time job
-24. full-time job
-25. interview
-26. interviewee
-27. referee
-28. candidate
-29. pay / wage / salary
-30. induction
-31. working hours
-32. weekday
-33. weekend
-34. bank holiday
-35. public holiday
-36. workload
-37. flexible
-38. employment history
-39. education background
-40. qualification
-41. resume
-42. application letter
-43. cover letter
-44. bank statement
-45. reference letter
-46. uniform
-
-</details>
-
-**Useful contrasts:** apprentice (person) vs apprenticeship (training period); suit (clothes) vs suite (rooms); temporary vs permanent job. `sac` is marked incomplete **secretary**, not an omission.
-
-**Source details:** personal listening dictation only; no full worksheet scan or personal details reproduced.
+**Source:** User listening dictation, Employment & Recruitment scenario.
