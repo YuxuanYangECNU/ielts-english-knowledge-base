@@ -73,7 +73,7 @@ English remains the main language for definitions, explanations, examples and pr
 
 ## Current state
 
-**Framework complete · 2 curated learning entries.** Current entries cover accommodation/renting listening vocabulary and **People & Relationships** under Speaking Topics. Future entries continue to be curated from study sessions rather than imported automatically.
+**Framework active · Six topic learning entries.** The Listening section now covers accommodation, travel, employment, library services and gym/fitness, plus a [dated dictation scorecard](knowledge/listening/dictation-scores.md). The Speaking Topics section covers **People & Relationships**. Future entries continue to be curated from study sessions.
 
 ---
 
