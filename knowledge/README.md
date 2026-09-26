@@ -19,7 +19,7 @@ This page is the bridge between the home dashboard and individual notes.
 5. [Speaking Topics](speaking-topics/README.md)
 6. [Speaking Story Bank](speaking/README.md)
 7. [Reading & Paraphrase](reading/README.md)
-8. [Listening Language](listening/README.md)
+8. [Listening Language](listening/README.md) · [Dictation scorecard](listening/dictation-scores.md)
 9. [Writing & Argumentation](writing/README.md)
 
 ## III · Retention
