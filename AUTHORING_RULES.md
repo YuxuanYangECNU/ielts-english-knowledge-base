@@ -237,6 +237,9 @@ Group related items, for example:
 
 When the user repeats a dictation/re-listening set, keep a **cumulative miss count** for previously recorded items (for example **×2, ×3**). Repeated misses should be more visible and receive higher review priority than one-off misses.
 
+- **Listening topic pages are organised by scenario/topic, not by date.** Do not create a new topic file for each session. Put later mistakes back onto the same topic page with the new date in the item's Listening note, and keep per-session accuracy only in the central dictation scorecard.
+- When a photographed worksheet defines the source list, **preserve the worksheet's original order inside that topic page**. Do not regroup those error entries alphabetically or into new subcategories unless the user explicitly asks.
+
 In any **Listening note** table column, record **only the user's documented mistake or omission, with its date** (e.g. `26 Sep 2026: hikking → hiking` or `26 Sep 2026: omitted`). If the older wrong form or date was not recorded, **leave that cell blank** rather than inserting generic definitions, pronunciation advice, or guessed past errors. Put useful general listening explanations in a separate section when needed.
 
 When the user supplies a list of correct answers, assume the intended meanings are correct unless there is a genuine semantic issue. Fix obvious typing errors directly rather than logging them as mistakes.
