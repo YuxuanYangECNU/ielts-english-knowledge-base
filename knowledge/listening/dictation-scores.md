@@ -18,6 +18,8 @@ The scorecard records **each dated dictation session**. A session is scored only
 
 ## Counting rule · 计分口径
 
+**Primary evidence is the photographed complete worksheet**: every target on the photograph belongs in the denominator, even if it does not appear in the learner's typed text. For any **multiword phrase**, missing any word, writing only a fragment, or misspelling any part makes that whole entry **one wrong item, with zero partial credit**. Log it in the dated error record (including the exact fragment if present); do not count both a fragment and its spelling errors as separate missed items. For example, wholly unwritten `university attended` is **omitted**; a fragment such as `apreti` for `apprenticeship` is **incomplete**, and each is one error. The source photograph determines the complete checklist, not the length of the typed response.
+
 - **One printed checkbox / grouped slash-entry = one target**. Items such as `pay / wage / salary`, `coach / trainer`, and `current / back issue` each count once, not multiple times. Distinct spelling words on the same entry are audited together when the photograph and written order make that clear.
 - **One point** for an exact match, a standard British/American spelling (`centre/center`, `enrolment/enrollment`), or an accepted conventional word form (`bow tie/bowtie`). Ordinary punctuation/hyphenation variants without a meaningful change are accepted.
 - **Zero points** for misspellings, wrong word boundaries where the compound is not standard (`studentcard`, `Referencebook`), unfinished attempts, and completely unwritten entries. A worksheet entry with one correct and one misspelled target is classified as mixed/incomplete and receives no point under this printed-entry scoring method.
