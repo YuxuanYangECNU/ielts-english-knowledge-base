@@ -241,6 +241,16 @@ In any **Listening note** table column, record **only the user's documented mist
 
 When the user supplies a list of correct answers, assume the intended meanings are correct unless there is a genuine semantic issue. Fix obvious typing errors directly rather than logging them as mistakes.
 
+### Photo-based dictation scoring · 图片原词表为准
+
+For any dictation supplied with a photographed target list or worksheet:
+
+1. **Use the entire photographed target list as the answer key and scoring denominator**, not merely the words typed by the learner. Check every target, including entries that do not appear anywhere in the learner's answer.
+2. **One photographed word or phrase is one scoring unit**, following the source's actual individual entries; never silently drop unseen entries. If a photographed phrase contains multiple words, mark the **whole phrase wrong** when any required word is missing, unfinished or misspelled. **No partial credit** for a half-written phrase, even when its written half is correct. Never double-penalise the same single target for both being incomplete and containing a spelling error.
+3. In the dated Listening error log, distinguish **misspelling**, **incomplete / partially written phrase**, and **completely omitted**. Save the full correct phrase, exactly what the learner wrote (or `omitted`), and the dictation date. An incomplete phrase with misspellings is still **one wrong target**, with both aspects described in its note.
+4. Count **correct items / all photographed target entries**, show the dated session accuracy, and keep historical sessions separately. If photos are cropped, blurred or the learner's actual attempt is unavailable, say that the score is provisional/unverifiable rather than inventing a denominator or assuming unwritten means correct.
+5. Respect accepted conventional UK/US variants and genuinely faulty printed source entries, while flagging the correct standard English in notes.
+
 ## 11 · Writing · 写作
 
 Prioritise **precision, conditions of use and argument function** over decorative advanced vocabulary.
