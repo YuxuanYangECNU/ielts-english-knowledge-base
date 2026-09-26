@@ -6,9 +6,7 @@
 
 ## Review queue
 
-- **To practise** — [Employment & Recruitment — 26 Sep dictation](../listening/employment-recruitment.md): revisit apprenticeship, executive, mentor, freelance, temporary/permanent, suit and incomplete answers.
-- **To practise** — [Library Services — 26 Sep dictation](../listening/library-services.md): recall journal, call slip, catalogue, available and the correct phrase out on loan.
-- **To practise** — [Gym & Fitness — 26 Sep dictation](../listening/gym-membership.md): focus on joining fee, membership, certificate, badminton, trampoline, aerobics, and the three omitted sport names.
+- **To practise** — [Consultation Scenarios](../listening/consultation-scenarios.md): review the cumulative weak items from employment/recruitment, library and gym/fitness consultations in worksheet order.
 - **Track progress** — [Listening dictation scorecard](../listening/dictation-scores.md): date-by-date accuracy; Travel sessions currently await full typed attempts.
 - **To practise** — [Travel & Tourism — Listening Vocabulary](../listening/travel-tourism.md): recall travel attractions, outdoor activities, transport and equipment; pay special attention to hiking vs trekking, rock climbing vs cliff walk, and scuba diving vs snorkeling.
 - **To practise** — [People & Relationships — Family Relationships](../speaking-topics/people-and-relationships.md): recall cousin / nephew / niece / in-law directions and use at least two natural relationship expressions.
