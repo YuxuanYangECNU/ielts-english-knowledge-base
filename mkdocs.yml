@@ -55,20 +55,10 @@ markdown_extensions:
 extra_css:
   - stylesheets/extra.css
   - stylesheets/speaking-hub.css
-  - stylesheets/speaking-practice.css
-  - stylesheets/speaking-chat-wechat.css
-  - stylesheets/speaking-chat-controls.css
-  - stylesheets/speaking-recap.css
   - stylesheets/search-enhanced.css
 
 extra_javascript:
   - javascripts/vocabulary.js
-  - javascripts/speaking-config.js
-  - javascripts/speaking-session-memory.js
-  - javascripts/speaking-practice.js
-  - javascripts/voice-diagnostics.js
-  - javascripts/speaking-chat-wechat.js
-  - javascripts/speaking-recap.js
   - javascripts/search-enhanced.js
 
 nav:
@@ -79,15 +69,6 @@ nav:
           - knowledge/speaking-topics/README.md
           - Topics:
               - People & Relationships: knowledge/speaking-topics/people-and-relationships.md
-      - Practice:
-          - knowledge/speaking/practice/README.md
-          - Chat: knowledge/speaking/practice/chat.md
-          - Free Voice: knowledge/speaking/practice/free-voice.md
-          - ChatGPT Voice: knowledge/speaking/practice/chatgpt-voice.md
-          - Practice Accumulation:
-              - Overview: knowledge/speaking/practice/practice-accumulation/README.md
-              - Voice Accumulation: knowledge/speaking/practice/practice-accumulation/voice/README.md
-              - Chat Accumulation: knowledge/speaking/practice/practice-accumulation/chat/README.md
   - Listening:
       - knowledge/listening/README.md
       - Accommodation & Renting: knowledge/listening/accommodation-renting.md
@@ -99,6 +80,11 @@ nav:
           - Collecting Ant Specimens: knowledge/reading/mistakes/003-ants.md
           - Silbo Gomero: knowledge/reading/mistakes/002-silbo.md
           - Research using twins: knowledge/reading/mistakes/001-twins.md
+  - 真题错误分析:
+      - knowledge/test-analysis/README.md
+      - 听力: knowledge/test-analysis/listening/README.md
+      - 阅读: knowledge/test-analysis/reading/README.md
+      - 错题词汇: knowledge/test-analysis/vocabulary.md
   - Writing: knowledge/writing/README.md
   - Language:
       - Vocabulary Tracker: knowledge/vocabulary/README.md

@@ -6,6 +6,7 @@
 
 ## Index
 
+- [真题错误分析 · Listening](../test-analysis/listening/README.md) — 按题目来源与套题记录错题、错因和关联词汇。
 - [**Dictation Scores · 听写正确率**](dictation-scores.md) — dated session accuracy, correction breakdown and pending travel scores.
 - [Consultation Scenarios — Listening Vocabulary](consultation-scenarios.md) — employment/recruitment, library services, and gym/fitness consultation vocabulary, kept in photographed worksheet order.
 - [Travel & Tourism — Listening Vocabulary](travel-tourism.md) — attractions, outdoor activities, transport, clothing and travel equipment from listening practice.

@@ -7,6 +7,7 @@
 ## Index
 
 - [错题集 · Reading Mistakes](mistakes/README.md) — 题目与完整原文；点击展开答案、翻译、生僻词和解析。
+- [真题错误分析](../test-analysis/reading/README.md) — 按来源和套题归档阅读错因，并链接对应错题详解。
 
 ## Note pattern
 

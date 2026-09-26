@@ -48,12 +48,13 @@
 | [07 · Reading & Paraphrase](knowledge/reading/README.md) | Paraphrase chains, logic and TF/F/NG evidence boundaries |
 | [08 · Listening Language](knowledge/listening/README.md) | Scenario language, signposts, spelling and distractors |
 | [09 · Writing & Argumentation](knowledge/writing/README.md) | Accurate Task 1 language and conditional Task 2 reasoning |
+| [10 · 真题错误分析](knowledge/test-analysis/README.md) | Listening and Reading errors by source/test, with cause labels and a shared vocabulary list |
 
 ### III · Retention
 
 | Area | Focus |
 | :--- | :--- |
-| [10 · Review & Active Recall](knowledge/review/README.md) | Retrieval prompts, reformulation and short speaking drills |
+| [11 · Review & Active Recall](knowledge/review/README.md) | Retrieval prompts, reformulation and short speaking drills |
 
 ## Curation gate
 

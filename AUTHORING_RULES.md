@@ -219,6 +219,18 @@ Keep source labels accurate. Never call material Cambridge IELTS unless the sour
 
 User-requested archive: collect every verified historical Reading mistake in `knowledge/reading/mistakes/`, including errors confirmed in email or chat. Use one stable source/test/passage/question identity per item; merge repeated grading and exclude unanswered or invalidated questions. Keep each question and complete relevant evidence visible. Put the user's wrong answer, verified correct answer, question/evidence translations, unfamiliar vocabulary (including parenthetical glosses), sentence structure and explanation inside a closed native `<details markdown="1">`. Do not reveal answers or trap labels in navigation, summaries or search previews. Never infer an actual mistake from an unanswered question. Repair truncated source quotations from the original PDF. Record only learning content, not email addresses or full conversations. Add future confirmed mistakes to the same collection when a Reading archive update is requested.
 
+### Test error analysis · 真题错误分析
+
+The public `knowledge/test-analysis/` section tracks **Listening and Reading by source and test**. It complements the detailed Reading mistakes archive; link an existing detailed mistake rather than copying its evidence and explanation.
+
+- Ask for the exact source (Cambridge volume/test/section or passage, or app and question bank), practice date, wrong question numbers, and what the user wrote. Confirm official answers or mark them pending; never infer a mistake from a question number alone.
+- Group one page per source/test/skill. Within it use the original question order; index tests newest first. When a test is repeated, keep dates and append new outcomes to the same test page.
+- Label one **primary cause** per confirmed wrong question, with optional secondary causes. Distinguish spelling, plural/word form, answer format, vocabulary, listening recognition/locating/distractors, reading paraphrase/locating/logic/evidence, and execution mistakes. Describe the concrete reason, not just "careless".
+- **Capitalisation requires verification against the actual scoring rule** before counting as wrong. Do not inflate counts for acceptable variants. Count each wrong question once when summarising error categories.
+- For a genuine vocabulary gap, update `knowledge/test-analysis/vocabulary.md`: word/phrase, short meaning, actual mistake, full source down to section/passage and question number, most recent error date. Merge repeated words into one row and preserve all occurrences. Keep the central daily Vocabulary Tracker separate unless the user asks to add the word there.
+- Never invent historical test records from a screenshot demonstrating somebody else's method. Keep score and accuracy blank when the total attempted questions are unknown. Avoid reproducing full copyrighted test passages.
+- Copy `templates/test-analysis-entry.md` for a new test, update the skill index and `mkdocs.yml`, and keep navigation newest to oldest.
+
 ## 10 · Listening · 听力
 
 Organise language by **scenario and listening value**, not by alphabetical word lists.

@@ -24,6 +24,9 @@ def clean_markdown(text: str) -> str:
 def copy_markdown_tree(source: Path, target: Path) -> None:
     for path in source.rglob("*"):
         rel = path.relative_to(source)
+        # Keep historical practice files in git without publishing these routes.
+        if rel.parts[:2] == ("speaking", "practice") or rel.parts == ("speaking", "PRACTICE_RULES.md"):
+            continue
         dest = target / rel
         if path.is_dir():
             dest.mkdir(parents=True, exist_ok=True)
@@ -94,11 +97,10 @@ def render_vocab_tracker(path: Path) -> None:
     path.write_text(text, encoding="utf-8")
 
 
-def copy_static_files(source_dir: Path, target_dir: Path, pattern: str) -> None:
+def copy_static_files(source_dir: Path, target_dir: Path, names: tuple[str, ...]) -> None:
     target_dir.mkdir(parents=True, exist_ok=True)
-    for source in source_dir.glob(pattern):
-        if source.is_file():
-            shutil.copy2(source, target_dir / source.name)
+    for name in names:
+        shutil.copy2(source_dir / name, target_dir / name)
 
 
 def main() -> None:
@@ -112,12 +114,11 @@ def main() -> None:
     copy_markdown_tree(ROOT / "knowledge", OUT / "knowledge")
     render_vocab_tracker(OUT / "knowledge" / "vocabulary" / "README.md")
 
-    # Copy every stylesheet referenced by mkdocs.yml. Previously only extra.css
-    # was copied, which left Speaking pages unstyled in the deployed Pages artifact.
-    copy_static_files(ROOT / "web" / "stylesheets", OUT / "stylesheets", "*.css")
-
-    # Keep all website scripts in sync with the source tree.
-    copy_static_files(ROOT / "web" / "javascripts", OUT / "javascripts", "*.js")
+    # Publish only assets referenced by mkdocs.yml; archived practice code stays in git.
+    copy_static_files(ROOT / "web" / "stylesheets", OUT / "stylesheets",
+                      ("extra.css", "speaking-hub.css", "search-enhanced.css"))
+    copy_static_files(ROOT / "web" / "javascripts", OUT / "javascripts",
+                      ("vocabulary.js", "search-enhanced.js"))
 
     print(f"Prepared MkDocs source at {OUT}")
 

@@ -21,10 +21,11 @@ This page is the bridge between the home dashboard and individual notes.
 7. [Reading & Paraphrase](reading/README.md)
 8. [Listening Language](listening/README.md) · [Dictation scorecard](listening/dictation-scores.md)
 9. [Writing & Argumentation](writing/README.md)
+10. [真题错误分析](test-analysis/README.md) · [听力](test-analysis/listening/README.md) · [阅读](test-analysis/reading/README.md) · [错题词汇](test-analysis/vocabulary.md)
 
 ## III · Retention
 
-10. [Review & Active Recall](review/README.md)
+11. [Review & Active Recall](review/README.md)
 
 ## Connection rule
 

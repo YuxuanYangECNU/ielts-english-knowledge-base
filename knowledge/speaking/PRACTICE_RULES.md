@@ -2,7 +2,7 @@
 
 # Speaking Practice Rules · 口语实战规则
 
-> This file is the source of truth for the **Speaking → Practice** area. Read it before changing the Speaking practice pages, session workflow, or practice accumulation.
+> **Archived 26 Sep 2026.** The Speaking Practice section was removed from the public website at the user's request. The material below documents the old implementation only; do not restore its routes unless the user asks.
 
 ## 1 · Speaking architecture · 页面层级
 

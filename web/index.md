@@ -46,7 +46,7 @@ Useful words. Natural sentences. A little practice, every day.
 
     <span class="atlas-card-translation">口语表达</span>
 
-    Choose **Accumulation** or **Practice** first.
+    Learn useful expressions by topic and turn them into your own answers.
 
     [Open Speaking :octicons-arrow-right-24:](knowledge/speaking/README.md)
 
@@ -69,6 +69,16 @@ Useful words. Natural sentences. A little practice, every day.
     Paraphrases, evidence & True / False / Not Given.
 
     [Reading notes :octicons-arrow-right-24:](knowledge/reading/README.md)
+
+-   :material-clipboard-text-outline:{ .atlas-card-icon }
+
+    ### 真题错误分析
+
+    <span class="atlas-card-translation">听力 · 阅读</span>
+
+    按套题复盘错因，集中积累错题词汇与来源。
+
+    [查看错题分析 :octicons-arrow-right-24:](knowledge/test-analysis/README.md)
 
 -   :material-pencil-outline:{ .atlas-card-icon }
 
