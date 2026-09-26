@@ -250,6 +250,7 @@ For any dictation supplied with a photographed target list or worksheet:
 3. In the dated Listening error log, distinguish **misspelling**, **incomplete / partially written phrase**, and **completely omitted**. Save the full correct phrase, exactly what the learner wrote (or `omitted`), and the dictation date. An incomplete phrase with misspellings is still **one wrong target**, with both aspects described in its note.
 4. Count **correct items / all photographed target entries**, show the dated session accuracy, and keep historical sessions separately. If photos are cropped, blurred or the learner's actual attempt is unavailable, say that the score is provisional/unverifiable rather than inventing a denominator or assuming unwritten means correct.
 5. Respect accepted conventional UK/US variants and genuinely faulty printed source entries, while flagging the correct standard English in notes.
+6. **Ignore letter case entirely when scoring dictation.** A response differing from the photographed target only in capitalisation (including proper nouns and initial capitals) is correct. Do not add case-only variants to the error log.
 
 ## 11 · Writing · 写作
 
