@@ -8,11 +8,16 @@ The scorecard records **each dated dictation session**. A session is scored only
 
 | Date | Scenario / attempt | Correct / scored | Accuracy | Spelling errors | Incomplete | Omitted | Fair-marking note |
 | :--- | :--- | ---: | ---: | ---: | ---: | ---: | :--- |
+| **27 Sep 2026** | [Consultation — Employment & Recruitment](consultation-scenarios.md#1-employment-recruitment) | **58 / 63** | **92.1%** | 5 | 0 | 0 | All 63 photographed entries checked; case ignored |
+| **27 Sep 2026** | [Consultation — Library Services](consultation-scenarios.md#2-library-services) | **26 / 37** | **70.3%** | 6* | 3* | 2 | `a vedio` may correspond to audio-visual materials or video; both targets incorrect either way |
+| **27 Sep 2026** | [Consultation — Gym & Fitness](consultation-scenarios.md#3-gym-fitness) | **47 / 56** | **83.9%** | 6 | 3 | 0 | `internal` lacks `member`; `reference letter from ex` is incomplete |
 | **26 Sep 2026** | [Consultation — Employment & Recruitment](consultation-scenarios.md#1-employment-recruitment) | **47 / 63** | **74.6%** | 9 | 6 | 1 | 46 exact + 1 accepted `bowtie` variant |
 | **26 Sep 2026** | [Consultation — Library Services](consultation-scenarios.md#2-library-services) | **26 / 37** | **70.3%** | 7 | 2 | 2 | 25 exact + 1 printed-worksheet typo credit |
 | **26 Sep 2026** | [Consultation — Gym & Fitness](consultation-scenarios.md#3-gym-fitness) | **31 / 56** | **55.4%** | 20 | 2 | 3 | Includes all 56 printed entries, not 3 handwritten extras |
 | **26 Sep 2026** | [Travel & Tourism — repeat](travel-tourism.md) | **Pending** | **Not yet verifiable** | Partial dated mistakes logged | — | — | Worksheet photos and documented misses are available, but **full typed travel attempt is missing** |
 | **13 Sep 2026** | [Travel & Tourism — earlier practice](travel-tourism.md) | **Pending** | **Not yet verifiable** | Earlier unfamiliar-word list logged | — | — | Only missed vocabulary was recorded; full attempted responses are unavailable |
+
+**27 Sep 2026 — three consultation worksheets combined:** **131 / 156 = 84.0%** (vs 26 Sep: **104 / 156 = 66.7%**, an increase of **17.3 percentage points**). Library's `a vedio` has uncertain placement, but the total score does not depend on whether it was intended for the audio-visual phrase or the separate video entry.
 
 **26 Sep 2026 — three verifiable scenarios combined:** **104 / 156 = 66.7%**. **Travel is excluded** until the actual complete dictation attempt can be checked; this is **not** an all-four-scenario average.
 
@@ -31,6 +36,16 @@ The scorecard records **each dated dictation session**. A session is scored only
 
 ## Review focus · 本次重点
 
+**27 Sep — Employment:** salesman (`sellsman`), executive (`excutive`), colleague (`collegue`), temporary (`tempoary`), permanent (`permanante`).
+
+**27 Sep — Library:** periodical (`peoridal`), current/back issue (unfinished), journal (`jounal`), multimedia materials (plural), audio-visual materials / video (ambiguous `a vedio`), tape (omitted), category (`catagory`), circulation desk (unfinished), call slip (omitted), due date (`dueday`).
+
+**27 Sep — Gym:** internal member (unfinished), reference number (`refererence`), student card (word boundary), reference letter from employer (unfinished), joining fee (`join in fee`), self-funded (`self fund`), soccer (`soccor`), beach volleyball (`volleaball`), stretch class (`strech class`).
+
+**Audit note (*):** Library error-type split is provisional for the handwritten string `a vedio`. It cannot make either of the two separately printed targets fully correct, so the **26/37** accuracy is unchanged whether assigned to **audio-visual materials** or standalone **video**. Source sheet itself prints `out of loan` and that printed-match credit is retained.
+
+### Previous session · 26 Sep
+
 The three 26 Sep entries above belong to one **Consultation Scenarios** topic page; only the scorecard is date/session based.
 
 **Employment:** apprentice / apprenticeship, executive, freelance, permanent / temporary, suit / suite, informal / casual clothes.
@@ -39,4 +54,4 @@ The three 26 Sep entries above belong to one **Consultation Scenarios** topic pa
 
 **Gym:** joining fee, membership, enrolment, certificate, reference letter from employer, badminton, trampoline, aerobics; completely missed **beach volleyball, kick-boxing, track and field**.
 
-**Source:** User-provided photographed worksheets and typed responses, cross-checked on 26 Sep 2026. Private photos and full conversations are not published here.
+**Source:** User-provided photographed worksheets and typed responses, cross-checked on 26–27 Sep 2026. Private photos and full conversations are not published here.
