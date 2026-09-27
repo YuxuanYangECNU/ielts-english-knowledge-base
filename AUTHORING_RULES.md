@@ -329,3 +329,7 @@ Before adding or updating a note, confirm:
 - Are obvious typing slips corrected rather than misclassified as learning errors?
 
 If the page becomes crowded, **delete before adding more**.
+
+## Vocabulary typing practice · 单词打字练习
+
+Word tables use a recognisable `Word`, `Word / phrase`, or `词／词组` header. The website adds a leading typing field automatically; keep source answers clean and do not add input markup to individual notes. Reading mistake vocabulary uses a `Vocabulary · ...` heading followed by a list with each target in bold. Practice is temporary and local, with no score or mastery changes. Original terms are visible by default, with a hide/show control. Correct complete input glows green; case and extra spaces are ignored. Slash-separated alternatives accept any full alternative or the entire group; do not drop required words from phrases. Hiding only masks the source term, not examples and historical correction notes.

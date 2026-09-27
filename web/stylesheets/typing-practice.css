@@ -1,0 +1,28 @@
+.typing-toolbar { display:flex; flex-wrap:wrap; align-items:center; gap:.5rem .8rem; padding:.8rem 1rem; margin:1rem 0 1.3rem; background:var(--atlas-surface); border:1px solid var(--atlas-border); border-radius:14px; font-size:.7rem; }
+.typing-toolbar button { padding:.35rem .65rem; min-height:40px; border:1px solid var(--atlas-border); border-radius:9px; color:var(--md-typeset-a-color); cursor:pointer; }
+.typing-help { flex-basis:100%; color:var(--md-default-fg-color--light); font-size:.65rem; }
+.typing-box { display:flex; align-items:center; position:relative; width:100%; min-width:150px; border:1px solid var(--atlas-border); border-radius:9px; background:var(--md-default-bg-color); }
+.typing-input { width:100%; min-width:0; min-height:44px; padding:.5rem 1.7rem .5rem .6rem; font:inherit; color:var(--md-default-fg-color); background:transparent; border:0; border-radius:9px; }
+.typing-input:focus-visible { outline:2px solid var(--md-typeset-a-color); outline-offset:2px; }
+.typing-state { position:absolute; right:.5rem; pointer-events:none; color:#275900; font-weight:700; }
+.typing-box.is-correct { background:#dbff9c; border-color:#82bd34; box-shadow:0 0 0 2px rgba(169,233,74,.15); }
+.typing-box.is-correct .typing-input { color:#183500; }
+[data-md-color-scheme="slate"] .typing-box.is-correct { background:#31491a; border-color:#a6d867; }
+[data-md-color-scheme="slate"] .typing-box.is-correct .typing-input, [data-md-color-scheme="slate"] .typing-state { color:#dcffb0; }
+.md-typeset .typing-table .typing-column { min-width:190px; width:210px; }
+.typing-hide .typing-target { visibility:hidden; }
+.typing-list { list-style:none!important; margin-left:0!important; }
+.typing-list > li { display:flex; flex-wrap:wrap; align-items:center; gap:.4rem; margin:.65rem 0!important; }
+.typing-list-control { flex:0 0 210px; }
+/* Override the six-column tracker widths after inserting the seventh column. */
+.md-typeset #vocab-table.typing-table { table-layout:auto; min-width:980px; }
+.md-typeset #vocab-table.typing-table th, .md-typeset #vocab-table.typing-table td { width:auto; }
+.md-typeset #vocab-table.typing-table .typing-column { width:210px; }
+.md-typeset .vocab-table-wrap:has(.typing-table) { overflow-x:auto; }
+@media(max-width:700px) {
+ .md-typeset #vocab-table.typing-table { min-width:0; }
+ .md-typeset #vocab-table.typing-table td.typing-column { width:auto; min-width:0; grid-template-columns:1fr; }
+ .md-typeset #vocab-table.typing-table td.typing-column::before { display:none; }
+ .typing-list-control { flex-basis:100%; }
+ .typing-toolbar { padding:.7rem; }
+}

@@ -55,10 +55,12 @@ markdown_extensions:
 extra_css:
   - stylesheets/extra.css
   - stylesheets/search-enhanced.css
+  - stylesheets/typing-practice.css
 
 extra_javascript:
   - javascripts/vocabulary.js
   - javascripts/search-enhanced.js
+  - javascripts/typing-practice.js
 
 nav:
   - Home: index.md

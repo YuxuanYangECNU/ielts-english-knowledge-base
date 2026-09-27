@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const select = row.querySelector(".mastery-select");
       const status = select?.value || row.dataset.status || "Learning";
       const week = row.dataset.week || "—";
-      const matchesSearch = !q || Array.from(row.cells).slice(0, 4).map(cell => cell.textContent).join(" ").toLowerCase().includes(q);
+      const matchesSearch = !q || Array.from(row.cells).filter(cell => !cell.classList.contains("typing-column")).slice(0, 4).map(cell => cell.textContent).join(" ").toLowerCase().includes(q);
       const matchesStatus = wantedStatus === "all" || status === wantedStatus;
       const matchesWeek = wantedWeek === "all" || (wantedWeek === "flagged" && week !== "—") || week.split(",").map(value => value.trim()).includes(wantedWeek);
       row.hidden = !(matchesSearch && matchesStatus && matchesWeek);
