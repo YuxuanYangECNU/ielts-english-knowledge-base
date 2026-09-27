@@ -70,3 +70,12 @@
   .md-typeset #vocab-table.typing-table { background:transparent; border:0; }
   .md-typeset #vocab-table.typing-table td { border:0; padding:.4rem 0; }
 }
+
+/* Hide only definition text: the original white cells and column widths remain. */
+.typing-hide-meaning .typing-meaning,
+.typing-hide-meaning .typing-meaning * { visibility:hidden; }
+.typing-toolbar button[aria-pressed="true"] {
+  border-color:var(--md-typeset-a-color);
+  background:var(--md-code-bg-color);
+  font-weight:650;
+}
