@@ -1,7 +1,7 @@
 .typing-toolbar { display:flex; flex-wrap:wrap; align-items:center; gap:.5rem .8rem; padding:.8rem 1rem; margin:1rem 0 1.3rem; background:var(--atlas-surface); border:1px solid var(--atlas-border); border-radius:14px; font-size:.7rem; }
 .typing-toolbar button { padding:.35rem .65rem; min-height:40px; border:1px solid var(--atlas-border); border-radius:9px; color:var(--md-typeset-a-color); cursor:pointer; }
 .typing-help { flex-basis:100%; color:var(--md-default-fg-color--light); font-size:.65rem; }
-.typing-box { display:flex; align-items:center; position:relative; width:100%; min-width:150px; border:1px solid var(--atlas-border); border-radius:9px; background:var(--md-default-bg-color); }
+.typing-box { display:flex; align-items:center; position:relative; width:100%; min-width:150px; border:1px solid var(--atlas-border); border-radius:9px; background:var(--atlas-surface); }
 .typing-input { width:100%; min-width:0; min-height:44px; padding:.5rem 1.7rem .5rem .6rem; font:inherit; color:var(--md-default-fg-color); background:transparent; border:0; border-radius:9px; }
 .typing-input:focus-visible { outline:2px solid var(--md-typeset-a-color); outline-offset:2px; }
 .typing-state { position:absolute; right:.5rem; pointer-events:none; color:#275900; font-weight:700; }
@@ -26,3 +26,8 @@
  .typing-list-control { flex-basis:100%; }
  .typing-toolbar { padding:.7rem; }
 }
+
+/* Errors keep the white surface; only the border and cross become red. */
+.typing-box.is-wrong { border-color:#cf3030; }
+.typing-box.is-wrong .typing-state { color:#cf3030; }
+[data-md-color-scheme="slate"] .typing-box.is-wrong .typing-state { color:#ff8585; }

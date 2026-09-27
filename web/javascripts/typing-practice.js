@@ -22,16 +22,20 @@
       const state = document.createElement('span'); state.className = 'typing-state'; state.setAttribute('aria-live', 'polite');
       box.append(input, state); host.append(box);
       const entry = { input, box, state, target, accepted }; entries.push(entry);
-      function check() {
+      function check(submitted = false) {
         const value = normalize(input.value); const correct = !!value && accepted.includes(value);
-        box.classList.toggle('is-correct', correct); state.textContent = correct ? '✓' : '';
-        input.setAttribute('aria-label', `拼写练习第 ${entries.indexOf(entry) + 1} 项${correct ? '，正确' : ''}`);
+        const wrong = submitted && !correct;
+        box.classList.toggle('is-correct', correct); box.classList.toggle('is-wrong', wrong);
+        state.textContent = correct ? '✓' : wrong ? '✗' : '';
+        input.setAttribute('aria-invalid', String(wrong));
+        input.setAttribute('aria-label', `拼写练习第 ${entries.indexOf(entry) + 1} 项${correct ? '，正确' : wrong ? '，错误，请修改' : ''}`);
+        return correct;
       }
       input.addEventListener('input', event => { if (!event.isComposing) check(); });
-      input.addEventListener('compositionend', check);
+      input.addEventListener('compositionend', () => check());
       input.addEventListener('keydown', event => {
         if (event.key !== 'Enter' || event.isComposing) return;
-        event.preventDefault(); check();
+        event.preventDefault(); if (!check(true)) return;
         const next = entries.slice(entries.indexOf(entry) + 1).find(e => !e.input.closest('[hidden]') && e.input.getClientRects().length);
         next?.input.focus();
       });
@@ -61,7 +65,7 @@
     });
     if (!entries.length) return;
     const bar = document.createElement('div'); bar.className = 'typing-toolbar';
-    const label = document.createElement('span'); label.textContent = '打字练习 · 正确亮绿 · Enter 下一项';
+    const label = document.createElement('span'); label.textContent = '打字练习 · 正确亮绿 · 回车检查，正确后下一项';
     const toggle = document.createElement('button'); toggle.type = 'button'; toggle.textContent = '隐藏原词'; toggle.setAttribute('aria-pressed','false');
     const reset = document.createElement('button'); reset.type = 'button'; reset.textContent = '清空重练';
     const note = document.createElement('span'); note.className = 'typing-help'; note.textContent = '大小写不限；词组需完整；斜线并列项可输入任一项或整组。仅隐藏原词，例句和错因仍可见。刷新后清空。';
