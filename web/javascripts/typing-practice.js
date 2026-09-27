@@ -104,18 +104,65 @@
         if (hidden) node.setAttribute('aria-hidden', 'true');
         else node.removeAttribute('aria-hidden');
       });
+      syncFloatingControls();
     });
     const reset = document.createElement('button'); reset.type = 'button'; reset.textContent = '清空重练';
     const note = document.createElement('span'); note.className = 'typing-help'; note.textContent = '大小写不限；词组需完整；斜线并列项可输入任一项或整组。原词与意思可分别隐藏，例句和错因仍可见。刷新后清空。';
     toggle.addEventListener('click', () => {
       const hidden = article.classList.toggle('typing-hide'); toggle.textContent = hidden ? '显示原词' : '隐藏原词'; toggle.setAttribute('aria-pressed',String(hidden));
       entries.forEach(e => { if (hidden) e.target.setAttribute('aria-hidden','true'); else e.target.removeAttribute('aria-hidden'); });
+      syncFloatingControls();
     });
     reset.addEventListener('click', () => { entries.forEach(e => { e.input.value = ''; e.input.dispatchEvent(new Event('input')); }); });
     bar.append(label,toggle);
     if (meanings.length) bar.append(meaningToggle);
     bar.append(reset,note);
     const title = article.querySelector('h1'); if (title) title.after(bar); else article.prepend(bar);
+
+    // Compact controls remain available after the top toolbar scrolls away.
+    // These click the original buttons, keeping both sets in the same state.
+    const floating = document.createElement('div');
+    floating.className = 'typing-floating-controls';
+    floating.setAttribute('role', 'group');
+    floating.setAttribute('aria-label', '随时切换单词和意思的显示');
+    floating.hidden = true;
+    const floatingWord = document.createElement('button');
+    floatingWord.type = 'button';
+    floatingWord.addEventListener('click', () => toggle.click());
+    floating.append(floatingWord);
+    let floatingMeaning = null;
+    if (meanings.length) {
+      floatingMeaning = document.createElement('button');
+      floatingMeaning.type = 'button';
+      floatingMeaning.addEventListener('click', () => meaningToggle.click());
+      floating.append(floatingMeaning);
+    }
+    article.append(floating);
+
+    function syncFloatingControls() {
+      floatingWord.textContent = toggle.textContent;
+      floatingWord.setAttribute('aria-pressed', toggle.getAttribute('aria-pressed'));
+      if (floatingMeaning) {
+        floatingMeaning.textContent = meaningToggle.textContent;
+        floatingMeaning.setAttribute('aria-pressed', meaningToggle.getAttribute('aria-pressed'));
+      }
+    }
+    syncFloatingControls();
+
+    // Only appear when the original bar has left the viewport above us.
+    // Hide again near the article footer to avoid covering navigation links.
+    function updateFloatingVisibility() {
+      if (!article.isConnected) {
+        window.removeEventListener('scroll', updateFloatingVisibility);
+        window.removeEventListener('resize', updateFloatingVisibility);
+        return;
+      }
+      floating.hidden = !(bar.getBoundingClientRect().bottom < 72 &&
+        article.getBoundingClientRect().bottom > 128);
+    }
+    window.addEventListener('scroll', updateFloatingVisibility, { passive: true });
+    window.addEventListener('resize', updateFloatingVisibility);
+    updateFloatingVisibility();
   }
   // Pure matcher exports allow checking edge cases without loading a browser.
   if (typeof module !== 'undefined' && module.exports) module.exports = {normalize, answers};
