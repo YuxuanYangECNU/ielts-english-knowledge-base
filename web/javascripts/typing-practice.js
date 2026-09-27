@@ -10,6 +10,17 @@
     if (!article || article.dataset.typingReady) return;
     article.dataset.typingReady = 'true';
     const entries = [];
+    const meanings = [];
+    // Keep each meaning inside its existing white cell/list item, so hiding
+    // the text never changes the table layout or removes the cell background.
+    function wrapMeaning(parent, nodes) {
+      if (!nodes.length || !nodes.some(node => node.textContent.trim())) return;
+      const span = document.createElement('span');
+      span.className = 'typing-meaning';
+      parent.insertBefore(span, nodes[0]);
+      nodes.forEach(node => span.append(node));
+      meanings.push(span);
+    }
     function add(target, host) {
       const accepted = answers(target.textContent);
       if (!accepted.length || !/[a-z]/i.test(accepted[0])) return;
@@ -44,10 +55,15 @@
       const headers = [...table.querySelectorAll('thead th')];
       const index = headers.findIndex(h => /^(word(?:\s*\/\s*phrase)?|词[／/]词组|词汇|单词)$/i.test(h.textContent.trim()));
       if (index < 0) return;
+      const meaningIndex = headers.findIndex(h => /^(?:meaning(?:s)?|chinese(?:\s+meaning)?|definition(?:s)?|translation|中文(?:速览|释义|意思|含义|翻译)?|释义|词义|含义|意思|翻译)$/i.test(h.textContent.trim()));
       table.classList.add('typing-table');
       const th = document.createElement('th'); th.textContent = '打字练习'; th.scope = 'col'; th.className = 'typing-column'; headers[0].before(th);
       table.querySelectorAll('tbody tr').forEach(row => {
         const target = row.cells[index]; if (!target) return;
+        if (meaningIndex >= 0 && row.cells[meaningIndex]) {
+          const cell = row.cells[meaningIndex];
+          wrapMeaning(cell, [...cell.childNodes]);
+        }
         const td = document.createElement('td'); td.className = 'typing-column'; td.dataset.label = '打字练习';
         row.prepend(td); add(target, td);
       });
@@ -60,6 +76,16 @@
       list.classList.add('typing-list');
       [...list.children].forEach(li => {
         const target = li.querySelector('strong'); if (!target) return;
+        // These dedicated vocabulary lists place the meaning immediately
+        // after the bold headword, commonly in Chinese parentheses.
+        const meaningNodes = [];
+        let sibling = target.nextSibling;
+        while (sibling) {
+          if (sibling.nodeType === 1 && /^(UL|OL|P|DIV|DETAILS)$/.test(sibling.tagName)) break;
+          meaningNodes.push(sibling);
+          sibling = sibling.nextSibling;
+        }
+        wrapMeaning(target.parentNode, meaningNodes);
         const host = document.createElement('span'); host.className = 'typing-list-control'; li.prepend(host); add(target, host);
       });
     });
@@ -67,14 +93,28 @@
     const bar = document.createElement('div'); bar.className = 'typing-toolbar';
     const label = document.createElement('span'); label.textContent = '打字练习 · 正确亮绿 · 回车检查，正确后下一项';
     const toggle = document.createElement('button'); toggle.type = 'button'; toggle.textContent = '隐藏原词'; toggle.setAttribute('aria-pressed','false');
+    const meaningToggle = document.createElement('button'); meaningToggle.type = 'button';
+    meaningToggle.textContent = '隐藏意思'; meaningToggle.setAttribute('aria-pressed','false');
+    meaningToggle.setAttribute('aria-label', '隐藏中文释义或英文定义');
+    meaningToggle.addEventListener('click', () => {
+      const hidden = article.classList.toggle('typing-hide-meaning');
+      meaningToggle.textContent = hidden ? '显示意思' : '隐藏意思';
+      meaningToggle.setAttribute('aria-pressed', String(hidden));
+      meanings.forEach(node => {
+        if (hidden) node.setAttribute('aria-hidden', 'true');
+        else node.removeAttribute('aria-hidden');
+      });
+    });
     const reset = document.createElement('button'); reset.type = 'button'; reset.textContent = '清空重练';
-    const note = document.createElement('span'); note.className = 'typing-help'; note.textContent = '大小写不限；词组需完整；斜线并列项可输入任一项或整组。仅隐藏原词，例句和错因仍可见。刷新后清空。';
+    const note = document.createElement('span'); note.className = 'typing-help'; note.textContent = '大小写不限；词组需完整；斜线并列项可输入任一项或整组。原词与意思可分别隐藏，例句和错因仍可见。刷新后清空。';
     toggle.addEventListener('click', () => {
       const hidden = article.classList.toggle('typing-hide'); toggle.textContent = hidden ? '显示原词' : '隐藏原词'; toggle.setAttribute('aria-pressed',String(hidden));
       entries.forEach(e => { if (hidden) e.target.setAttribute('aria-hidden','true'); else e.target.removeAttribute('aria-hidden'); });
     });
     reset.addEventListener('click', () => { entries.forEach(e => { e.input.value = ''; e.input.dispatchEvent(new Event('input')); }); });
-    bar.append(label,toggle,reset,note);
+    bar.append(label,toggle);
+    if (meanings.length) bar.append(meaningToggle);
+    bar.append(reset,note);
     const title = article.querySelector('h1'); if (title) title.after(bar); else article.prepend(bar);
   }
   // Pure matcher exports allow checking edge cases without loading a browser.
