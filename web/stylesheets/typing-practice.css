@@ -31,3 +31,42 @@
 .typing-box.is-wrong { border-color:#cf3030; }
 .typing-box.is-wrong .typing-state { color:#cf3030; }
 [data-md-color-scheme="slate"] .typing-box.is-wrong .typing-state { color:#ff8585; }
+
+/* Adding a table class bypasses Material's table:not([class]) defaults. */
+.md-typeset table.typing-table {
+  background:var(--atlas-surface); border:1px solid var(--atlas-border);
+  border-radius:14px; border-collapse:separate; border-spacing:0;
+  width:100%; font-size:.8rem; overflow:hidden;
+}
+.md-typeset table.typing-table th {
+  background:var(--md-code-bg-color); color:var(--md-default-fg-color);
+  text-align:left; font-weight:650; padding:.7rem .65rem; vertical-align:middle;
+}
+.md-typeset table.typing-table td {
+  padding:.65rem; text-align:left; vertical-align:middle; line-height:1.6;
+  border-top:1px solid var(--atlas-border);
+}
+@media(min-width:701px) {
+  .md-typeset #vocab-table.typing-table { min-width:1080px; }
+  .md-typeset #vocab-table.typing-table th:nth-child(2),
+  .md-typeset #vocab-table.typing-table td:nth-child(2) {
+    width:68px; min-width:68px; white-space:nowrap; overflow-wrap:normal;
+    word-break:normal; text-align:center;
+  }
+  .md-typeset #vocab-table.typing-table th:nth-child(3),
+  .md-typeset #vocab-table.typing-table td:nth-child(3) { min-width:180px; }
+  .md-typeset #vocab-table.typing-table th:nth-child(4),
+  .md-typeset #vocab-table.typing-table td:nth-child(4) {
+    width:75px; min-width:75px; white-space:nowrap; overflow-wrap:normal;
+  }
+  .md-typeset #vocab-table.typing-table th:nth-child(5),
+  .md-typeset #vocab-table.typing-table td:nth-child(5) { min-width:150px; }
+  .md-typeset #vocab-table.typing-table th:nth-child(6),
+  .md-typeset #vocab-table.typing-table td:nth-child(6) { min-width:145px; }
+  .md-typeset #vocab-table.typing-table th:nth-child(7),
+  .md-typeset #vocab-table.typing-table td:nth-child(7) { min-width:135px; }
+}
+@media(max-width:700px) {
+  .md-typeset #vocab-table.typing-table { background:transparent; border:0; }
+  .md-typeset #vocab-table.typing-table td { border:0; padding:.4rem 0; }
+}
