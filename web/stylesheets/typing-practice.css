@@ -79,3 +79,38 @@
   background:var(--md-code-bg-color);
   font-weight:650;
 }
+
+/* Compact word / meaning switches stay within reach while reading long lists. */
+.typing-floating-controls {
+  position:fixed; z-index:25; right:1.25rem;
+  bottom:calc(1.25rem + env(safe-area-inset-bottom, 0px));
+  display:flex; align-items:center; gap:.35rem; padding:.4rem;
+  max-width:calc(100vw - 1.5rem);
+  background:var(--atlas-surface); color:var(--md-default-fg-color);
+  border:1px solid var(--atlas-border); border-radius:999px;
+  box-shadow:0 9px 28px rgba(22,28,44,.17);
+  font-size:.73rem; line-height:1.4;
+}
+.typing-floating-controls[hidden] { display:none !important; }
+.typing-floating-controls button {
+  flex:0 0 auto; min-height:44px; padding:.45rem .85rem;
+  border:1px solid transparent; border-radius:999px;
+  color:var(--md-default-fg-color); background:transparent;
+  font:inherit; font-weight:600; white-space:nowrap; cursor:pointer;
+}
+.typing-floating-controls button:hover,
+.typing-floating-controls button[aria-pressed="true"] {
+  color:var(--md-typeset-a-color);
+  background:var(--md-code-bg-color);
+}
+.typing-floating-controls button[aria-pressed="true"] {
+  border-color:var(--atlas-border);
+}
+@media(max-width:700px) {
+  .typing-floating-controls {
+    left:50%; right:auto; transform:translateX(-50%);
+    bottom:calc(.8rem + env(safe-area-inset-bottom, 0px));
+    padding:.3rem; gap:.2rem;
+  }
+  .typing-floating-controls button { padding:.45rem .7rem; }
+}
